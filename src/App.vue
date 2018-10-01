@@ -6,12 +6,12 @@
 </template>
 
 <script>
-import Home from './pages/home.vue'
+// import Home from './pages/home.vue'
 
 export default {
   name: 'app',
   components: {
-    Home
+    // Home
   }
 }
 </script>
