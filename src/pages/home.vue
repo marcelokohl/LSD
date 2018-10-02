@@ -1,13 +1,15 @@
 <template lang="html">
   <v-page name="home">
-    <v-link tag="button" to="/mainmenu">
+    <v-image src="logo.png"/>
+    <hr>
+    <v-link tag="button" to="/main">
       <v-icon name="favicon"/>Login with Spotify
     </v-link>
     <hr>
     <v-link to="/login">- I don't have a Spotify Accound -</v-link>
   </v-page>
 </template>
- 
+
 <script>
 
 export default {

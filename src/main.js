@@ -9,6 +9,8 @@ import Page from './components/page.vue'
 import Input from './components/form/input.vue'
 
 import Back from './modules/back.vue'
+import UserMenu from './modules/user-menu.vue'
+import GameAvatar from './modules/game-avatar.vue'
 
 Vue.component('v-link', Link)
 Vue.component('v-image', Image)
@@ -17,6 +19,8 @@ Vue.component('v-page', Page)
 Vue.component('v-input', Input)
 
 Vue.component('v-back', Back)
+Vue.component('v-user-menu', UserMenu)
+Vue.component('v-game-avatar', GameAvatar)
 
 Vue.config.productionTip = false
 

@@ -1,19 +1,18 @@
 <template lang="html">
-  <v-page name="login">
+  <v-page name="new-account">
     <v-image src="logo.png"/>
     <hr>
-    <v-link tag="button" to="/">back</v-link>
+    <v-link tag="button" to="/login">back</v-link>
     <hr>
     <v-input>Email</v-input>
     <hr>
     <v-input>Password</v-input>
     <hr>
-    <v-link tag="button" to="/main">Login</v-link>
+    <v-input>Password</v-input>
     <hr>
-    <v-link to="/forgot">i forgot my password</v-link>
-    <br>
-    <v-link to="/newaccount">i dont't have an account</v-link>
-
+    <v-input>Country</v-input>
+    <hr>
+    <v-link tag="button" to="/">Sing up</v-link>
   </v-page>
 </template>
 

@@ -1,12 +1,12 @@
 <template lang="html">
-  <v-page name="forgot">
+  <v-page name="new-pass">
     <v-image src="logo.png"/>
     <hr>
-    <v-back to="/login"/>
+    <v-input>new password</v-input>
     <hr>
-    <v-input>Email</v-input>
+    <v-input> repeat new password</v-input>
     <hr>
-    <v-link tag="button" to="/newpass">Send</v-link>
+    <v-link tag="button" to="/newpass">Create</v-link>
   </v-page>
 </template>
 
