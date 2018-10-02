@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '@/pages/home'
-import Login from '@/pages/login'
-import MainMenu from '@/pages/mainmenu'
-import Forgot from '@/pages/forgot'
+import Home from '@/pages/home.vue'
+import Login from '@/pages/login.vue'
+import MainMenu from '@/pages/mainmenu.vue'
+import Forgot from '@/pages/forgot.vue'
 
 Vue.use(VueRouter)
 

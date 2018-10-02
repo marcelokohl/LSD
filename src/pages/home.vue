@@ -7,7 +7,7 @@
     <v-link to="/login">- I don't have a Spotify Accound -</v-link>
   </v-page>
 </template>
-
+ 
 <script>
 
 export default {
