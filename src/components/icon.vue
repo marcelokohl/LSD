@@ -1,5 +1,5 @@
 <template lang="html">
-  <v-image :src="'images/icons/'+name+'.svg'" v-if="name"/>
+  <v-image class="icon" :src="'icons/'+name+'.svg'" v-if="name"/>
 </template>
 
 <script>

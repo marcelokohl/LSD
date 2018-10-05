@@ -1,12 +1,12 @@
 <template>
-  <img alt="Vue logo">
+  <img class="image" :src="'images/'+src"/>
 </template>
 
 <script>
 export default {
-  // props: {
-  //   src: String
-  // }
+  props: {
+    src: String
+  }
 }
 </script>
 

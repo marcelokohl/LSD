@@ -16,5 +16,9 @@ export default {
 </script>
 
 <style>
+  @import "./assets/fonts/stylesheet.css";
 
+  #app {
+    
+  }
 </style>

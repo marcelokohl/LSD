@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    sodipodi:docname="bg-wave.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.979899"
-     inkscape:cx="1299.6316"
-     inkscape:cy="266.97743"
+     inkscape:zoom="0.70000001"
+     inkscape:cx="581.68276"
+     inkscape:cy="213.11079"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -61,10 +61,14 @@
      id="layer1"
      transform="translate(329.59524,-165.9262)">
     <path
-       style="fill:#97d9f1;fill-opacity:1;stroke:#000000;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke fill markers"
-       d="m -329.59524,216.12835 c 227.02822,-136.848679 256.300869,62.59943 375.708333,0 v 75.72143 c -198.228883,66.0326 -215.107333,-65.86444 -375.708333,0 z"
-       id="path826"
-       inkscape:connector-curvature="0"
-       sodipodi:nodetypes="ccccc" />
+       style="opacity:1;vector-effect:none;fill:#500d56;fill-opacity:1;stroke:#000000;stroke-width:3.99999985;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;font-variant-east_asian:normal"
+       d="M 0 0 L 0 189.74023 C 858.05941 -327.48312 968.6962 426.33651 1420 189.74023 L 1420 0 L 0 0 z "
+       transform="matrix(0.26458333,0,0,0.26458333,-329.59524,165.9262)"
+       id="rect818" />
+    <path
+       style="opacity:1;vector-effect:none;fill:#c660a4;fill-opacity:1;stroke:#000000;stroke-width:3.99999985;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;font-variant-east_asian:normal"
+       d="M 323.13672 404.13672 C 231.90644 404.16856 128.0382 423.4216 0 475.93164 L 0 550 L 1420 550 L 1420 475.93164 C 828.82528 672.85957 664.40553 404.01759 323.13672 404.13672 z "
+       transform="matrix(0.26458333,0,0,0.26458333,-329.59524,165.9262)"
+       id="rect825" />
   </g>
 </svg>
