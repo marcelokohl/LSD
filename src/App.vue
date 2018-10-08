@@ -2,6 +2,9 @@
   <div id="app" :class="'page-'+page.name">
     <router-view></router-view>
     <div class="bg">
+      <div class="bg-noise">
+
+      </div>
       <div class="bg-wave">
         <div class="bg-wave-top"><div class="bg-wave-inner"></div></div>
         <div class="bg-wave-bottom"><div class="bg-wave-inner"></div></div>
@@ -104,7 +107,15 @@ export default {
       top: 0; right: 0;bottom: 0;left: 0;
       z-index: 1;
       background-color: #97d9f1;
+      .bg-noise {
+        position: absolute;
+        top: 0; right: 0; bottom: 0; left: 0;
+        z-index: 4;
+        background-image: url('../public/images/noise2.png');
+        background-size: 29%;
+        opacity: .3;
 
+      }
       .bg-sky {
         transition: 1s;
         position: absolute;
