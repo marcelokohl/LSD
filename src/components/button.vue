@@ -35,26 +35,26 @@ export default {
     text-transform: uppercase;
 
     &.link {
-      font-size: 20px;
+      font-size: 1.1em;
       font-family: font(button);
       color: #fff;
     }
 
     &:not(.link) {
       background-color: color(button);
-      height: 80px;
-      border-radius: 80px;
+      height: 3.4em;
+      border-radius: 3em;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 0 20px;
+      padding: 0 1.2em;
       color: #fff;
-      font-size: 26px;
+      font-size: 1.7em;
       font-family: font(button);
       border: 2px solid black;
       .icon {
-        height: 60px;
-        margin: 0 20px 0 0;
+        height: 1.7em;
+        margin: 0 .6em 0 0;
       }
     }
   }

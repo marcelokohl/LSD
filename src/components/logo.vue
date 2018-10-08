@@ -1,5 +1,7 @@
 <template lang="html">
-  <v-image src="logo.png"/>
+  <div class="logo">
+    <v-image src="logo.png"/>
+  </div>
 </template>
 
 <script>
@@ -7,5 +9,5 @@ export default {
 }
 </script>
 
-<style lang="css">
+<style lang="scss">
 </style>

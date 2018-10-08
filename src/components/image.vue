@@ -13,5 +13,6 @@ export default {
 <style lang="scss">
   .image {
     display: block;
+    max-width: 100%;
   }
 </style>

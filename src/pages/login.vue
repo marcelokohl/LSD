@@ -2,17 +2,17 @@
   <v-page name="login">
     <v-image src="logo.png"/>
     <hr>
-    <v-link tag="button" to="/">back</v-link>
+    <v-button tag="button" to="/">back</v-button>
     <hr>
     <v-input>Email</v-input>
     <hr>
     <v-input>Password</v-input>
     <hr>
-    <v-link tag="button" to="/main">Login</v-link>
+    <v-button tag="button" to="/main">Login</v-button>
     <hr>
-    <v-link to="/forgot">i forgot my password</v-link>
+    <v-button to="/forgot">i forgot my password</v-button>
     <br>
-    <v-link to="/newaccount">i dont't have an account</v-link>
+    <v-button to="/newaccount">i dont't have an account</v-button>
 
   </v-page>
 </template>

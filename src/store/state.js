@@ -1,5 +1,5 @@
 export default {
-
+  home:true,
   menu: {
     main: [
       {label:'Apresentação', href:'#about'},

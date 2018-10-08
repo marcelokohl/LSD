@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1420"
-   height="550"
-   viewBox="0 0 375.70832 145.52083"
+   height="150"
+   viewBox="0 0 375.70832 39.687499"
    version="1.1"
    id="svg8"
    sodipodi:docname="bg-wave-bottom.svg"
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70000001"
-     inkscape:cx="581.68276"
-     inkscape:cy="213.11079"
+     inkscape:zoom="1.979899"
+     inkscape:cx="262.73217"
+     inkscape:cy="2.0000172"
      inkscape:document-units="mm"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -59,11 +59,11 @@
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(329.59524,-165.9262)">
+     transform="translate(330.12441,-272.28869)">
     <path
-       style="opacity:1;vector-effect:none;fill:#c660a4;fill-opacity:1;stroke:#000000;stroke-width:3.99999985;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;font-variant-east_asian:normal"
-       d="M 323.13672 404.13672 C 231.90644 404.16856 128.0382 423.4216 0 475.93164 L 0 550 L 1420 550 L 1420 475.93164 C 828.82528 672.85957 664.40553 404.01759 323.13672 404.13672 z "
-       transform="matrix(0.26458333,0,0,0.26458333,-329.59524,165.9262)"
-       id="rect825" />
+       style="opacity:1;vector-effect:none;fill:#c660a4;fill-opacity:1;stroke:#000000;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m -244.62782,273.3832 c -24.13801,0.008 -51.61982,5.10246 -85.49659,18.99574 v 19.59725 H 45.583916 V 292.37894 C -110.83106,344.48279 -154.33378,273.35168 -244.62782,273.3832 Z"
+       id="rect825"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

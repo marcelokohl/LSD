@@ -6,7 +6,7 @@
     <hr>
     <v-input>Email</v-input>
     <hr>
-    <v-link tag="button" to="/newpass">Send</v-link>
+    <v-button tag="button" to="/newpass">Send</v-button>
   </v-page>
 </template>
 

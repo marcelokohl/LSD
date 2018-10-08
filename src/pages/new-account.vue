@@ -2,7 +2,7 @@
   <v-page name="new-account">
     <v-image src="logo.png"/>
     <hr>
-    <v-link tag="button" to="/login">back</v-link>
+    <v-button tag="button" to="/login">back</v-button>
     <hr>
     <v-input>Email</v-input>
     <hr>
@@ -12,7 +12,7 @@
     <hr>
     <v-input>Country</v-input>
     <hr>
-    <v-link tag="button" to="/">Sing up</v-link>
+    <v-button tag="button" to="/">Sing up</v-button>
   </v-page>
 </template>
 

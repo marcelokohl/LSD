@@ -8,71 +8,60 @@
         <o-star/>
         <o-star/>
         <o-star/>
-        <o-star/>
       </div>
-      <v-logo/>
+      <v-logo />
       <v-button tag="button" class="primary" to="/main">
-        <v-icon name="spotify"/>Login with Spotify 2
+        <v-icon name="spotify"/>Login with Spotify
       </v-button>
       <v-button class="link" to="/login">- I don't have a Spotify Accound -</v-button>
     </div>
     <div class="players">
-      <v-image class="image-labrinth" src="players/labrinth.png"/>
       <v-image class="image-sia" src="players/sia.png"/>
+      <v-image class="image-labrinth" src="players/labrinth.png"/>
       <v-image class="image-diplo" src="players/diplo.png"/>
-    </div>
-    <div class="bg">
-      <div class="bg-top">
-
-      </div>
-      <div class="bg-wave">
-        <div class="bg-wave-top"></div>
-        <div class="bg-wave-bottom"></div>
-        <div class="bg-wave-content">
-          <o-cloud x="0" duration="300" cloud="2"/>
-          <o-cloud x="-40" duration="220"/>
-          <o-cloud x="20" duration="210"/>
-          <o-cloud x="-70" duration="310"/>
-          <o-cloud x="-30" duration="250" cloud="2"/>
-          <o-cloud x="-80" duration="290"/>
-          <o-cloud x="-90" duration="250"/>
-          <o-cloud x="50" duration="280" cloud="2"/>
-          <o-cloud x="70" duration="260"/>
-          <o-cloud x="80" duration="220"/>
-          <o-cloud x="-20" duration="210"/>
-          <o-cloud x="10" duration="290"/>
-          <o-cloud x="60" duration="290"/>
-          <o-cloud x="0" duration="300"/>
-          <o-cloud x="-10" duration="200"/>
-          <o-cloud x="-50" duration="200"/>
-          <o-cloud x="-60" duration="200"/>
-          <o-cloud x="30" duration="200"/>
-          <o-cloud x="90" duration="200"/>
-          <o-cloud x="40" duration="200"/>
-        </div>
-      </div>
-      <div class="bg-bottom">
-
-      </div>
     </div>
   </v-page>
 </template>
 
 <script>
-
 export default {
 }
 </script>
 
 <style lang="scss">
+  @import "@/scss/breakpoints.scss";
+
   .page-home {
     overflow: hidden;
     position: absolute;
     top: 0; right: 0;bottom: 0;left: 0;
 
-    .bg, .content {
+    button.button {
+      margin-bottom: 2em;
+    }
+
+    .logo .image {
+      height: 15em;
+      margin-bottom: 4em;
+    }
+
+    .content {
       position: absolute;
-      top: 0; right: 0;bottom: 0;left: 0;
+      top: 0; right: 0;bottom: 30%;left: 0;
+
+      .stars {
+        .o-star {
+          position: absolute;
+          top: -10px;
+          left: 69-10px;
+        }
+        .o-star:nth-child(1) { top: 13%; left: 67%;}
+        .o-star:nth-child(2) { top: 38%; left: 66%;}
+        .o-star:nth-child(3) { top: 15%; left: 57%;}
+        .o-star:nth-child(4) { top: 42%; left: 35%;}
+        .o-star:nth-child(5) { top: 17%; left: 33%;}
+        .o-star:nth-child(6) { top: 9%; left: 40%;}
+      }
     }
     .content {
       z-index: 2;
@@ -84,7 +73,11 @@ export default {
     .players {
       position: absolute;
       top: auto; right: 0; bottom: -4px; left: 0;
-      z-index: 2;
+      z-index: 1;
+      
+      @include breakpoint-tablet() {
+        transform: scale(0.6);
+      }
 
       .image {
         position: absolute;
@@ -101,64 +94,6 @@ export default {
         margin-left: 0;
       }
     }
-    .bg {
-      z-index: 1;
-      background: blue;
-      .bg-top {
-        background-color: #500d56;
-        position: absolute;
-        top: 0; right: 0;bottom: 50%;left: 0;
-      }
-      .bg-bottom {
-        background-color: #c660a4;
-        position: absolute;
-        top: 50%; right: 0;bottom: 0;left: 0;
-      }
-      .bg-wave {
-        width: 100%;
-        height: 550px;
-        background-size: auto 100%;
-        position: absolute;
-        z-index: 2;
-        top: 50%;
-        margin-top: -275px;
-
-        .bg-wave-top {
-          position: absolute;
-          top: 0; right: 0;bottom: 0;left: 0;
-          background-image: url('../../public/images/bg-wave-top.svg');
-          animation: slide-wave-top 40s linear infinite;
-          z-index: 3;
-        }
-        .bg-wave-bottom {
-          position: absolute;
-          top: 0; right: 0;bottom: 0;left: 0;
-          background-image: url('../../public/images/bg-wave-bottom.svg');
-          animation: slide-wave-top 50s linear infinite;
-          z-index: 3;
-        }
-        .bg-wave-content {
-          position: absolute;
-          top: 0; right: 0;bottom: 0;left: 0;
-          background-color: #97d9f1;
-          z-index: 2;
-          overflow: hidden;
-        }
-        .bg-wave-bg {
-          position: absolute;
-          top: 0; right: 0;bottom: 0;left: 0;
-          background-color: #97d9f1;
-          z-index: 1;
-        }
-      }
-    }
   }
-@-webkit-keyframes slide-wave-top {
-  from { background-position: 0 0; }
-  to { background-position: -1420px 0; }
-}
-@-webkit-keyframes slide-wave-bottom {
-  from { background-position: -1420px 0; }
-  to { background-position: 0 0; }
-}
+
 </style>

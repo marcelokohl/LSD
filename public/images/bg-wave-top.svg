@@ -10,8 +10,8 @@
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="1420"
-   height="550"
-   viewBox="0 0 375.70832 145.52083"
+   height="242"
+   viewBox="0 0 375.70832 64.029165"
    version="1.1"
    id="svg8"
    sodipodi:docname="bg-wave-top.svg"
@@ -25,10 +25,10 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.70000001"
-     inkscape:cx="581.68276"
-     inkscape:cy="213.11079"
-     inkscape:document-units="mm"
+     inkscape:zoom="0.35355339"
+     inkscape:cx="900.06652"
+     inkscape:cy="556.46363"
+     inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      showguides="true"
@@ -59,11 +59,11 @@
      inkscape:label="Camada 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(329.59524,-165.9262)">
+     transform="translate(330.12441,-187.07124)">
     <path
-       style="opacity:1;vector-effect:none;fill:#500d56;fill-opacity:1;stroke:#000000;stroke-width:3.99999985;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers;font-variant-east_asian:normal"
-       d="M 0 0 L 0 189.74023 C 858.05941 -327.48312 968.6962 426.33651 1420 189.74023 L 1420 0 L 0 0 z "
-       transform="matrix(0.26458333,0,0,0.26458333,-329.59524,165.9262)"
-       id="rect818" />
+       style="opacity:1;vector-effect:none;fill:#500d56;fill-opacity:1;stroke:#000000;stroke-width:1.05833328;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:stroke fill markers"
+       d="m -330.12441,187.05507 v 50.2021 c 227.02822,-136.84868 256.300866,62.59943 375.708329,0 v -50.2021 z"
+       id="rect818"
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

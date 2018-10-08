@@ -6,7 +6,7 @@
     <hr>
     <v-input> repeat new password</v-input>
     <hr>
-    <v-link tag="button" to="/newpass">Create</v-link>
+    <v-button tag="button" to="/newpass">Create</v-button>
   </v-page>
 </template>
 

@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="game-avatar">
-    <v-link to="/map">[{{name}}]</v-link>
+    <v-button to="/map">[{{name}}]</v-button>
   </div>
 </template>
 
