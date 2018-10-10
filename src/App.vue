@@ -1,6 +1,5 @@
 <template>
   <div id="app" :class="'page-'+page.name">
-    <router-view></router-view>
     <div class="bg">
       <div class="bg-noise">
 
@@ -9,52 +8,109 @@
         <div class="bg-wave-top"><div class="bg-wave-inner"></div></div>
         <div class="bg-wave-bottom"><div class="bg-wave-inner"></div></div>
       </div>
-      <div class="bg-sky">
-        <o-cloud x="0" duration="300" cloud="2"/>
-        <o-cloud x="-40" duration="220"/>
-        <o-cloud x="20" duration="210"/>
-        <o-cloud x="-70" duration="310"/>
-        <o-cloud x="-30" duration="250" cloud="2"/>
-        <o-cloud x="-80" duration="290"/>
-        <o-cloud x="-90" duration="250"/>
-        <o-cloud x="50" duration="280" cloud="2"/>
-        <o-cloud x="70" duration="260"/>
-        <o-cloud x="80" duration="220"/>
-        <o-cloud x="-20" duration="210"/>
-        <o-cloud x="10" duration="290"/>
-        <o-cloud x="60" duration="290"/>
-        <o-cloud x="0" duration="300"/>
-        <o-cloud x="-10" duration="200"/>
-        <o-cloud x="-50" duration="200"/>
-        <o-cloud x="-60" duration="200"/>
-        <o-cloud x="30" duration="200"/>
-        <o-cloud x="90" duration="200"/>
-        <o-cloud x="40" duration="200"/>
-      </div>
+      <div class="bg-particles" id="particles-cloud-1"></div>
+      <div class="bg-particles" id="particles-cloud-2"></div>
     </div>
-
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Home from './pages/home.vue'
+  import Home from './pages/home.vue'
+  import 'particles.js'
 
-export default {
+  export default {
   name: 'app',
   components: {
     Home
   },
-  // data() {
-  //   return {
-  //     page: {}
-  //   }
-  // },
+  mounted() {
+    window.particlesJS('particles-cloud-1', {
+      "particles": {
+        "number": {
+          "value": 4,
+          "density": {
+            "enable": true,
+            "value_area": 1800
+          }
+        },
+        "line_linked": {
+          "enable": false
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "right",
+          "random": true,
+          "straight": true,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+          }
+        },
+        "shape": {
+          "type": "image",
+          "image": {
+            "src": "images/clouds/1.png",
+            "width": 110,
+            "height": 47
+          },
+        },
+        "size": {
+          "value": 47,
+          "random": false,
+          "anim": {
+            "enable": false,
+          }
+        },
+      }
+    })
+    window.particlesJS('particles-cloud-2', {
+      "particles": {
+        "number": {
+          "value": 3,
+          "density": {"enable": false}
+        },
+        "line_linked": {
+          "enable": false
+        },
+        "move": {
+          "enable": true,
+          "speed": 1,
+          "direction": "right",
+          "random": true,
+          "straight": true,
+          "out_mode": "out",
+          "bounce": false,
+          "attract": {
+            "enable": false,
+          }
+        },
+        "shape": {
+          "type": "image",
+          "image": {
+            "src": "images/clouds/2.png",
+            "width": 320,
+            "height": 139
+          },
+        },
+        "size": {
+          "value": 139,
+          "random": false,
+          "anim": {
+            "enable": false,
+          }
+        },
+      }
+    })
+  },
   computed:{
     page: {
       get: function () {
         return this.$route
       },
-      set: function (value) {}
+      set: function () {}
     }
   },
   // beforeRouteUpdate (to, from, next) {
@@ -62,7 +118,7 @@ export default {
   //   // console.log(this.page.name);
   // },
   watch:{
-    $route (to, from){
+    $route (to){
       this.page = to;
       // console.log(this.page.name);
     }
@@ -92,21 +148,35 @@ export default {
             opacity: 1;
           }
         }
-        .bg-sky {
-          transform: scale(0.9);
+        .bg-particles {
+          transform: scale(0.8);
+        }
+        .bg-wave {
+          transform: scale(1);
         }
       }
     }
     .page {
-      position: absolute;
-      top: 0; right: 0;bottom: 0;left: 0;
-      z-index: 2;
+      .content {
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
     }
     .bg {
       position: absolute;
       top: 0; right: 0;bottom: 0;left: 0;
       z-index: 1;
       background-color: #97d9f1;
+      .bg-particles {
+        transition: 1s;
+        transform: scale(1);
+        position: absolute;
+        top: -14%; right: -14%;bottom: -14%;left: -14%;
+        // top: 0; right: 0;bottom: 0;left: 0;
+      }
       .bg-noise {
         position: absolute;
         top: 0; right: 0; bottom: 0; left: 0;
@@ -116,20 +186,16 @@ export default {
         opacity: .3;
 
       }
-      .bg-sky {
-        transition: 1s;
-        position: absolute;
-        top: 0; right: 0; bottom: 0; left: 0;
-        transform: scale(1);
-      }
       .bg-wave {
         position: absolute;
         top: 0; right: 0;bottom: 0;left: 0;
+        transform: scale(1.2);
+        transition: 1s;
+        z-index: 3;
+
         .bg-wave-bottom, .bg-wave-top {
-          z-index: 3;
           position: absolute;
           transition: 1s;
-          opacity: 0;
         }
         .bg-wave-top {
           background-color: #500d56;

@@ -1,5 +1,7 @@
 $fonts: (
   button: 'odudabold',
+  label: 'odudabold',
+  text: 'odudabold',
 );
 @function font($key) {
   @return map-get($fonts, $key);

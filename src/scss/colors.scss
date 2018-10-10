@@ -1,7 +1,10 @@
 $colors: (
-  button: #b51e89,
+  button: #41B0FF,
+  button-primary: #b51e89,
   white: #FFF,
   black: #000,
+  label: #F4FA3A,
+  form-control: black
 );
 @function color($key) {
   @return map-get($colors, $key);

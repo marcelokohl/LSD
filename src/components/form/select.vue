@@ -1,7 +1,9 @@
 <template lang="html">
-  <div class="form-control">
+  <div class="form-control form-select">
     <label><slot></slot></label>
-    <input type="text">
+    <select>
+      <option value="">Brazil</option>
+    </select>
   </div>
 </template>
 
@@ -14,14 +16,14 @@ export default {
   @import "@/scss/colors.scss";
   @import "@/scss/fonts.scss";
 
-  .form-control {
+  .form-select {
     label {
       color: color(label);
       font-family: font(label);
       text-transform: uppercase;
       font-size: 2em;
     }
-    input {
+    select {
       background-color: color(white);
       height: 3.4em;
       border-radius: 3em;

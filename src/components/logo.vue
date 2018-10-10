@@ -10,4 +10,7 @@ export default {
 </script>
 
 <style lang="scss">
+  .logo {
+    max-width: 500px;
+  }
 </style>

@@ -5,13 +5,12 @@
       :key="i"
       :class="'cloud-inner-'+i"
       :style="
-        'transform: translateX('+x+'vw);'+
+        'margin-left:'+x+'vw;'+
         'animation-duration: '+(duration)+'s;'+
         'background-image: url(\'images/clouds/'+cloud+'.png\');'
       "
 
     ></div>
-    <!-- <div class="cloud-inner-2" :style="'transform: translateX('+x+'vw); animation-duration: '+(duration)+'s;'"></div> -->
     <v-image :src="'clouds/'+cloud+'.png'"/>
   </div>
 </template>
@@ -31,6 +30,11 @@ export default {
       default:"1",
       type:String
     }
+  },
+  mounted() {
+    // if (jQuery(this).isOnScreen()) {
+    //   alert();
+    // }
   }
 }
 </script>
@@ -55,13 +59,14 @@ export default {
     }
   }
   @-webkit-keyframes slide-cloud {
-    0% { background-position: 50% 0; }
-    50% { background-position: 130% 0; }
-    50.01% { background-position: -30% 0; }
-    100% { background-position: 50% 0; }
+    0% { transform: translateX(50%); }
+    50% { transform: translateX(130%); }
+    50.01% { transform: translateX(-30%); }
+    100% { transform: translateX(50%); }
   }
   @-webkit-keyframes slide-cloud-2 {
-    0% { background-position: -30% 0; }
-    100% { background-position: 130% 0; }
+    0% { transform: translateX(-30%); }
+    100% { transform: translateX(130%); }
   }
+
 </style>

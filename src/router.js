@@ -9,6 +9,7 @@ import NewPass from '@/pages/new-pass.vue'
 import NewAccount from '@/pages/new-account.vue'
 import Ranking from '@/pages/ranking.vue'
 import RankingMenu from '@/pages/ranking-menu.vue'
+import UserProfile from '@/pages/user-profile.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,7 @@ const router = new VueRouter({
     { path: '/map', name: 'map', component: Map },
     { path: '/ranking', name: 'ranking', component: Ranking },
     { path: '/rankingmenu', name: 'ranking-menu', component: RankingMenu },
+    { path: '/profile', name: 'user-profile', component: UserProfile },
   ]
 })
 
