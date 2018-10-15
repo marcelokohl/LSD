@@ -1,13 +1,12 @@
 <template lang="html">
   <v-page name="login" :container="true">
     <v-image src="logo.png"/>
+    <v-text class="title">Login</v-text>
     <v-input>Email</v-input>
     <v-input>Password</v-input>
-    <v-button tag="button" to="/main">Login</v-button>
+    <v-button tag="button" class="primary" to="/main">Login</v-button>
     <v-button class="link" to="/forgot">i forgot my password</v-button>
-    <br>
     <v-button class="link" to="/newaccount">i dont't have an account</v-button>
-
   </v-page>
 </template>
 

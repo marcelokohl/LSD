@@ -15,22 +15,25 @@ export default {
   @import "@/scss/fonts.scss";
 
   .form-control {
+    margin-bottom: 2rem;
+
     label {
       color: color(label);
       font-family: font(label);
       text-transform: uppercase;
-      font-size: 2em;
+      font-size: 2rem;
+      margin-bottom: 1rem;
     }
     input {
       background-color: color(white);
-      height: 3.4em;
+      height: 3em;
       border-radius: 3em;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 0 1.2em;
       color: color(form-control);
-      font-size: 1.7em;
+      font-size: 1.7rem;
       font-family: font(button);
       border: 2px solid black;
       width: 100%;

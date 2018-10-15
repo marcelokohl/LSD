@@ -1,5 +1,5 @@
 <template lang="html">
-  <v-page name="home">
+  <v-page name="home" :container="true">
     <v-logo />
     <div class="content">
       <!-- <div class="stars">
@@ -10,7 +10,7 @@
         <o-star/>
         <o-star/>
       </div> -->
-      <v-button tag="button" class="primary" to="/main">
+      <v-button tag="button" class="primary button-spotify" to="/main">
         <v-icon name="spotify"/>Login with Spotify
       </v-button>
       <v-button class="link" to="/login">- I don't have a Spotify Accound -</v-button>
@@ -37,6 +37,13 @@ export default {
     // max-width: 500px;
     // margin-left: -250px;
     overflow: hidden;
+
+    .logo {
+      margin-top: 10vh;
+    }
+    .button-spotify {
+      margin-bottom: 1.2em;
+    }
 
     // button.button {
     //   margin-bottom: 2em;
@@ -76,8 +83,9 @@ export default {
       position: absolute;
       top: auto; right: 0; bottom: -4px; left: 0;
       z-index: 1;
+      pointer-events: none;
 
-      @include breakpoint-tablet() {
+      @include breakpoint-smart() {
         transform: scale(0.6);
       }
 
@@ -94,8 +102,8 @@ export default {
       }
       .image-diplo {
         margin-left: -1.8em;
-        animation: home-diplo 5s infinite;
-        animation-timing-function: ease-in-out;
+        // animation: home-diplo 5s infinite;
+        // animation-timing-function: ease-in-out;
       }
     }
   }

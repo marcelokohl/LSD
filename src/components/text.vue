@@ -1,5 +1,5 @@
 <template lang="html">
-  <p class="text"><slot></slot></p>
+  <div class="text"><slot></slot></div>
 </template>
 
 <script>
@@ -13,5 +13,18 @@ export default {
   .text {
     font-size: 1em;
     font-family: font(text);
+    margin: 0;
+
+    &.title {
+      color: #fff;
+      margin-bottom: 2rem;
+      font-size: 2.6rem;
+      text-transform: uppercase;
+    }
+    &.subtitle {
+      color: #fff;
+      margin-bottom: 2rem;
+      font-size: 1.2rem;
+    }
   }
 </style>

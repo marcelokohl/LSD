@@ -1,5 +1,11 @@
 <template lang="html">
   <v-page name="user-profile">
+    <v-button tag="a" class="no-style" :back="true">
+      X
+    </v-button>
+    <v-button tag="a" class="no-style" :to="{name:'user-profile-edit'}">
+      Edit
+    </v-button>
     <v-user-avatar />
     <v-text>Nickname</v-text>
     <v-text>Brazil</v-text>
@@ -26,4 +32,9 @@ export default {
 </script>
 
 <style lang="scss">
+  .page-user-profile {
+    .page {
+      background-color: #fff;
+    }
+  }
 </style>

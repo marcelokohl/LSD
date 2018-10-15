@@ -28,6 +28,7 @@ export default {
       max-width: 500px;
       margin-left: auto;
       margin-right: auto;
+      padding: 1em; 
     }
   }
 </style>

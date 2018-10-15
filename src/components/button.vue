@@ -8,6 +8,14 @@
   >
     <slot></slot>
   </router-link>
+  <a
+    v-else-if="back"
+    href="javascript:history.go(-1)"
+    :tag="tag"
+    class="button"
+  >
+    <slot></slot>
+  </a>
 
 </template>
 
@@ -22,6 +30,13 @@ export default {
     to: {
       default: '',
       type: String
+    },
+    href: {
+      default: '',
+      type: String
+    },
+    back: {
+      type: Boolean
     }
   }
 }
@@ -30,27 +45,36 @@ export default {
 <style lang="scss">
   @import "@/scss/colors.scss";
   @import "@/scss/fonts.scss";
+  @import "@/scss/breakpoints.scss";
+
   .button {
-    cursor: pointer;
-    text-transform: uppercase;
-    width: 100%;
-    box-sizing: border-box;
+
+    &:not(.no-style) {
+      cursor: pointer;
+      text-transform: uppercase;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+
     &.link {
-      font-size: 1.1em;
+      font-size: 1.1rem;
       font-family: font(button);
-      color: #fff;
+      color: color(button-primary);
+      margin-bottom: 1.1em;
+      display: inline-block;
     }
 
     &:not(.link):not(.no-style) {
       background-color: color(button);
-      height: 3.4em;
-      border-radius: 3em;
+      height: 3em;
+      border-radius: 3rem;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 0 1.2em;
       color: #fff;
-      font-size: 1.7em;
+      font-size: 1.7rem;
       font-family: font(button);
       border: 2px solid black;
 
@@ -59,8 +83,8 @@ export default {
       }
 
       .icon {
-        height: 1.7em;
-        margin: 0 .6em 0 0;
+        height: 1.7rem;
+        margin: 0 .6rem 0 0;
       }
     }
   }
