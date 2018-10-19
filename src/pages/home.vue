@@ -11,9 +11,9 @@
         <o-star/>
       </div> -->
       <v-button tag="button" class="primary button-spotify" to="/main">
-        <v-icon name="spotify"/>Login with Spotify
+        <v-icon name="spotify"/>{{$t().home.spotify_buttom}}
       </v-button>
-      <v-button class="link" to="/login">- I don't have a Spotify Accound -</v-button>
+      <v-button class="link" to="/login">{{$t().home.no_account_link}}</v-button>
     </div>
     <div class="players">
       <v-image class="image-sia" src="players/sia.png"/>
@@ -25,6 +25,14 @@
 
 <script>
 export default {
+  created: function () {
+    console.log(this.$getLang());
+  },
+  methods: {
+    setLang: function(value) {
+      this.$setLang(value);
+    }
+  }
 }
 </script>
 

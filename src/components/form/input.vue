@@ -1,12 +1,15 @@
 <template lang="html">
   <div class="form-control">
     <label><slot></slot></label>
-    <input type="text">
+    <input :value="value" type="text">
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    value:String
+  }
 }
 </script>
 

@@ -1,11 +1,16 @@
 <template>
-  <img class="image" :src="'images/'+src"/>
+  <img class="image" :src="image" />
 </template>
 
 <script>
 export default {
   props: {
     src: String
+  },
+  computed: {
+    image: function() {
+      return require('@/assets/images/'+this.src)
+    },
   }
 }
 </script>

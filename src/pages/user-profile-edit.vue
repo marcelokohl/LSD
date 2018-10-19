@@ -8,8 +8,8 @@
       Chnge profile picture
     </v-button>
 
-    <v-input>Nickname</v-input>
-    <v-input>Email</v-input>
+    <v-input v-model="$store.state.nickname">Nickname</v-input>
+    <v-input v-model="$store.state.email">Email</v-input>
     <v-text>Change your password</v-text>
     <v-input>Old Password</v-input>
     <v-input>New Password</v-input>

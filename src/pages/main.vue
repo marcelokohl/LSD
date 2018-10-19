@@ -1,14 +1,14 @@
 <template lang="html">
   <v-page name="main" :container="true">
     <v-user-avatar />
-    <v-image class="image-title" src="titles/campaign.png"/>
+    <v-image class="image-title" :src="'titles/campaign-'+$getLang()+'.png'"/>
     <v-text class="title">Select your player</v-text>
     <div class="game-avatars">
       <v-game-avatar name="labrinth" :score="90"/>
       <v-game-avatar name="sia" :score="30"/>
-      <v-game-avatar name="diplo" :score="60" :locked='true'/>
+      <v-game-avatar name="diplo" :score="0" :locked='true'/>
     </div>
-    <v-image class="image-title" src="titles/arcade.png"/>
+    <v-image class="image-title" :src="'titles/arcade-'+$getLang()+'.png'"/>
     <v-game-avatar name="arcade" :locked='true'/>
   </v-page>
 </template>

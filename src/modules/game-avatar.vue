@@ -50,6 +50,7 @@ export default {
     flex-shrink: 0;
 
     &.locked {
+      pointer-events: none;
         &:after {
           content: "";
           position: absolute;

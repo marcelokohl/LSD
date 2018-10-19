@@ -22,6 +22,8 @@ import GameListItem from './modules/game-list-item.vue'
 import Cloud from './ornaments/cloud.vue'
 import Star from './ornaments/star.vue'
 
+import Lang from './plugins/lang/lang.js'
+
 Vue.component('v-text', Text)
 Vue.component('v-button', Button)
 Vue.component('v-logo', Logo)
@@ -39,11 +41,15 @@ Vue.component('v-game-list-item', GameListItem)
 Vue.component('o-cloud', Cloud)
 Vue.component('o-star', Star)
 
+Vue.use(Lang)
+
 // Vue.use(jquery)
 // const j = require('jquery')
 // window.jquery = j
 
 Vue.config.productionTip = false
+
+
 
 new Vue({
   router,

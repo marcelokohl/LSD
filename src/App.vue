@@ -1,8 +1,8 @@
 <template>
-  <div id="app" :class="'page-'+page.name">
+  <div id="app" :class="'page-'+page_to">
     <div class="bg">
       <div class="bg-noise"></div>
-      <div class="bg-inner" v-if="page.name != 'map'">
+      <div class="bg-inner" v-if="page_to != 'map'">
         <div class="bg-wave">
           <div class="bg-wave-top"><div class="bg-wave-inner"></div></div>
           <div class="bg-wave-bottom"><div class="bg-wave-inner"></div></div>
@@ -28,11 +28,18 @@
   components: {
     Home
   },
+  data() {
+    return {
+      page_from: ""
+    }
+  },
   mounted() {
     this.initBg();
   },
   updated() {
-    // this.initBg();
+    if(this.page_from == 'map') {
+      this.initBg();
+    }
   },
   methods: {
     initSky: function (event) {
@@ -198,12 +205,12 @@
       })
     },
     initBg: function (event) {
-      console.log(this.page.name);
-      if (this.page.name == 'map') {
+      console.log(this.page_to);
+      if (this.page_to == 'map') {
         console.log('to map');
-      } else if (this.page.name == 'arcade') {
+      } else if (this.page_to == 'arcade') {
         this.initSkyArcade();
-      } else if (this.page.name == 'profile') {
+      } else if (this.page_to == 'profile') {
         // this.initSkyArcade();
       } else {
         this.initSky();
@@ -211,16 +218,17 @@
     }
   },
   computed:{
-    page: {
+    page_to: {
       get: function () {
-        return this.$route
+        return this.$route.name
       },
       set: function () {}
     }
   },
   watch:{
-    $route (to){
-      this.page = to;
+    $route (to, from){
+      this.page_to = to.name
+      this.page_from = from.name
     }
   }
 }
