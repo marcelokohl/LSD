@@ -37,12 +37,12 @@
     this.initBg();
   },
   updated() {
-    if(this.page_from == 'map') {
-      this.initBg();
-    }
+    // if(this.page_from == 'map') {
+    this.initBg();
+    // }
   },
   methods: {
-    initSky: function (event) {
+    initSky: function () {
       window.particlesJS('particles-cloud-1', {
         "particles": {
           "number": {
@@ -123,7 +123,7 @@
         }
       })
     },
-    initSkyArcade: function (event) {
+    initSkyArcade: function () {
       window.particlesJS('particles-cloud-1', {
         "particles": {
           "number": {
@@ -204,17 +204,25 @@
         }
       })
     },
-    initBg: function (event) {
-      console.log(this.page_to);
+    initBg: function () {
+      // console.log(this.page_to);
       if (this.page_to == 'map') {
-        console.log('to map');
-      } else if (this.page_to == 'arcade') {
+        // console.log('to map');
+      }
+      else if (this.page_to == 'arcade' && this.page_from != 'ranking') {
         this.initSkyArcade();
-      } else if (this.page_to == 'profile') {
-        // this.initSkyArcade();
-      } else {
+      }
+      else if (this.page_to == 'ranking' && this.page_from != 'arcade') {
+        this.initSkyArcade();
+      }
+      else if (this.page_to == 'home' && this.page_from != 'main') {
         this.initSky();
       }
+      else if (this.page_to == 'main' && this.page_from != 'home') {
+        this.initSky();
+      }
+      // else {
+      // }
     }
   },
   computed:{
@@ -270,7 +278,7 @@
         }
       }
     }
-    &.page-arcade {
+    &.page-arcade, &.page-ranking {
       .bg {
         background-color: #390043;
       }

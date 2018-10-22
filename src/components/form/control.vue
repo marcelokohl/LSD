@@ -1,22 +1,11 @@
 <template lang="html">
-  <div class="form-control form-select">
-    <label><slot></slot></label>
-    <select>
-      <option value="">Brazil</option>
-    </select>
+  <div class="form-control">
+    <slot></slot>
   </div>
 </template>
 
 <script>
-import Control from './control.vue'
-
 export default {
-  props: {
-    value:String
-  },
-  components: {
-    'v-control': Control
-  }
 }
 </script>
 
@@ -24,14 +13,17 @@ export default {
   @import "@/scss/colors.scss";
   @import "@/scss/fonts.scss";
 
-  .form-select {
+  .form-control {
+    margin-bottom: 2rem;
+
     label {
       color: color(label);
       font-family: font(label);
       text-transform: uppercase;
       font-size: 2rem;
+      margin-bottom: 1rem;
     }
-    select {
+    input {
       background-color: color(white);
       height: 3em;
       border-radius: 3em;
@@ -45,6 +37,7 @@ export default {
       border: 2px solid black;
       width: 100%;
       box-sizing: border-box;
+      text-align: center;
     }
   }
 </style>

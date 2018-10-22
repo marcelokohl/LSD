@@ -11,9 +11,14 @@
   <a
     v-else-if="back"
     href="javascript:history.go(-1)"
-    :tag="tag"
     class="button"
   >
+    <slot></slot>
+  </a>
+  <a
+    v-else
+    class="button"
+    >
     <slot></slot>
   </a>
 
@@ -48,6 +53,11 @@ export default {
   @import "@/scss/breakpoints.scss";
 
   .button {
+    text-decoration: none;
+
+    &[disabled="disabled"] {
+      opacity: .5;
+    }
 
     &:not(.no-style) {
       cursor: pointer;

@@ -1,46 +1,26 @@
 <template lang="html">
-  <div class="form-control">
+  <v-control>
     <label><slot></slot></label>
-    <input :value="value" type="text">
-  </div>
+    <input :value="value" :type="type">
+  </v-control>
 </template>
 
 <script>
+import Control from './control.vue'
+
 export default {
   props: {
-    value:String
+    value:String,
+    type: {
+      type:String,
+      default: 'text'
+    }
+  },
+  components: {
+    'v-control': Control
   }
 }
 </script>
 
 <style lang="scss">
-  @import "@/scss/colors.scss";
-  @import "@/scss/fonts.scss";
-
-  .form-control {
-    margin-bottom: 2rem;
-
-    label {
-      color: color(label);
-      font-family: font(label);
-      text-transform: uppercase;
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    input {
-      background-color: color(white);
-      height: 3em;
-      border-radius: 3em;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0 1.2em;
-      color: color(form-control);
-      font-size: 1.7rem;
-      font-family: font(button);
-      border: 2px solid black;
-      width: 100%;
-      box-sizing: border-box;
-    }
-  }
 </style>

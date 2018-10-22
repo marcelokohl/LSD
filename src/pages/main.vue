@@ -4,12 +4,12 @@
     <v-image class="image-title" :src="'titles/campaign-'+$getLang()+'.png'"/>
     <v-text class="title">Select your player</v-text>
     <div class="game-avatars">
-      <v-game-avatar name="labrinth" :score="90"/>
-      <v-game-avatar name="sia" :score="30"/>
-      <v-game-avatar name="diplo" :score="0" :locked='true'/>
+      <v-game-avatar name="labrinth" :to="{name:'map'}" :progress="$store.state.user.games.campaing.labrinth.progress"/>
+      <v-game-avatar name="sia" :to="{name:'map'}" :progress="$store.state.user.games.campaing.sia.progress"/>
+      <v-game-avatar name="diplo" :to="{name:'map'}" :progress="$store.state.user.games.campaing.diplo.progress"/>
     </div>
     <v-image class="image-title" :src="'titles/arcade-'+$getLang()+'.png'"/>
-    <v-game-avatar name="arcade" :locked='true'/>
+    <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='100'/>
   </v-page>
 </template>
 

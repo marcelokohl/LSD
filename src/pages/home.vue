@@ -1,6 +1,6 @@
 <template lang="html">
   <v-page name="home" :container="true">
-    <v-logo />
+    <v-logo class="big" />
     <div class="content">
       <!-- <div class="stars">
         <o-star/>
@@ -25,9 +25,9 @@
 
 <script>
 export default {
-  created: function () {
-    console.log(this.$getLang());
-  },
+  // created: function () {
+  //   console.log(this.$getLang());
+  // },
   methods: {
     setLang: function(value) {
       this.$setLang(value);

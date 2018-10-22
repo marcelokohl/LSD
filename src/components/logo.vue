@@ -10,7 +10,24 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "@/scss/breakpoints.scss";
   .logo {
-    max-width: 500px;
+    text-align: center;
+    .image {
+      width: 240px;
+      display: inline;
+    }
+
+    &.big {
+      .image {
+        width: 500px;
+      }
+    }
+
+    @include breakpoint-desktop() {
+      .image {
+        width: 400px;
+      }
+    }
   }
 </style>

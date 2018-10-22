@@ -1,6 +1,6 @@
 <template lang="html">
   <v-page name="new-pass"  :container="true">
-    <v-image src="logo.png"/>
+    <v-logo/>
     <v-text class="title">Change your password</v-text>
     <v-input>new password</v-input>
     <v-input> repeat new password</v-input>

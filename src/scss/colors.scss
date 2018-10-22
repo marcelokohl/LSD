@@ -5,7 +5,8 @@ $colors: (
   black: #000,
   label: #F4FA3A,
   form-control: black,
-  yellow: #FFFC00
+  yellow: #FFFC00,
+  purple: #390043
 );
 @function color($key) {
   @return map-get($colors, $key);

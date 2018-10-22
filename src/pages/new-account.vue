@@ -1,6 +1,6 @@
 <template lang="html">
   <v-page name="new-account" :container="true">
-    <v-image src="logo.png"/>
+    <v-logo/>
     <v-text class="title">Create an account</v-text>
     <v-input>Email</v-input>
     <v-input>Password</v-input>

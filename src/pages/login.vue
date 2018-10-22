@@ -1,6 +1,6 @@
 <template lang="html">
   <v-page name="login" :container="true">
-    <v-image src="logo.png"/>
+    <v-logo/>
     <v-text class="title">Login</v-text>
     <v-input>Email</v-input>
     <v-input>Password</v-input>

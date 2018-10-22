@@ -1,9 +1,9 @@
 <template lang="html">
-  <div class="game-avatar" :class="locked?'locked':''" :id="'avatar-'+name">
-    <v-button class="no-style" :to="name=='arcade'?'/arcade':'/map'" :disabled="locked">
+  <div class="game-avatar" :class="the_class" :id="'avatar-'+name">
+    <v-button class="no-style" :to="to" :disabled="the_locked">
       <v-image :src="'avatars/'+name+'.png'"/>
     </v-button>
-    <div class="progress" v-if="name != 'arcade'"></div>
+    <div class="progress" v-if="name != 'arcade' || mode == 'campaing'"></div>
   </div>
 </template>
 
@@ -15,17 +15,42 @@ import ProgressBar from 'progressbar.js'
 export default {
   props: {
     name: String,
-    locked: Boolean,
-    score: Number
+    progress: {type: Number, default: -1},
+    mode: {type: String, default: "campaing"},
+    to: ''
+  },
+  computed: {
+    the_progress: function() {
+      if(this.progress < 0) {
+        return 0
+      } else {
+        return this.progress > 100?100:this.progress
+      }
+    },
+    the_locked: function() {
+      if(this.mode == 'campaing') {
+        return this.progress<=-1?true:false
+      } else {
+        return false
+      }
+    },
+    the_class: function() {
+      var c =''
+      if (this.the_locked) {
+        c += 'locked'
+      }
+      c += ' mode-'+this.mode
+      return c
+    },
   },
   mounted () {
     const colors = {
-      'sia': '#ff0000',
-      'diplo': '#0000ff',
-      'labrinth': '#ffff00'
+      'labrinth': '#41B0FF',
+      'sia': '#D3188D',
+      'diplo': '#EAE800',
     }
-    // console.log(colors.sia);
-    if(this.name != 'arcade') {
+
+    if(this.name != 'arcade' || this.mode == 'campaing') {
       var bar = new ProgressBar.Circle('#avatar-'+this.name+' .progress', {
         strokeWidth: 6,
         easing: 'easeInOut',
@@ -33,13 +58,17 @@ export default {
         color: colors[this.name],
         svgStyle: null
       });
-      bar.animate(this.score/100);
+      bar.animate(this.the_progress/100);
     }
   }
 }
 </script>
 
 <style lang="scss">
+  $color_labrinth: #41B0FF;
+  $color_sia: #D3188D;
+  $color_diplo: #EAE800;
+
   .game-avatar {
     width: 30rem;
     height: 20rem;
@@ -48,6 +77,12 @@ export default {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+
+    &.mode-arcade {
+      &#avatar-labrinth {background-color: $color_labrinth}
+      &#avatar-sia {background-color: $color_sia}
+      &#avatar-diplo {background-color: $color_diplo}
+    }
 
     &.locked {
       pointer-events: none;
