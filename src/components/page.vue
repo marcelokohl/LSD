@@ -1,5 +1,5 @@
 <template>
-  <main class="page">
+  <main :class="'page page-' + name">
     <div v-if="container" class="container">
       <slot></slot>
     </div>
@@ -28,7 +28,7 @@ export default {
       max-width: 500px;
       margin-left: auto;
       margin-right: auto;
-      padding: 1em; 
+      padding: 1em;
     }
   }
 </style>

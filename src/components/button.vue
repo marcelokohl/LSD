@@ -32,10 +32,7 @@ export default {
       default: 'a',
       type: String
     },
-    to: {
-      default: '',
-      type: String
-    },
+    to: {},
     href: {
       default: '',
       type: String

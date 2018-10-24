@@ -10,5 +10,11 @@ export default {
       spotify_buttom: 'Login com Spotify',
       no_account_link: 'Eu não tenho conta no Spotify'
     }
+  },
+  fr: {
+    home: {
+      spotify_buttom: 'Login com Spotify',
+      no_account_link: 'Eu não tenho conta no Spotify'
+    }
   }
 }

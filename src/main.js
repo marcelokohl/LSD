@@ -19,7 +19,7 @@ import UserAvatar from './modules/user-avatar.vue'
 import GameAvatar from './modules/game-avatar.vue'
 import GameListItem from './modules/game-list-item.vue'
 
-import Cloud from './ornaments/cloud.vue'
+import Clouds from './ornaments/clouds.vue'
 import Star from './ornaments/star.vue'
 
 import Lang from './plugins/lang/lang.js'
@@ -38,7 +38,7 @@ Vue.component('v-user-avatar', UserAvatar)
 Vue.component('v-game-avatar', GameAvatar)
 Vue.component('v-game-list-item', GameListItem)
 
-Vue.component('o-cloud', Cloud)
+Vue.component('o-clouds', Clouds)
 Vue.component('o-star', Star)
 
 Vue.use(Lang)

@@ -1,14 +1,14 @@
 <template lang="html">
   <v-page name="map">
     <div class="content">
-      <v-back to="/main"/>
-      <hr style="height:2000px;">
-      map
-
-      <div class="map-bg">
-        <div class="map-particles" id="map-particles-cloud-1"></div>
-        <div class="map-particles" id="map-particles-cloud-2"></div>
+      <div class="">
+        <v-image src="map/mount.png"/>
       </div>
+
+    </div>
+    <div class="map-bg">
+      <div class="map-particles" id="map-particles-cloud-1"></div>
+      <div class="map-particles" id="map-particles-cloud-2"></div>
     </div>
   </v-page>
 </template>

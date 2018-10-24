@@ -20,7 +20,7 @@ export default {
       color: color(label);
       font-family: font(label);
       text-transform: uppercase;
-      font-size: 2rem;
+      font-size: 1.7rem;
       margin-bottom: 1rem;
     }
     input {

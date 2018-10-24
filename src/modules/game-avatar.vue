@@ -110,7 +110,7 @@ export default {
 
       &.locked {
           &:after {
-            background-color: #000000bb;
+            background-color: rgba(0, 0, 0, 0.6);
             border-radius: 50%;
             // background-size: 4rem;
             bottom: 0;

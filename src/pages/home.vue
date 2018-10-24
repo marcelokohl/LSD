@@ -39,7 +39,7 @@ export default {
 <style lang="scss">
   @import "@/scss/breakpoints.scss";
 
-  .page-home .page {
+  .page-home.page {
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
     // max-width: 500px;
