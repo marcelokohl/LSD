@@ -52,7 +52,7 @@
 </script>
 
 <style lang="scss">
-  @import "./assets/fonts/stylesheet.css";
+  // @import "./assets/fonts/stylesheet.css";
   @import "@/scss/breakpoints.scss";
 
   html, body {

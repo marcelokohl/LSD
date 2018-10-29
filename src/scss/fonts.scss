@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One');
+
 $fonts: (
-  button: 'odudabold',
-  label: 'odudabold',
-  text: 'odudabold',
+  button: 'Fredoka One',
+  label: 'Fredoka One',
+  text: 'Fredoka One',
 );
 @function font($key) {
   @return map-get($fonts, $key);

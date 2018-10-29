@@ -32,7 +32,7 @@ export default {
     var i;
     var clouds = this
     var w = jquery('#app').width()
-    var h = 3000
+    var h = 4000
     var max = 24
     // var h = jquery('.page-content .page').height()
 

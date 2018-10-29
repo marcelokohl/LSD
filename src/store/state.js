@@ -7,6 +7,7 @@ export default {
     games: {
       open_arcade_mode: false,
       campaing: {
+        level: 1,
         labrinth: {
           progress: 100
         },
