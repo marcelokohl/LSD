@@ -1,6 +1,6 @@
 <template lang="html">
   <v-page name="arcade" :container="true">
-    <v-user-avatar />
+    <!-- <v-user-avatar /> -->
     <v-image class="image-title" :src="'titles/arcade-'+$getLang()+'.png'"/>
     <v-text class="title">Select your player</v-text>
     <div class="game-avatars">

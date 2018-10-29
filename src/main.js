@@ -12,9 +12,9 @@ import Image from './components/image.vue'
 import Icon from './components/icon.vue'
 import Page from './components/page.vue'
 import Input from './components/form/input.vue'
-import select from './components/form/select.vue'
+import Select from './components/form/select.vue'
 
-import Back from './modules/back.vue'
+import Bg from './modules/bg.vue'
 import UserAvatar from './modules/user-avatar.vue'
 import GameAvatar from './modules/game-avatar.vue'
 import GameListItem from './modules/game-list-item.vue'
@@ -31,9 +31,9 @@ Vue.component('v-image', Image)
 Vue.component('v-icon', Icon)
 Vue.component('v-page', Page)
 Vue.component('v-input', Input)
-Vue.component('v-select', select)
+Vue.component('v-select', Select)
 
-Vue.component('v-back', Back)
+Vue.component('v-bg', Bg)
 Vue.component('v-user-avatar', UserAvatar)
 Vue.component('v-game-avatar', GameAvatar)
 Vue.component('v-game-list-item', GameListItem)

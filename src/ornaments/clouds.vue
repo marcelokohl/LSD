@@ -1,7 +1,10 @@
 <template lang="html">
-  <div id="clouds" class="bg-clouds">
-    <div id="cloud" class="cloud">
-      <v-image src="clouds/1.png"/>
+  <div id="clouds">
+    <div class="cloud">
+      <v-image :src="image"/>
+    </div>
+    <div class="clouds-inner">
+
     </div>
   </div>
 </template>
@@ -9,70 +12,105 @@
 <script>
 import anime from 'animejs'
 import jquery from 'jquery'
-import inView from 'in-view'
+// import inView from 'in-view'
 
 export default {
+  props: {
+    image: {
+      type: String,
+      default: 'clouds/1.png'
+    }
+  },
   data() {
     return {
       cloud_id: 1
+      // doc_focus: false
+      // anime: {}
     }
   },
   mounted() {
     var i;
-    for (i = 0; i < 7; i++) {
-      this.createCloud(
-        (Math.random() * jquery(window).width()) + 'px',
-        (Math.random() * jquery(window).height()) + 'px'
+    var clouds = this
+    var w = jquery('#app').width()
+    var h = 3000
+    var max = 24
+    // var h = jquery('.page-content .page').height()
+
+    console.log(h);
+
+    window.addEventListener('focus', function startTimer() {
+      jquery('.clouds-inner .cloud').remove();
+      for (i = 0; i < max; i++) {
+        clouds.createCloud(
+          (Math.random() * w) + 'px',
+          (Math.random() * h) + 'px'
+        );
+      }
+    });
+
+    for (i = 0; i < max; i++) {
+      clouds.createCloud(
+        (Math.random() * w) + 'px',
+        (Math.random() * h) + 'px'
       );
     }
 
+    setInterval(function(){
+      jquery( ".clouds-inner .cloud" ).each(function( index ) {
+      	var bounds = this.getBoundingClientRect();
+        if (!(bounds.left < window.innerWidth)) {
+          clouds.createCloud(-(jquery(this).width()) + 'px',
+            (Math.random() * h) + 'px'
+          );
+          jquery(this).remove();
+        }
+
+      });
+    }, 1000);
   },
   methods: {
     createCloud: function(x, y) {
       this.cloud_id++
-      var itm = document.getElementById("cloud");
-      var cln = itm.cloneNode(true);
-      var fff = this;
-      var c = "cloud-" + this.cloud_id
-      document.getElementById("clouds").appendChild(cln);
-      // var www = jquery(cln).width()
-      cln.className += " " + c;
-      cln.style.left = x;
-      cln.style.top = y;
-      var duration = anime({
-        targets: cln,
-        translateX: 5000,
-        duration: (Math.random() * 200000) + 100000,
-        easing: 'linear'
-      });
+      var new_cloud = jquery('#clouds > .cloud')
+        .clone()
+        .addClass("cloud-" + this.cloud_id)
+        .css({'top':y,'left':x})
+        .appendTo('#clouds .clouds-inner');
 
-      inView("." + c).on('exit', function(el) {
-        fff.createCloud(
-          -jquery(el).width()+'px',
-          (Math.random() * jquery(window).height()) + 'px'
-        );
-        jquery(el).remove();
+      anime({
+        targets: ".cloud-" + this.cloud_id,
+        translateX: jquery('#clouds').width()*2,
+        duration: ((Math.random() * 200)+100)*jquery('#clouds').width(),
+        easing: 'linear',
       });
-
     }
   }
 }
 </script>
 
-<style>
-.bg-clouds {
+<style lang='scss'>
+#clouds {
   position: absolute;
-  z-index: 1000;
   top: 0;
   right: 0;
-  bottom: 0;
+  height: 100%;
   left: 0;
-}
+  & >.cloud {
+    display: none;
+  }
+  .clouds-inner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    left: 0;
 
-#cloud {
-  /* width: 100px;
-  height: 100px; */
-  position: absolute;
-  /* background-color: red; */
+    & >.cloud {
+      position: absolute;
+      .image {
+        max-width: none;
+      }
+    }
+  }
 }
 </style>

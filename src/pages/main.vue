@@ -1,6 +1,5 @@
 <template lang="html">
   <v-page name="main" :container="true">
-    <v-user-avatar />
     <v-image class="image-title" :src="'titles/campaign-'+$getLang()+'.png'"/>
     <v-text class="title">Select your player</v-text>
     <div class="game-avatars">

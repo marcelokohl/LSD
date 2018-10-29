@@ -3,9 +3,10 @@
     <v-logo/>
     -- {{$store.state.user}} --
     <v-text class="title">Login</v-text>
-    <v-input v-model="user_email" type="email">Email</v-input>
-    <v-input v-model="user_pass" type="password">Password</v-input>
-    <v-button tag="button" class="primary" @click.native="login()">Login</v-button>
+    <v-input v-model="form.user_email" type="email">Email</v-input>
+    <v-input v-model="form.user_pass" type="password">Password</v-input>
+    <v-button v-if="!busy" tag="button" class="primary" @click.native="submitLogin()">Login</v-button>
+    <v-button tag="button" class="primary" @click.native="show()">Show</v-button>
     <v-button class="link" to="/forgot">i forgot my password</v-button>
     <v-button class="link" to="/newaccount">i dont't have an account</v-button>
   </v-page>
@@ -13,31 +14,40 @@
 
 <script>
 import axios from 'axios'
+import {mapMutations, mapActions} from 'vuex'
 
 export default {
+  async created() {
+    await this.show()
+  },
   data () {
     return {
-      user_email: 'marcelokohl@gmail.com',
-      user_pass: '123456',
-      info: null
+      form: {
+        user_email: 'marcelokohl@gmail.com',
+        user_pass: '123456',
+      },
+      busy: false,
+
     }
   },
   methods: {
-   login: function () {
-     axios
-       .post('https://lsd-api-staging.herokuapp.com/api/v1/login', {
-        "email": this.user_email,
-        "password": this.user_pass
-       })
-       // .then(function (response) {
-       //    // this.$store.state.user = response
-       //    console.log(this.$store);
-       //  })
-        .then(response => (this.$store.state.user = response))
-        // .then(this.$store.state.user => {
-        //   commit('SET_USER', this.$store.state.user)
-        // })
-    }
+    // ...mapMutations(['SET_USER']),
+    ...mapMutations({setUser: 'SET_USER'}), //SPREAD OPERATOR
+    ...mapActions(['login', 'show']),
+    // submitLogin () {
+    //   this.busy = true
+    //   this.login(this.form).then(() => {
+    //     this.busy = false
+    //   }).catch(() => {
+    //
+    //   })
+    // },
+    async submitLogin () {
+      this.busy = true
+      const r = await this.login(this.form)
+      this.busy = false
+    },
+
  },
 
 }

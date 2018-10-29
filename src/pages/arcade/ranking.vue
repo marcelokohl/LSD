@@ -1,6 +1,6 @@
 <template lang="html">
   <v-page name="ranking" :container="true">
-    <v-user-avatar />
+    <!-- <v-user-avatar /> -->
     <div class="avatar-tabs">
       <v-game-avatar @click.native="tab=0" name="labrinth" mode="arcade" :class="tab==0?'active':''"/>
       <v-game-avatar @click.native="tab=1" name="sia" mode="arcade" :class="tab==1?'active':''"/>

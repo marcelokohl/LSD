@@ -1,30 +1,24 @@
 <template>
   <div id="app" :class="'page-'+page_to">
 
-    <div class="bg">
-      <o-clouds/>
-      <div class="bg-noise"></div>
-      <div class="bg-inner" v-if="page_to != 'map'">
-        <div class="bg-wave">
-          <div class="bg-wave-top"><div class="bg-wave-inner"></div></div>
-          <div class="bg-wave-bottom"><div class="bg-wave-inner"></div></div>
-        </div>
-        <div class="bg-particles" id="particles-cloud-1"></div>
-        <div class="bg-particles" id="particles-cloud-2"></div>
-      </div>
-      <div class="bg-map"></div>
-    </div>
+    <v-bg :class="'bg-'+page_to" />
 
-    <transition name="page" :duration="1000">
-      <router-view></router-view>
-    </transition>
+    <div class="page-content">
+      <v-user-avatar />
+      <transition
+        name="page"
+        :duration="1000"
+        v-on:before-enter="beforeEnter"
+      >
+        <router-view></router-view>
+      </transition>
+    </div>
   </div>
 </template>
 
 <script>
   import Home from './pages/home.vue'
-  // import 'particles.js'
-  // import Clouds from './plugins/clouds.js'
+  import jquery from 'jquery'
 
   export default {
   name: 'app',
@@ -36,202 +30,10 @@
       page_from: ""
     }
   },
-  mounted() {
-    // this.initBg();
-
-    // Clouds.init()
-
-
+  methods: {
+    beforeEnter: function () {
+    }
   },
-  updated() {
-    // if(this.page_from == 'map') {
-    // this.initBg();
-    // }
-  },
-  // methods: {
-  //   initSky: function () {
-  //     window.particlesJS('particles-cloud-1', {
-  //       "particles": {
-  //         "number": {
-  //           "value": 4,
-  //           "density": {
-  //             "enable": true,
-  //             "value_area": 1800
-  //           }
-  //         },
-  //         "line_linked": {
-  //           "enable": false
-  //         },
-  //         "move": {
-  //           "enable": true,
-  //           "speed": 1,
-  //           "direction": "right",
-  //           "random": true,
-  //           "straight": true,
-  //           "out_mode": "out",
-  //           "bounce": false,
-  //           "attract": {
-  //             "enable": false,
-  //           }
-  //         },
-  //         "shape": {
-  //           "type": "image",
-  //           "image": {
-  //             "src": "images/clouds/1.png",
-  //             "width": 110,
-  //             "height": 47
-  //           },
-  //         },
-  //         "size": {
-  //           "value": 47,
-  //           "random": false,
-  //           "anim": {
-  //             "enable": false,
-  //           }
-  //         },
-  //       }
-  //     })
-  //     window.particlesJS('particles-cloud-2', {
-  //       "particles": {
-  //         "number": {
-  //           "value": 3,
-  //           "density": {"enable": false}
-  //         },
-  //         "line_linked": {
-  //           "enable": false
-  //         },
-  //         "move": {
-  //           "enable": true,
-  //           "speed": 1,
-  //           "direction": "right",
-  //           "random": true,
-  //           "straight": true,
-  //           "out_mode": "out",
-  //           "bounce": false,
-  //           "attract": {
-  //             "enable": false,
-  //           }
-  //         },
-  //         "shape": {
-  //           "type": "image",
-  //           "image": {
-  //             "src": "images/clouds/2.png",
-  //             "width": 320,
-  //             "height": 139
-  //           },
-  //         },
-  //         "size": {
-  //           "value": 139,
-  //           "random": false,
-  //           "anim": {
-  //             "enable": false,
-  //           }
-  //         },
-  //       }
-  //     })
-  //   },
-  //   initSkyArcade: function () {
-  //     window.particlesJS('particles-cloud-1', {
-  //       "particles": {
-  //         "number": {
-  //           "value": 4,
-  //           "density": {
-  //             "enable": true,
-  //             "value_area": 1800
-  //           }
-  //         },
-  //         "line_linked": {
-  //           "enable": false
-  //         },
-  //         "move": {
-  //           "enable": true,
-  //           "speed": 1,
-  //           "direction": "right",
-  //           "random": true,
-  //           "straight": true,
-  //           "out_mode": "out",
-  //           "bounce": false,
-  //           "attract": {
-  //             "enable": false,
-  //           }
-  //         },
-  //         "shape": {
-  //           "type": "image",
-  //           "image": {
-  //             "src": "images/clouds/3.png",
-  //             "width": 110,
-  //             "height": 47
-  //           },
-  //         },
-  //         "size": {
-  //           "value": 47,
-  //           "random": false,
-  //           "anim": {
-  //             "enable": false,
-  //           }
-  //         },
-  //       }
-  //     })
-  //     window.particlesJS('particles-cloud-2', {
-  //       "particles": {
-  //         "number": {
-  //           "value": 3,
-  //           "density": {"enable": false}
-  //         },
-  //         "line_linked": {
-  //           "enable": false
-  //         },
-  //         "move": {
-  //           "enable": true,
-  //           "speed": 1,
-  //           "direction": "right",
-  //           "random": true,
-  //           "straight": true,
-  //           "out_mode": "out",
-  //           "bounce": false,
-  //           "attract": {
-  //             "enable": false,
-  //           }
-  //         },
-  //         "shape": {
-  //           "type": "image",
-  //           "image": {
-  //             "src": "images/clouds/4.png",
-  //             "width": 320,
-  //             "height": 139
-  //           },
-  //         },
-  //         "size": {
-  //           "value": 139,
-  //           "random": false,
-  //           "anim": {
-  //             "enable": false,
-  //           }
-  //         },
-  //       }
-  //     })
-  //   },
-  //   initBg: function () {
-  //     // console.log(this.page_to);
-  //     if (this.page_to == 'map') {
-  //       // console.log('to map');
-  //     }
-  //     else if (this.page_to == 'arcade' && this.page_from != 'ranking') {
-  //       this.initSkyArcade();
-  //     }
-  //     else if (this.page_to == 'ranking' && this.page_from != 'arcade') {
-  //       this.initSkyArcade();
-  //     }
-  //     else if (this.page_to == 'home' && this.page_from != 'main') {
-  //       this.initSky();
-  //     }
-  //     else if (this.page_to == 'main' && this.page_from != 'home') {
-  //       this.initSky();
-  //     }
-  //     // else {
-  //     // }
-  //   }
-  // },
   computed:{
     page_to: {
       get: function () {
@@ -263,45 +65,27 @@
       font-size: 18px;
     }
   }
+  .page-content {
+    text-align: center;
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    z-index: 3;
+    overflow: auto;
+  }
 
   #app {
     overflow: hidden;
     position: absolute;
     top: 0; right: 0;bottom: 0;left: 0;
 
-    &.page-home {
-      .bg {
-        .bg-wave {
-          .bg-wave-bottom, .bg-wave-top {
-            transform: translateY(0);
-            opacity: 1;
-          }
-        }
-        .bg-particles {
-          transform: scale(0.8);
-        }
-        .bg-wave {
-          transform: scale(1);
-        }
-      }
-    }
-    &.page-arcade, &.page-ranking {
-      .bg {
-        background-color: #390043;
-      }
-    }
-    &.page-user-profile {
-      .bg {
-        // opacity: 0;
-      }
-    }
-    .bg-inner {
-      position: absolute;
-      top: 0; right: 0;bottom: 0;left: 0;
-    }
+
 
     .page {
       transition: 1s;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
       &.page-leave-active {
           transform: scale(.8);
           opacity: 0;
@@ -312,75 +96,6 @@
         animation: show-page 1s;
       }
     }
-    .bg {
-      position: absolute;
-      top: 0; right: 0;bottom: 0;left: 0;
-      z-index: 1;
-      background-color: #6CDAF2;
-      transition: .6s;
-      .bg-particles {
-        transition: 1s;
-        transform: scale(1);
-        position: absolute;
-        top: -14%; right: -14%;bottom: -14%;left: -14%;
-        // top: 0; right: 0;bottom: 0;left: 0;
-      }
-      .bg-noise {
-        position: absolute;
-        top: 0; right: 0; bottom: 0; left: 0;
-        z-index: 4;
-        background-image: url('../public/images/noise.png');
-        opacity: .15;
-
-      }
-      .bg-wave {
-        position: absolute;
-        top: 0; right: 0;bottom: 0;left: 0;
-        transform: scale(1.2);
-        transition: 1s;
-        z-index: 3;
-
-        .bg-wave-bottom, .bg-wave-top {
-          position: absolute;
-          transition: 1s;
-        }
-        .bg-wave-top {
-          background-color: #500d56;
-          top: 0; right: 0; bottom: calc(50% + 275px); left: 0;
-          transform: translateY(calc(-100% - 240px));
-          .bg-wave-inner {
-            background-image: url('../public/images/bg-wave-top.svg');
-            animation: slide-wave-top 40s linear infinite;
-            width: 100%;
-            height: 240px;
-            position: absolute;
-            bottom: -240px;
-          }
-        }
-        .bg-wave-bottom {
-          background-color: #c660a4;
-          top: calc(50% + 275px); right: 0; bottom: 0; left: 0;
-          transform: translateY(calc(100% + 240px));
-          .bg-wave-inner {
-            background-image: url('../public/images/bg-wave-bottom.svg');
-            animation: slide-wave-top 50s linear infinite;
-            width: 100%;
-            height: 150px;
-            position: absolute;
-            top: -150px;
-          }
-        }
-      }
-    }
-  }
-
-  @-webkit-keyframes slide-wave-top {
-    from { background-position: 0 0; }
-    to { background-position: -1420px 0; }
-  }
-  @-webkit-keyframes slide-wave-bottom {
-    from { background-position: -1420px 0; }
-    to { background-position: 0 0; }
   }
 
   @-webkit-keyframes show-page {
