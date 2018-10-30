@@ -93,6 +93,7 @@
       </div>
       <div class="map-addons">
         <v-image class="sia" src="map/sia.png"/>
+        <v-image class="locker" src="map/locker.png"/>
         <v-image class="boss" src="map/boss-labrinth.png"/>
       </div>
       <v-image class="map-key" src="map/key.png"/>
@@ -185,13 +186,14 @@ export default {
     position: absolute;
     width: 100%;
 
-    &.locked {
-      &>*:not(.map-key) {
-        filter: brightness(.3);
-      }
-    }
+    // &.locked {
+    //   &>*:not(.map-key) {
+    //     filter: brightness(.3);
+    //   }
+    // }
 
     .map-label {
+      display: none;
       font-family: font(text);
       position: absolute;
       bottom: 20%;
@@ -240,6 +242,7 @@ export default {
     .map-block {
       width: 100%;
       margin: 0 43% 0;
+      z-index: 2;
     }
     .map-key {
       bottom: 65%;
@@ -378,6 +381,10 @@ export default {
     .sia {
       bottom: 111%;
       left: 41%;
+    }
+    .locker {
+      bottom: 126%;
+      left: 45%;
     }
     .boss {
       bottom: 49%;
