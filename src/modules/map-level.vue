@@ -1,84 +1,151 @@
 <template>
-  <div class="map-level" :class="theClass">
+  <div class="map-item" :class="theClass">
 
-    <div class="map-label" v-if="level > 0">
-      <v-text>Level {{level}}</v-text>
-    </div>
+    <div v-if="level != 0" class="map-label">{{theLevelLabel}}</div>
 
-    <div v-if="level < 4" class="map-stairs">
-      <v-image src="map/stairs.png"/>
-    </div>
-    <template v-else-if="level < 5"></template>
-    <div v-else-if="level < 8" class="map-rainbow">
-      <v-image src="map/rainbow.png"/>
-    </div>
-    <!-- LABRINTH -->
-    <div v-if="level < 4" class="map-labrinth">
-      <v-image src="map/labrinth.png"/>
-    </div>
-
-    <div v-if="level == 0" class="map-level-block">
-      <v-image src="map/level-base.png"/>
-    </div>
-    <div v-if="level == 1" class="map-level-block">
-      <v-image src="map/mount-1.png"/>
-    </div>
-    <div v-else-if="level == 2" class="map-level-block">
-      <v-image src="map/mount.png"/>
-    </div>
-    <div v-else-if="level == 3" class="map-level-block">
-      <v-image src="map/mount.png"/>
-    </div>
-    <div v-else-if="level == 4" class="map-level-block">
-      <v-image class="map-1-sia" src="map/sia.png"/>
-      <v-image class="boss" src="map/boss-labrinth.png"/>
-      <v-image class="" src="map/mount-2.png"/>
-    </div>
-
-    <!-- SIA -->
-    <div v-if="level > 4 && level < 9" class="map-sia">
-      <v-image src="map/sia.png"/>
-    </div>
-
-    <div v-if="level == 5" class="map-level-block">
-      <v-image src="map/cloud.png"/>
-    </div>
-    <div v-else-if="level == 6" class="map-level-block">
-      <v-image src="map/cloud.png"/>
-    </div>
-    <div v-else-if="level == 7" class="map-level-block">
-      <v-image src="map/cloud.png"/>
-    </div>
-    <div v-else-if="level == 8" class="map-level-block">
-      <v-image class="diplo" src="map/diplo.png"/>
-      <v-image class="boss" src="map/boss-sia.png"/>
-      <v-image src="map/cloud.png"/>
-    </div>
-
-    <!-- DIPLO -->
-    <div v-if="level == 9" class="map-level-block">
-      <v-image src="map/planet-1.png"/>
-      <v-image class="trail" src="map/planet-trail-1.png"/>
-    </div>
-    <div v-else-if="level == 10" class="map-level-block">
-      <v-image src="map/planet-2.png"/>
-      <v-image class="trail" src="map/planet-trail-2.png"/>
-    </div>
-    <div v-else-if="level == 11" class="map-level-block">
-      <v-image src="map/planet-1.png"/>
-      <v-image class="trail" src="map/planet-trail-3.png"/>
-    </div>
-    <div v-else-if="level == 12">
-      <v-image class="boss" src="map/boss-diplo.png"/>
-      <div class="map-level-block">
-        <v-image src="map/planet-1.png"/>
+    <!-- LEVEL 12 -->
+    <template v-if="level == 12">
+      <div class="map-block">
+        <v-image src="map/orange-planet.png"/>
       </div>
-    </div>
+      <div class="map-addons">
+        <v-image class="boss" src="map/boss-diplo.png"/>
+      </div>
+      <!-- <v-image class="map-key" src="map/key.png"/> -->
+    </template>
+
+    <!-- LEVEL 11 -->
+    <template v-else-if="level == 11">
+      <div class="map-block">
+        <v-image src="map/green-planet.png"/>
+      </div>
+      <div class="map-addons">
+        <v-image src="map/planet-trail-3.png"/>
+      </div>
+    </template>
+
+    <!-- LEVEL 10 -->
+    <template v-else-if="level == 10">
+      <div class="map-block">
+        <v-image src="map/orange-planet.png"/>
+      </div>
+      <div class="map-addons">
+        <v-image src="map/planet-trail-2.png"/>
+      </div>
+    </template>
+
+    <!-- LEVEL 9 -->
+    <template v-else-if="level == 9">
+      <div class="map-block">
+        <v-image src="map/green-planet.png"/>
+      </div>
+      <div class="map-addons">
+        <v-image src="map/planet-trail-1.png"/>
+      </div>
+    </template>
+
+    <!-- LEVEL 8 -->
+    <template v-else-if="level == 8">
+      <div class="map-block">
+        <v-image src="map/clouds.png"/>
+      </div>
+      <div class="map-addons">
+        <v-image class="diplo" src="map/diplo.png"/>
+        <v-image class="boss" src="map/boss-sia.png"/>
+      </div>
+      <!-- <v-image class="map-key" src="map/key.png"/> -->
+    </template>
+
+    <!-- LEVEL 7 -->
+    <template v-else-if="level == 7">
+      <div class="map-block">
+        <v-image src="map/clouds.png"/>
+      </div>
+      <div class="map-addons">
+        <v-image class="rainbow" src="map/raibow-way.png"/>
+      </div>
+    </template>
+
+    <!-- LEVEL 6 -->
+    <template v-else-if="level == 6">
+      <div class="map-block">
+        <v-image src="map/clouds.png"/>
+      </div>
+      <div class="map-addons">
+        <v-image class="rainbow" src="map/raibow-way.png"/>
+      </div>
+    </template>
+
+    <!-- LEVEL 5 -->
+    <template v-else-if="level == 5">
+      <div class="map-block">
+        <v-image src="map/clouds.png"/>
+      </div>
+      <div class="map-addons">
+        <v-image class="rainbow" src="map/raibow-way.png"/>
+      </div>
+    </template>
+
+    <!-- LEVEL 4 -->
+    <template v-else-if="level == 4">
+      <div class="map-block">
+        <v-image src="map/platform-white-flowers.png"/>
+      </div>
+      <div class="map-addons">
+        <v-image class="sia" src="map/sia.png"/>
+        <v-image class="boss" src="map/boss-labrinth.png"/>
+      </div>
+      <v-image class="map-key" src="map/key.png"/>
+    </template>
+
+    <!-- LEVEL 3 -->
+    <template v-else-if="level == 3">
+      <div class="map-block">
+        <v-image src="map/montanha.png"/>
+      </div>
+      <div class="map-addons">
+        <div class="stairs"><v-image src="map/stairs.png"/></div>
+        <!-- <v-image class="player" src="map/labrinth.png"/> -->
+      </div>
+    </template>
+
+    <!-- LEVEL 2 -->
+    <template v-else-if="level == 2">
+      <div class="map-block">
+        <v-image src="map/montanha.png"/>
+      </div>
+      <div class="map-addons">
+        <div class="stairs"><v-image src="map/stairs.png"/></div>
+        <!-- <v-image class="player" src="map/labrinth.png"/> -->
+      </div>
+    </template>
+
+    <!-- LEVEL 1 -->
+    <template v-else-if="level == 1">
+      <div class="map-block">
+        <v-image src="map/platform-pink-flowers.png"/>
+      </div>
+      <div class="map-addons">
+        <div class="stairs"><v-image src="map/stairs.png"/></div>
+        <!-- <v-image class="player" src="map/labrinth.png"/> -->
+      </div>
+    </template>
+
+    <!-- LEVEL 0 -->
+    <template v-else-if="level == 0">
+      <div class="map-block">
+        <v-image src="map/floor-pink-flowers.png"/>
+      </div>
+      <div class="map-addons">
+        <div class="stairs"><v-image src="map/stairs.png"/></div>
+        <v-image class="player" src="map/labrinth.png"/>
+      </div>
+    </template>
+
   </div>
 </template>
 
 <script>
-
 export default {
   props: {
     level: {
@@ -92,20 +159,17 @@ export default {
   computed:{
     theClass: {
       get: function () {
-        var c = 'map-level-' + this.level + ' map-level-block-'
-        if (this.level < 5) {
-          c +=  'labrinth'
-        }
-        else if (this.level < 9) {
-          c +=  'sia'
-        }
-        else {
-          c +=  'diplo'
-        }
+        var c = 'map-item-' + this.level
         if(this.locked) {
           c +=  ' locked'
         }
         return c
+      },
+      set: function () {}
+    },
+    theLevelLabel: {
+      get: function () {
+        return 'Level ' + this.level
       },
       set: function () {}
     }
@@ -114,19 +178,21 @@ export default {
 </script>
 
 <style lang="scss">
-  .level-1 {
-    .map-level-0 {
-      .map-labrinth {
-        display: block;
+  @import "@/scss/fonts.scss";
+
+  .map-item {
+    display: block;
+    position: absolute;
+    width: 100%;
+
+    &.locked {
+      &>*:not(.map-key) {
+        filter: brightness(.3);
       }
     }
-  }
-  .map-level {
-    display: block;
-    position: relative;
-    z-index: 1;
 
     .map-label {
+      font-family: font(text);
       position: absolute;
       bottom: 20%;
       z-index: 10;
@@ -134,203 +200,277 @@ export default {
       left: 0;
       right: 0;
       color: yellow;
+      transition: 0;
       text-shadow:
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black,
-      0 0 0.03em black;
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black,
+        0 0 0.03em black;
     }
+    .map-addons {
+      position: absolute;
+      top:0; right:0; bottom: 0; left:0;
 
-    &.locked {
-      filter: brightness(.3);
+      & > * {
+        position: absolute;
+      }
     }
-
-    .map-level-block {
+    .map-block {
       position: relative;
-      z-index: 2;
+
     }
-    .map-stairs {
+    .map-key {
       position: absolute;
-      z-index: 1;
-      bottom: -76%;
-      overflow: hidden;
-      height: 176%;
-    }
-    .map-labrinth {
-      position: absolute;
-      bottom: 36%;
-      z-index: 3;
-      left: 30%;
-      display: none;
-    }
-
-    //
-    &.map-level-0 {
-      left: -40%;
-      padding-top: 40%;
-      position: relative;
-      z-index: 2;
-      .map-stairs {
-        position: absolute;
-        z-index: 1;
-        bottom: 0;
-        overflow: hidden;
-        height: 156%;
-        right: 34%;
-      }
-      .map-labrinth {
-        bottom: 0;
-      }
-    }
-    &.map-level-1 {
-      padding-top: 30%;
-      .map-stairs {
-        right: 10%;
-        bottom: 30%;
-        height: 120%;
-      }
-    }
-    &.map-level-2 {
-      padding-top: 25%;
-      .map-stairs {
-        left: 10%;
-        bottom: 30%;
-        height: 120%;
-      }
-    }
-    &.map-level-3 {
-      padding-top: 24%;
-      .map-stairs {
-        right: 10%;
-        bottom: 30%;
-        height: 120%;
-      }
-    }
-    &.map-level-4 {
-      padding-top: 80%;
-      .map-1-sia {
-        position: absolute;
-        bottom: 126%;
-        left: 37%;
-      }
-      .boss {
-        position: absolute;
-        bottom: 50%;
-        left: 10%;
-      }
-    }
-
-    // SIA
-    .map-rainbow {
-      position: absolute;
-      z-index: 1;
-      bottom: -80%;
-      overflow: hidden;
-      height: 180%;
-      left: 9%;
-    }
-    .map-sia {
-      position: absolute;
-      z-index: 1;
-      bottom: 30%;
-      display: none;
-    }
-    &.map-level-block-sia {
-      padding-top: 80%;
-      &.map-level-8 {
-        padding-top: 140%;
-      }
-      .boss {
-        position: absolute;
-        bottom: 62%;
-        right: -24%;
-      }
-      .diplo {
-        position: absolute;
-        bottom: 222%;
-        left: 6%;
-      }
-      .map-label {
-        bottom: 7%;
-      }
-    }
-
-    //DIPLO
-    &.map-level-block-diplo {
-      position: relative;
-      text-align: center;
-
-      .map-label {
-        bottom: 33%;
-      }
-      .boss {
-        display: block;
-        max-width: 100%;
-        margin: 0 auto -11%;
-      }
-      .map-level-block {
-        padding: 2% 34%;
-
-        .image {
-          width: 100%;
-          position: relative;
-          z-index: 2;
-        }
-      }
-
-      &.map-level-9 {
-        left: -13%;
-
-        .image.trail {
-          position: absolute;
-          width: 56%;
-          bottom: 30%;
-          left: 44%;
-          z-index: 0;
-        }
-      }
-      &.map-level-10 {
-        right: -30%;
-        margin-bottom: 13%;
-
-        .image.trail {
-          position: absolute;
-          width: 49%;
-          bottom: 19%;
-          right: 57%;
-          z-index: 0;
-          transform: rotate(-13deg);
-        }
-      }
-      &.map-level-11 {
-        left: -30%;
-        margin-top: 13%;
-
-        .image.trail {
-          position: absolute;
-          width: 56%;
-          bottom: 30%;
-          left: 37%;
-          z-index: 0;
-          transform: rotate(-7deg);
-        }
-      }
-      &.map-level-12 {
-        .map-label {
-          bottom: 17%;
-        }
-      }
     }
   }
+
+  .map-item-12 {
+    top: 140%;
+    .map-block {
+      width: 100%;
+      margin: 0 43% 0;
+    }
+    .map-key {
+      bottom: 65%;
+      left: 42%;
+    }
+    .boss {
+      left: 31%;
+      bottom: 82%;
+    }
+    .map-label {
+      bottom: 28%;
+    }
+  }
+  .map-item-11 {
+    top: 186%;
+    .map-block {
+      padding-left: 31%;
+    }
+    .map-label {
+      padding-right: 27%;
+      bottom: 23%;
+    }
+    .map-addons {
+      display: none;
+    }
+  }
+  .map-item-10 {
+    top: 220%;
+    .map-block {
+      padding-left: 58%;
+    }
+    .map-label {
+      padding-left: 31%;
+      bottom: 29%;
+    }
+    .map-addons {
+      display: none;
+    }
+  }
+  .map-item-9 {
+    top: 256%;
+    .map-block {
+      padding-left: 33%;
+    }
+    .map-label {
+      padding-right: 21%;
+      bottom: 25%;
+    }
+    .map-addons {
+      display: none;
+    }
+  }
+  .map-item-8 {
+    top: 375%;
+    z-index: 4;
+    .map-block {
+      padding-left: 58%;
+    }
+    .map-label {
+      padding-left: 39%;
+      bottom: 5%;
+    }
+    .map-key {
+      bottom: 65%;
+      left: 42%;
+    }
+    .boss {
+      right: 5%;
+      bottom: 88%;
+    }
+    .diplo {
+      bottom: 302%;
+      left: 39%;
+    }
+  }
+  .map-item-7 {
+    top: 403%;
+    z-index: 3;
+    .map-block {
+      padding-left: 18%;
+      z-index: 1;
+    }
+    .map-label {
+      padding-right: 41%;
+      bottom: 5%;
+    }
+    .rainbow {
+      bottom: 48%;
+      left: 32%;
+      z-index: -1;
+    }
+  }
+  .map-item-6 {
+    top: 431%;
+    z-index: 2;
+    .map-block {
+      padding-left: 58%;
+      z-index: 1;
+    }
+    .map-label {
+      padding-left: 39%;
+      bottom: 5%;
+    }
+    .rainbow {
+      bottom: 48%;
+      left: 32%;
+      z-index: -1;
+      transform: scaleX(-1);
+    }
+  }
+  .map-item-5 {
+    top: 454%;
+    .map-block {
+      padding-left: 17%;
+      z-index: 1;
+    }
+    .map-label {
+      padding-right: 41%;
+      bottom: 5%;
+    }
+    .rainbow {
+      bottom: 48%;
+      left: 32%;
+      z-index: -1;
+    }
+  }
+  .map-item-4 {
+    top: 525%;
+    .map-block {
+      .image {
+        margin: auto;
+      }
+    }
+    .map-label {
+    }
+    .sia {
+      bottom: 111%;
+      left: 41%;
+    }
+    .boss {
+      bottom: 49%;
+      left: 29%;
+    }
+    .map-key {
+      bottom: 65%;
+      left: 42%;
+    }
+  }
+  .map-item-3 {
+    top: 605%;
+    .map-block {
+      z-index: 1;
+      .image {
+        margin: auto;
+      }
+    }
+    .map-label {
+    }
+    .player {
+      left: 30%;
+      bottom: 20%;
+    }
+    .stairs {
+      overflow: hidden;
+      height: 225%;
+      bottom: 74%;
+      right: 35%;
+      z-index: -1;
+    }
+  }
+  .map-item-2 {
+    top: 658%;
+    z-index: -1;
+    .map-block {
+      .image {
+        margin: auto;
+      }
+    }
+    .map-label {
+    }
+    .player {
+      left: 30%;
+      bottom: 20%;
+    }
+    .stairs {
+      overflow: hidden;
+      height: 225%;
+      bottom: 78%;
+      left: 34%;
+      z-index: -1;
+    }
+  }
+  .map-item-1 {
+    top: 701%;
+    .map-block {
+      .image {
+        margin: auto;
+      }
+    }
+    .map-label {
+    }
+    .player {
+      left: 30%;
+      bottom: 20%;
+    }
+    .stairs {
+      overflow: hidden;
+      height: 140%;
+      bottom: 48%;
+      left: 58%;
+      z-index: -1;
+    }
+  }
+  .map-item-0 {
+    top: 772%;
+    left: 6%;
+    .map-block {
+      z-index: 2;
+    }
+    .player {
+      left: 25%;
+      bottom: 25%;
+      z-index: 2;
+    }
+    .stairs {
+      overflow: hidden;
+      height: 200%;
+      bottom: 40%;
+      left: 28%;
+      z-index: 1;
+    }
+  }
+
 </style>
