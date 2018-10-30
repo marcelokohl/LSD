@@ -25,6 +25,9 @@ export default {
 </script>
 
 <style lang="scss">
+html, body {
+  font-size: 18px!important;
+}
   .__REF__ {
     position: absolute;
     opacity: 0;
