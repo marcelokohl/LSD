@@ -6,7 +6,7 @@
 
       <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='100' class="-locked"/>
       <!-- $store.state.user.games.campaing.level -->
-      <v-map-level v-for="l in [12,11,10,9,8,7,6,5,4,3,2,1,0]" :level="l" :locked="l > 1"/>
+      <v-map-level v-for="l in [12,11,10,9,8,7,6,5,4,3,2,1,0]" :key="l" :level="l" :locked="l > 1"/>
       <div class="map-footer">
         <v-button class="primary" back>Back</v-button>
       </div>
@@ -25,9 +25,6 @@ export default {
 </script>
 
 <style lang="scss">
-html, body {
-  font-size: 18px!important;
-}
   .__REF__ {
     position: absolute;
     opacity: 0;
@@ -46,6 +43,7 @@ html, body {
     &.page > .container {
       padding: 0;
       max-width: 1020px;
+      overflow: initial;
     }
     .map-footer {
       position: fixed;

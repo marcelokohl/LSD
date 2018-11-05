@@ -20,6 +20,7 @@ export default {
       margin-bottom: 2rem;
       font-size: 2.6rem;
       text-transform: uppercase;
+      -webkit-text-stroke: 1px black;
     }
     &.subtitle {
       color: #fff;

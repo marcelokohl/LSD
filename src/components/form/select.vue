@@ -45,6 +45,11 @@ export default {
       border: 2px solid black;
       width: 100%;
       box-sizing: border-box;
+      appearance:none;
+      -webkit-appearance:none;
+      background-image: url('../../assets/images/select-arrow.svg');
+      background-repeat: no-repeat;
+      background-position: center right 37px;
     }
   }
 </style>

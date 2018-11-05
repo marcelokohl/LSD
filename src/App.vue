@@ -4,10 +4,10 @@
     <v-bg :class="'bg-'+page_to" />
 
     <div class="page-content">
-      <v-user-avatar />
+      <v-user-avatar v-if="$store.state.logged" />
       <transition
         name="page"
-        :duration="1000"
+        :duration="600"
         v-on:before-enter="beforeEnter"
       >
         <router-view></router-view>
@@ -18,7 +18,7 @@
 
 <script>
   import Home from './pages/home.vue'
-  import jquery from 'jquery'
+  // import jquery from 'jquery'
 
   export default {
   name: 'app',
@@ -27,7 +27,8 @@
   },
   data() {
     return {
-      page_from: ""
+      page_from: "",
+      logged: true
     }
   },
   methods: {
@@ -56,13 +57,13 @@
   @import "@/scss/breakpoints.scss";
 
   html, body {
-    font-size: 14px;
+    font-size: 16px;
 
     @include breakpoint-smart() {
       font-size: 12px;
     }
     @include breakpoint-tablet() {
-      font-size: 18px;
+      font-size: 14px;
     }
   }
   .page-content {
@@ -79,33 +80,35 @@
     position: absolute;
     top: 0; right: 0;bottom: 0;left: 0;
 
-
-
     .page {
-      transition: 1s;
+      transition: .6s ;
       position: absolute;
       top: 0;
       right: 0;
       left: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+
       &.page-leave-active {
-          transform: scale(.8);
+          // transform: scale(.8);
           opacity: 0;
           overflow: hidden;
       }
       &.page-enter-active {
         // overflow: hidden;
-        animation: show-page 1s;
+        animation: show-page .6s;
       }
     }
   }
 
   @-webkit-keyframes show-page {
     0% {
-        transform: scale(1.2);
+        // transform: scale(1.2);
         opacity: 0;
     }
     100% {
-        transform:  scale(1);
+        // transform:  scale(1);
         opacity: 1;
     }
   }

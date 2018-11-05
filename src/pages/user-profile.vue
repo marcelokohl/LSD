@@ -146,13 +146,13 @@ export default {
 
         .user-menu {
           .close-button {
+            margin-top: 4rem;
             display: block;
           }
           .edit-button {
             display: block;
           }
           .quit-button {
-            margin-top: 4rem;
             display: block;
           }
         }

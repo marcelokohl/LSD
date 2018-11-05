@@ -69,6 +69,7 @@ export default {
         color: #63005E;
         font-size: 3rem;
         margin-bottom: 1.5rem;
+        text-transform: uppercase;
       }
       .picture-button {
         font-family: font(button);
@@ -80,7 +81,7 @@ export default {
       }
       .form-control label {
         color: black;
-        font-family: "odudabold";
+        font-family: font(label);
         text-transform: uppercase;
         font-size: 1.6rem;
         margin-bottom: .7rem;

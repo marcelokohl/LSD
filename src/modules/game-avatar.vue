@@ -1,7 +1,8 @@
 <template lang="html">
   <div class="game-avatar" :class="the_class" :id="'avatar-'+name">
     <v-button class="no-style" :to="to" :disabled="the_locked">
-      <v-image :src="'avatars/'+name+'.png'"/>
+      <v-image v-if="name == 'arcade'" src="arcade.gif"/>
+      <v-image v-else :src="'avatars/'+name+'.png'"/>
     </v-button>
     <div class="progress" v-if="name != 'arcade' || mode == 'campaing'"></div>
   </div>
@@ -110,7 +111,7 @@ export default {
 
       &.locked {
           &:after {
-            background-color: rgba(0, 0, 0, 0.6);
+            background-color: rgba(0, 0, 0, 0.7);
             border-radius: 50%;
             // background-size: 4rem;
             bottom: 0;
@@ -128,12 +129,14 @@ export default {
         display: inline-block;
         border: 1px solid black;
         z-index: 2;
+        opacity: 1;
       }
     }
     .button {
       overflow: hidden;
       display: inline-block;
       z-index: 2;
+      opacity: 1;
       .image {
         max-width: none;
         width: 100%;

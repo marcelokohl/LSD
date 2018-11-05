@@ -1,6 +1,6 @@
 <template>
   <main :class="'page page-' + name">
-    <div vv-if="container" class="container">
+    <div class="container">
       <slot></slot>
     </div>
     <!-- <slot v-else></slot> -->
@@ -23,6 +23,7 @@ export default {
       margin-left: auto;
       margin-right: auto;
       padding: 1em;
+      overflow: hidden;
     }
   }
 </style>

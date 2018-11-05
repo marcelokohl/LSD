@@ -17,7 +17,7 @@
         </v-button>
       </div>
       <div class="ranking-list">
-        <v-text class="title">{{tabs[tab].label}} - Top 20 - <a href="#">Play</a> </v-text>
+        <v-text class="title">Top 20</v-text>
         <div :title="item.pos + '-' + item.name + '-' + item.score" class="ranking-item" v-for="item in $store.state.ranking[tabs[tab].name]" :key="item.pos">
           <v-text class="pos">{{item.pos}}</v-text>
           <v-text class="name" >{{item.name}}</v-text>

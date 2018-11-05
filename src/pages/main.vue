@@ -8,7 +8,7 @@
       <v-game-avatar name="diplo" :to="{name:'map'}" :progress="$store.state.user.games.campaing.diplo.progress"/>
     </div>
     <v-image class="image-title" :src="'titles/arcade-'+$getLang()+'.png'"/>
-    <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='100'/>
+    <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='1'/>
   </v-page>
 </template>
 
@@ -37,7 +37,6 @@ export default {
       margin: .75rem;
     }
 
-
     @include breakpoint-desktop() {
       .game-avatars {
         display: flex;
@@ -45,5 +44,6 @@ export default {
         flex-direction: row;
       }
     }
+
   }
 </style>

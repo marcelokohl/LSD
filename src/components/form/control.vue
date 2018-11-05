@@ -22,6 +22,7 @@ export default {
       text-transform: uppercase;
       font-size: 1.7rem;
       margin-bottom: 1rem;
+      -webkit-text-stroke: 1px black;
     }
     input {
       background-color: color(white);

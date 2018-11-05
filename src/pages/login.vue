@@ -7,13 +7,14 @@
     <v-input v-model="form.user_pass" type="password">Password</v-input>
     <v-button v-if="!busy" tag="button" class="primary" @click.native="submitLogin()">Login</v-button>
     <v-button tag="button" class="primary" @click.native="show()">Show</v-button>
+    <v-button tag="button" class="primary" @click.native="update()">Update</v-button>
     <v-button class="link" to="/forgot">i forgot my password</v-button>
     <v-button class="link" to="/newaccount">i dont't have an account</v-button>
   </v-page>
 </template>
 
 <script>
-import axios from 'axios'
+// import axios from 'axios'
 import {mapMutations, mapActions} from 'vuex'
 
 export default {
@@ -33,7 +34,7 @@ export default {
   methods: {
     // ...mapMutations(['SET_USER']),
     ...mapMutations({setUser: 'SET_USER'}), //SPREAD OPERATOR
-    ...mapActions(['login', 'show']),
+    ...mapActions(['login', 'show', 'update']),
     // submitLogin () {
     //   this.busy = true
     //   this.login(this.form).then(() => {
@@ -43,9 +44,9 @@ export default {
     //   })
     // },
     async submitLogin () {
-      this.busy = true
-      const r = await this.login(this.form)
-      this.busy = false
+      // this.busy = true
+      // const r = await this.login(this.form)
+      // this.busy = false11
     },
 
  },

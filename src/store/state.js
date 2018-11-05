@@ -1,4 +1,5 @@
 export default {
+  logged: false,
   user: {
     lang: "en",
     nickname: "Marcelo Kohl",

@@ -23,7 +23,8 @@ export default {
     position: fixed;
     top: 1rem;
     right: 1rem;
-
+    z-index: 2;
+    
     .button {
       width: 1em;
       height: 1em;

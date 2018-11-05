@@ -1,14 +1,16 @@
 <template lang="html">
   <div id="bg" class="bg">
     <div class="bg-noise"></div>
-    <div class="bg-inner" v-if="page_to != 'map'">
+    <div class="bg-inner" vv-if="page_to != 'map'">
       <div class="bg-wave">
         <div class="bg-wave-top"><div class="bg-wave-inner"></div></div>
         <div class="bg-wave-bottom"><div class="bg-wave-inner"></div></div>
       </div>
     </div>
     <div class="bg-inner-map"></div>
-    <o-clouds image="clouds/1.png"/>
+    <div class="bg-inner-main"></div>
+    <!-- <o-clouds image="clouds/3.png" name="main"/> -->
+    <o-clouds/>
   </div>
 </template>
 
@@ -56,6 +58,20 @@
       opacity: 1;
     }
   }
+  &.bg-main {
+    .bg-inner-main {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 30%;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#441058+0,441058+98&0+0,1+100 */
+      background: -moz-linear-gradient(top, rgba(68,16,88,0) 0%, rgba(68,16,88,0.98) 98%, rgba(68,16,88,1) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(68,16,88,0) 0%,rgba(68,16,88,0.98) 98%,rgba(68,16,88,1) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(68,16,88,0) 0%,rgba(68,16,88,0.98) 98%,rgba(68,16,88,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00441058', endColorstr='#441058',GradientType=0 ); /* IE6-9 */
+    }
+  }
   .bg-inner-map {
     opacity: 0;
     transition: opacity .6s;
@@ -76,11 +92,11 @@
     top: 0; right: 0;bottom: 0;left: 0;
   }
   .bg-noise {
-    position: absolute;
+    position: fixed;
     top: 0; right: 0; bottom: 0; left: 0;
     z-index: 4;
     background-image: url('../assets/images/noise.png');
-    opacity: .15;
+    opacity: .5;
   }
   .bg-wave {
     position: absolute;
