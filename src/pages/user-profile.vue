@@ -12,8 +12,8 @@
     <div class="profile-grid">
       <div class="user-menu">
         <v-user-avatar />
-        <v-text class="nickname">{{$store.state.user.nickname}}</v-text>
-        <v-text class="country">{{$store.state.user.country}}</v-text>
+        <v-text class="nickname">{{user.nickname}}</v-text>
+        <v-text class="country">{{user.country}}</v-text>
 
         <v-button tag="button" to="/main">
           Invite friends
@@ -29,17 +29,17 @@
         </v-button>
       </div>
       <div class="user-score">
-        <template v-if="$store.state.user.games.open_arcade_mode">
+        <template v-if="game.open_arcade_mode">
           <v-text class="title">My Score</v-text>
-          <v-game-list-item name="labrinth" :score="$store.state.user.games.arcade.sia.score"/>
-          <v-game-list-item name="sia" :score="$store.state.user.games.arcade.sia.score"/>
-          <v-game-list-item name="diplo" :score="$store.state.user.games.arcade.sia.score"/>
+          <v-game-list-item name="labrinth" :score="game.arcade.sia.score"/>
+          <v-game-list-item name="sia" :score="game.arcade.sia.score"/>
+          <v-game-list-item name="diplo" :score="game.arcade.sia.score"/>
         </template>
         <template v-else>
           <v-text class="title">My Progress</v-text>
-          <v-game-list-item name="labrinth" :progress="$store.state.user.games.campaing.labrinth.progress"/>
-          <v-game-list-item name="sia" :progress="$store.state.user.games.campaing.sia.progress"/>
-          <v-game-list-item name="diplo" :progress="$store.state.user.games.campaing.diplo.progress"/>
+          <v-game-list-item name="labrinth" :progress="game.campaing.labrinth.progress"/>
+          <v-game-list-item name="sia" :progress="game.campaing.sia.progress"/>
+          <v-game-list-item name="diplo" :progress="game.campaing.diplo.progress"/>
         </template>
 
         <v-button tag="button" class="primary quit-button" to="/">
@@ -52,8 +52,14 @@
 </template>
 
 <script>
-
+import { mapState } from "vuex";
 export default {
+  computed:{
+    ...mapState({
+      user: state => state.user,
+      game: state => state.user.game,
+    }),
+  }
 }
 </script>
 
