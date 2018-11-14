@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="game-list-item" :class="'game-list-item-' + name">
-    <template v-if="$store.state.user.games.open_arcade_mode">
+    <template v-if="this.$store.state.user.game.campaign.process == 12">
       <v-game-avatar :name="name"/>
       <div class="game-avatar-info">
         <v-text>Position</v-text>

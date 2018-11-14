@@ -3,9 +3,9 @@
     <v-image class="image-title" :src="'titles/campaign-'+$getLang()+'.png'"/>
     <v-text class="title">Select your player</v-text>
     <div class="game-avatars">
-      <v-game-avatar name="labrinth" :to="{name:'map'}" :progress="$store.state.user.games.campaing.labrinth.progress"/>
-      <v-game-avatar name="sia" :to="{name:'map'}" :progress="$store.state.user.games.campaing.sia.progress"/>
-      <v-game-avatar name="diplo" :to="{name:'map'}" :progress="$store.state.user.games.campaing.diplo.progress"/>
+      <v-game-avatar name="labrinth" :to="{name:'map'}" :progress="theGameProgress(0)"/>
+      <v-game-avatar name="sia" :to="{name:'map'}" :progress="theGameProgress(1)"/>
+      <v-game-avatar name="diplo" :to="{name:'map'}" :progress="theGameProgress(2)"/>
     </div>
     <v-image class="image-title" :src="'titles/arcade-'+$getLang()+'.png'"/>
     <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='1'/>
@@ -15,6 +15,23 @@
 <script>
 
 export default {
+  data() {
+    return {
+      game_levels: 4
+    }
+  },
+  methods: {
+    theGameProgress: function(i) {
+      if (this.game_progress < (this.game_levels*i)) return -1
+      else if (this.game_progress <= (this.game_levels*i)) return 0
+      else return ((this.game_progress-(this.game_levels*i)) * 100) / this.game_levels
+    },
+  },
+  computed: {
+    game_progress() {
+      return this.$store.state.user.game.campaign.process
+    }
+  }
 }
 </script>
 

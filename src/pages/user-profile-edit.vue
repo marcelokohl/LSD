@@ -10,8 +10,8 @@
       Change profile picture
     </v-button>
 
-    <v-input v-model="$store.state.user.nickname">Nickname</v-input>
-    <v-input v-model="$store.state.user.email">Email</v-input>
+    <v-input v-model="this.$store.state.user.name">Nickname</v-input>
+    <v-input v-model="this.$store.state.user.email">Email</v-input>
     <v-text class="edit-title">Change your password</v-text>
     <v-input type="password">Old Password</v-input>
     <v-input type="password">New Password</v-input>

@@ -10,8 +10,8 @@
     <div class="ranking-grid">
       <div class="my-position">
         <v-text class="subtitle">My position</v-text>
-        <v-text class="rank">{{$store.state.user.games.arcade['sia'].rank}}</v-text>
-        <v-text class="score">{{$store.state.user.games.arcade['sia'].score}}pts</v-text>
+        <v-text class="rank">{{$store.state.user_old.games.arcade['sia'].rank}}</v-text>
+        <v-text class="score">{{$store.state.user_old.games.arcade['sia'].score}}pts</v-text>
         <v-button tag="button" class="primary" :to="{name:'arcade'}">
           Back to Arcade
         </v-button>

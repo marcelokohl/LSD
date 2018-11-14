@@ -1,6 +1,27 @@
+
 export default {
   logged: false,
+  total_levels: 12,
+
   user: {
+    name: "Kohl",
+    email: "marcelokohl@gmail.com",
+    provider: "email",
+    token: "LfFWBmAdaNqVD5sWY9RPmyUG3SbYYIYKcsHk7jT2",
+    image: null,
+    country: {
+        id: 1,
+        code: "BR",
+        name: "Brazil"
+    },
+    game: {
+      campaign: {
+        process: 5
+      }
+    }
+  },
+
+  user_old: {
     lang: "en",
     nickname: "Marcelo Kohl",
     country: "Brazil",
