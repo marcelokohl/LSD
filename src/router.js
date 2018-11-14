@@ -30,6 +30,7 @@ const router = new VueRouter({
     { path: '/profile', name: 'user-profile', component: UserProfile },
     { path: '/edit', name: 'user-profile-edit', component: UserProfileEdit },
     { path: '/arcade', name: 'arcade', component: Arcade },
+    { path: "*", redirect: { name: 'home' } }
   ]
 })
 
