@@ -1,7 +1,7 @@
 <template lang="html">
   <v-control>
     <label><slot></slot></label>
-    <input v-model="inputVal" :type="type" :disabled="disabled || busy">
+    <input v-model="inputVal" ref="input":type="type" :disabled="disabled || busy">
   </v-control>
 </template>
 
@@ -31,6 +31,9 @@ export default {
     return { inputVal: this.value }
   },
   watch: {
+    value(val){
+      this.inputVal = val;
+    },
     inputVal(val) {
       this.$emit('input', val);
     }

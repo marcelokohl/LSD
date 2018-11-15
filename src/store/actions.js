@@ -34,18 +34,18 @@ const show = ({ commit }) => {
 };
 
 const update = ({ commit }, payload) => {
+  const { user: { name, email, country_id, image }}  = payload;
+
   api.client.put("/users/1", {
     user: {
-      name: "Marcelo 55",
-      email: "marcelokohl@gmail.com",
-      country_id: "1",
-      image:
-        "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAADElEQVQImWO49/AZAAVGAqbcxZMQAAAAAElFTkSuQmCC"
+      name,
+      email,
+      country_id,
+      image,
     }
   });
 };
 
-// Register
 const register = ({ commit }, payload) => {
   const {
     user: { name, email, password, password_confirmation, country_id }
@@ -70,7 +70,6 @@ const register = ({ commit }, payload) => {
     });
 };
 
-// Update Password
 const updatePassword = (_, payload) => {
   const {
     user: { old_password, password, password_confirmation }
@@ -85,17 +84,12 @@ const updatePassword = (_, payload) => {
   });
 };
 
-// Update User
-
-// Request new password
 const requestNewPassword = (_, payload) => {
   const { email } = payload;
 
   return api.client.post("/users/request_new_password", { email });
 };
-// Show user data
 
-// get country
 const loadCountries = ({ commit }) => {
   return api.client
     .get("/countries")
@@ -104,7 +98,6 @@ const loadCountries = ({ commit }) => {
     })
     .catch(err => {
       commit("SET_COUNTRIES", []);
-      console.error(err);
     });
 };
 

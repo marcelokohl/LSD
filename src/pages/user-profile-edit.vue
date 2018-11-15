@@ -5,17 +5,17 @@
         &lt;
       </v-button>
     </div>
-    <v-user-avatar />
+    <v-user-avatar :avatar="avatar" :remote="true"/>
     <v-button tag="a" class="no-style picture-button">
       Change profile picture
     </v-button>
-
-    <v-input v-model="this.$store.state.user.name">Nickname</v-input>
-    <v-input v-model="this.$store.state.user.email">Email</v-input>
-    <v-text class="edit-title">Change your password</v-text>
+      {{form.name}} - {{form.email}}
+    <v-input v-model="form.name" type="text">Nickname</v-input>
+    <v-input v-model="form.email" type="text">Email</v-input>
+    <!-- <v-text class="edit-title">Change your password</v-text>
     <v-input type="password">Old Password</v-input>
     <v-input type="password">New Password</v-input>
-    <v-input type="password">Repeat New Password</v-input>
+    <v-input type="password">Repeat New Password</v-input> -->
 
     <v-button tag="button" class="save-button" to="/">
       Save
@@ -30,9 +30,55 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from "vuex";
+import Form from "@/mixins/Form";
 
 export default {
-}
+  mixins: [Form],
+  mounted(){
+    const { email, name, image } = this.user;
+  const vm = this;
+
+    console.log(this.user)
+     vm.form.email = email;
+     vm.form.name = name;
+     vm.form.image = image;
+    
+  },
+  data() {
+    return {
+      form: {
+        name: null,
+        email: null,
+        image: null,
+      },
+    };
+  },
+  methods: {
+    ...mapActions(["update"]),
+    async submit() {
+      if (!this.canSubmit) return;
+
+      try {
+        this.setBusy(true);
+        const r = await this.update(this.form);
+        this.$router.push('main');
+      } catch (error) {
+        console.error(error);
+      } finally {
+        this.setBusy(false);
+      }
+    }
+  },
+  computed: {
+    ...mapGetters(['avatar', 'user', 'game']),
+  },
+  watch: {
+   user(val){
+     console.log('val', val)
+   }
+  }
+};
 </script>
 
 <style lang="scss">

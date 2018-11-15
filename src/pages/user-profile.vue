@@ -11,9 +11,9 @@
     </div>
     <div class="profile-grid">
       <div class="user-menu">
-        <v-user-avatar />
-        <v-text class="nickname">{{this.$store.state.user.name}}</v-text>
-        <v-text class="country">{{this.$store.state.user.country.name}}</v-text>
+        <v-user-avatar :avatar="avatar" :remote="true"/>
+        <v-text class="nickname">{{user.name}}</v-text>
+        <v-text class="country">{{user.country.name}}</v-text>
 
         <v-button tag="button" to="/main">
           Invite friends
@@ -29,7 +29,7 @@
         </v-button>
       </div>
       <div class="user-score">
-        <template v-if="this.$store.state.user.game.campaign.process == 12">
+        <template v-if="game.campaign.process == 12">
           <v-text class="title">My Score</v-text>
           <v-game-list-item name="labrinth" :score="$store.state.user_old.games.arcade.sia.score"/>
           <v-game-list-item name="sia" :score="$store.state.user_old.games.arcade.sia.score"/>
@@ -52,13 +52,11 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
+
 export default {
   computed:{
-    ...mapState({
-      user: state => state.user,
-      game: state => state.user.game,
-    }),
+    ...mapGetters(['avatar', 'user', 'game'])
   }
 }
 </script>

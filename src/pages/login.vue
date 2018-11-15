@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { mapMutations, mapActions } from "vuex";
+import { mapActions } from "vuex";
 import Form from "@/mixins/Form";
 
 export default {

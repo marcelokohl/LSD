@@ -5,10 +5,15 @@
 <script>
 export default {
   props: {
-    src: String
+    src: String,
+    remote: {
+      type: Boolean,
+      default: false,
+    }
   },
   computed: {
     image: function() {
+      if (this.remote) return this.src;
       return require('@/assets/images/'+this.src)
     },
   }

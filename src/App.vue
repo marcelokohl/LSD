@@ -4,7 +4,7 @@
     <v-bg :class="'bg-'+page_to" />
 
     <div class="page-content">
-      <v-user-avatar v-if="$store.state.logged" />
+      <v-user-avatar v-if="loggedIn" :avatar="avatar" />
       <transition
         name="page"
         :duration="600"
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import Home from "./pages/home.vue";
 // import jquery from 'jquery'
 
@@ -40,6 +40,7 @@ export default {
     beforeEnter: function() {}
   },
   computed: {
+     ...mapGetters(['avatar', 'loggedIn']),
     page_to: {
       get: function() {
         return this.$route.name;
