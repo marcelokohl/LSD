@@ -1,25 +1,24 @@
-
 export default {
   logged: false,
-<<<<<<< HEAD
+  countries: [],
   total_levels: 12,
 
   user: {
-    name: "Kohl",
-    email: "marcelokohl@gmail.com",
-    provider: "email",
-    token: "LfFWBmAdaNqVD5sWY9RPmyUG3SbYYIYKcsHk7jT2",
-    image: null,
-    country: {
-        id: 1,
-        code: "BR",
-        name: "Brazil"
-    },
-    game: {
-      campaign: {
-        process: 5
-      }
-    }
+    // name: "Kohl",
+    // email: "marcelokohl@gmail.com",
+    // provider: "email",
+    // token: "LfFWBmAdaNqVD5sWY9RPmyUG3SbYYIYKcsHk7jT2",
+    // image: null,
+    // country: {
+    //     id: 1,
+    //     code: "BR",
+    //     name: "Brazil"
+    // },
+    // game: {
+    //   campaign: {
+    //     process: 5
+    //   }
+    // }
   },
 
   user_old: {
@@ -54,23 +53,6 @@ export default {
           rank: 432,
           score: 35781
         }
-=======
-  countries: [],
-  user: {
-    name: "Mario",
-    email: "necrower@gmail.com",
-    provider: "email",
-    token: "VlmeDauoqwJ4ognkQr5AIxd3cB1gytIsYnojrslr",
-    image: null,
-    country: {
-      id: 1,
-      code: "BR",
-      name: "Brazil"
-    },
-    game: {
-      campaign: {
-        process: 1
->>>>>>> 8f344bed921f0eb182b026e8bc90aa7279a7f5a3
       }
     }
 

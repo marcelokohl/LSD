@@ -1,7 +1,7 @@
 <template lang="html">
   <v-control>
     <label><slot></slot></label>
-    <input :value="value" :type="type">
+    <input v-model="inputVal" :type="type" :disabled="disabled || busy">
   </v-control>
 </template>
 
@@ -13,11 +13,27 @@ export default {
     value:String,
     type: {
       type:String,
-      default: 'text'
-    }
+      default: 'text',
+    },
+    disabled: {
+      type:Boolean,
+      default: false,
+    },
+    busy: {
+      type:Boolean,
+      default: false,
+    },
   },
   components: {
     'v-control': Control
+  },
+  data() {
+    return { inputVal: this.value }
+  },
+  watch: {
+    inputVal(val) {
+      this.$emit('input', val);
+    }
   }
 }
 </script>

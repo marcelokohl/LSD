@@ -5,7 +5,7 @@
 	function OnRegisterSWError(e)
 	{
 		console.warn("Failed to register service worker: ", e);
-	};
+	}
 	
 	// Runtime calls this global method when ready to start caching (i.e. after startup).
 	// This registers the service worker which caches resources for offline support.

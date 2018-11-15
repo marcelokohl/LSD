@@ -12,13 +12,8 @@
     <div class="profile-grid">
       <div class="user-menu">
         <v-user-avatar />
-<<<<<<< HEAD
         <v-text class="nickname">{{this.$store.state.user.name}}</v-text>
         <v-text class="country">{{this.$store.state.user.country.name}}</v-text>
-=======
-        <v-text class="nickname">{{user.nickname}}</v-text>
-        <v-text class="country">{{user.country}}</v-text>
->>>>>>> 8f344bed921f0eb182b026e8bc90aa7279a7f5a3
 
         <v-button tag="button" to="/main">
           Invite friends
@@ -34,7 +29,6 @@
         </v-button>
       </div>
       <div class="user-score">
-<<<<<<< HEAD
         <template v-if="this.$store.state.user.game.campaign.process == 12">
           <v-text class="title">My Score</v-text>
           <v-game-list-item name="labrinth" :score="$store.state.user_old.games.arcade.sia.score"/>
@@ -46,19 +40,6 @@
           <v-game-list-item name="labrinth" :progress="$store.state.user_old.games.campaing.labrinth.progress"/>
           <v-game-list-item name="sia" :progress="$store.state.user_old.games.campaing.sia.progress"/>
           <v-game-list-item name="diplo" :progress="$store.state.user_old.games.campaing.diplo.progress"/>
-=======
-        <template v-if="game.open_arcade_mode">
-          <v-text class="title">My Score</v-text>
-          <v-game-list-item name="labrinth" :score="game.arcade.sia.score"/>
-          <v-game-list-item name="sia" :score="game.arcade.sia.score"/>
-          <v-game-list-item name="diplo" :score="game.arcade.sia.score"/>
-        </template>
-        <template v-else>
-          <v-text class="title">My Progress</v-text>
-          <v-game-list-item name="labrinth" :progress="game.campaing.labrinth.progress"/>
-          <v-game-list-item name="sia" :progress="game.campaing.sia.progress"/>
-          <v-game-list-item name="diplo" :progress="game.campaing.diplo.progress"/>
->>>>>>> 8f344bed921f0eb182b026e8bc90aa7279a7f5a3
         </template>
 
         <v-button tag="button" class="primary quit-button" to="/">

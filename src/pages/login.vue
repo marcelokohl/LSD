@@ -2,53 +2,43 @@
   <v-page name="login" :container="true">
     <v-logo/>
     <v-text class="title">Login</v-text>
-    <v-input v-model="form.user_email" type="email">Email</v-input>
-    <v-input v-model="form.user_pass" type="password">Password</v-input>
-<<<<<<< HEAD
-    <v-button v-if="!busy" tag="button" class="primary" @click.native="submitLogin()">Login</v-button>
-=======
-    <v-button tag="button" class="primary" @click.native="submitLogin()">Login</v-button>
-    <v-button tag="button" class="primary" @click.native="show()">Show</v-button>
-    <v-button tag="button" class="primary" @click.native="update()">Update</v-button>
->>>>>>> 8f344bed921f0eb182b026e8bc90aa7279a7f5a3
+    <v-input v-model="form.email" type="text">Email</v-input>
+    <v-input v-model="form.password" type="password">Password</v-input>
+
+    <v-button tag="button" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Login</v-button>
     <v-button class="link" to="/forgot">i forgot my password</v-button>
     <v-button class="link" to="/newaccount">i dont't have an account</v-button>
   </v-page>
 </template>
 
 <script>
-// import axios from 'axios'
 import { mapMutations, mapActions } from "vuex";
+import Form from "@/mixins/Form";
 
 export default {
-  async created() {
-    await this.show();
-  },
+  mixins: [Form],
   data() {
     return {
       form: {
-        user_email: "necrower@gmail.com",
-        user_pass: "123456"
+        email: "",
+        password: ""
       },
-      busy: false
     };
   },
   methods: {
-    // ...mapMutations(['SET_USER']),
-    ...mapMutations({ setUser: "SET_USER" }), //SPREAD OPERATOR
-    ...mapActions(["login", "show", "update"]),
-    // submitLogin () {
-    //   this.busy = true
-    //   this.login(this.form).then(() => {
-    //     this.busy = false
-    //   }).catch(() => {
-    //
-    //   })
-    // },
-    async submitLogin() {
-      this.busy = true;
-      const r = await this.login(this.form);
-      this.busy = false;
+    ...mapActions(["login"]),
+    async submit() {
+      if (!this.canSubmit) return;
+
+      try {
+        this.setBusy(true);
+        const r = await this.login(this.form);
+        this.$router.push('main');
+      } catch (error) {
+        console.error(error);
+      } finally {
+        this.setBusy(false);
+      }
     }
   }
 };

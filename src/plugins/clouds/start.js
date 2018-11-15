@@ -7,7 +7,7 @@
 		window.cr_createRuntime({
 			exportType: "html5"
 		});
-	};
+	}
 	
 	if (document.readyState === "loading")
 		document.addEventListener("DOMContentLoaded", Start);

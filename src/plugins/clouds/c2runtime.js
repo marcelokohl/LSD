@@ -131,7 +131,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		this.x = x;
 		this.y = y;
 		cr.seal(this);
-	};
+	}
 
 	Vector2.prototype.offset = function (px, py)
 	{
@@ -228,7 +228,7 @@ if (typeof Object.getPrototypeOf !== "function")
 	{
 		this.set(left, top, right, bottom);
 		cr.seal(this);
-	};
+	}
 	
 	Rect.prototype.set = function (left, top, right, bottom)
 	{
@@ -317,7 +317,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		this.blx = 0;
 		this.bly = 0;
 		cr.seal(this);
-	};
+	}
 	
 	Quad.prototype.set_from_rect = function (rc)
 	{
@@ -439,7 +439,7 @@ if (typeof Object.getPrototypeOf !== "function")
 					maxresult = c;
 			}
 		}
-	};
+	}
 
 	Quad.prototype.bounding_box = function (rc)
 	{
@@ -692,7 +692,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		{
 			if (b.hasOwnProperty(attr))
 			{
-;
+
 
 				a[attr] = b[attr];
 			}
@@ -1031,7 +1031,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		this.cache_valid = true;
 		
 		cr.seal(this);
-	};
+	}
 
 	ObjectSet_.prototype.contains = function (x)
 	{
@@ -1148,7 +1148,7 @@ if (typeof Object.getPrototypeOf !== "function")
 	function set_append_to_arr(x)
 	{
 		current_arr[current_index++] = x;
-	};
+	}
 	
 	ObjectSet_.prototype.update_cache = function ()
 	{
@@ -1164,7 +1164,7 @@ if (typeof Object.getPrototypeOf !== "function")
 			
 			this.s["forEach"](set_append_to_arr);
 			
-;
+
 			
 			current_arr = null;
 			current_index = 0;
@@ -1184,7 +1184,7 @@ if (typeof Object.getPrototypeOf !== "function")
 				}
 			}
 			
-;
+
 		}
 		
 		// Cache now up to date
@@ -1266,7 +1266,7 @@ if (typeof Object.getPrototypeOf !== "function")
         this.t = 0;
         this.sum = 0;
 		cr.seal(this);
-	};
+	}
 
 	KahanAdder_.prototype.add = function (v)
 	{
@@ -1302,7 +1302,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		this.convexpolys = null;		// for physics behavior to cache separated polys
 		this.set_pts(pts_array_);
 		cr.seal(this);
-	};
+	}
 	
 	CollisionPoly_.prototype.set_pts = function(pts_array_)
 	{
@@ -1599,7 +1599,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		// Using string properties derived from numbers to store if a grid cell
 		// is present, e.g. this.cells["-6"]["4"]
 		this.cells = {};
-	};
+	}
 	
 	SparseGrid_.prototype.totalCellCount = 0;
 	
@@ -1732,7 +1732,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		// Using string properties derived from numbers to store if a grid cell
 		// is present, e.g. this.cells["-6"]["4"]
 		this.cells = {};
-	};
+	}
 	
 	RenderGrid_.prototype.totalCellCount = 0;
 	
@@ -1898,7 +1898,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		}
 		else
 			return new cr.GridCell(grid_, x_, y_);
-	};
+	}
 	
 	function freeGridCell(c)
 	{
@@ -1908,7 +1908,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		
 		if (gridcellcache.length < 1000)
 			gridcellcache.push(c);
-	};
+	}
 	
 	function GridCell_(grid_, x_, y_)
 	{
@@ -1916,7 +1916,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		this.x = x_;
 		this.y = y_;
 		this.objects = new cr.ObjectSet();
-	};
+	}
 	
 	GridCell_.prototype.isEmpty = function ()
 	{
@@ -1958,7 +1958,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		}
 		else
 			return new cr.RenderCell(grid_, x_, y_);
-	};
+	}
 	
 	function freeRenderCell(c)
 	{
@@ -1968,7 +1968,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		
 		if (rendercellcache.length < 1000)
 			rendercellcache.push(c);
-	};
+	}
 	
 	function RenderCell_(grid_, x_, y_)
 	{
@@ -1982,7 +1982,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		// best performance, since lots of single removals has poor efficiency.
 		this.pending_removal = new cr.ObjectSet();
 		this.any_pending_removal = false;
-	};
+	}
 	
 	RenderCell_.prototype.isEmpty = function ()
 	{
@@ -1990,8 +1990,8 @@ if (typeof Object.getPrototypeOf !== "function")
 		// to take in to consideration. First of all if objects is empty then we know the cell is empty.
 		if (!this.objects.length)
 		{
-;
-;
+
+
 			return true;
 		}
 		
@@ -2004,7 +2004,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		// Otherwise every item in objects must be in the pending removal set.
 		// The set will be empty if we update it. Use this opportunity to clear the state
 		// and indicate empty.
-;
+
 		this.flush_pending();		// takes fast path and just resets state
 		return true;
 	};
@@ -2052,7 +2052,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		}
 		
 		//assert2(this.objects.indexOf(inst) >= 0, "expected instance to be in objects list");
-;
+
 	};
 	
 	RenderCell_.prototype.remove = function (inst)
@@ -2073,7 +2073,7 @@ if (typeof Object.getPrototypeOf !== "function")
 	// array is up-to-date with correct instances, but not necessarily sorted
 	RenderCell_.prototype.flush_pending = function ()
 	{
-;
+
 		
 		if (!this.any_pending_removal)
 			return;		// not changed
@@ -2104,7 +2104,7 @@ if (typeof Object.getPrototypeOf !== "function")
 		// only called by ensure_sorted which comes after the layer updates its zindices itself,
 		// so no need to call get_zindex, all direct zindex properties are up to date
 		return a.zindex - b.zindex;
-	};
+	}
 	
 	RenderCell_.prototype.ensure_sorted = function ()
 	{
@@ -2459,7 +2459,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		
 		// for testing lost contexts
 		//lose_ext = this.gl.getExtension("WEBGL_lose_context");
-	};
+	}
 	
 	GLWrap_.prototype.initState = function ()
 	{
@@ -2606,7 +2606,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		}
 		
 		var shaderProg = this.createShaderProgram({src: fsSource}, vsSource, "<default>");
-;
+
 		this.shaderPrograms.push(shaderProg);		// Default shader is always shader 0
 		
 		// Create points shader program
@@ -2634,7 +2634,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		].join("\n");
 		
 		shaderProg = this.createShaderProgram({src: fsSource}, pointVsSource, "<point>");
-;
+
 		this.shaderPrograms.push(shaderProg);		// Point shader is always shader 1
 		
 		fsSource = [
@@ -2648,7 +2648,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		].join("\n");
 
 		var shaderProg = this.createShaderProgram({src: fsSource}, vsSource, "<earlyz>");
-;
+
 		this.shaderPrograms.push(shaderProg);		// Early-Z shader is always shader 2
 		
 		fsSource = [
@@ -2660,7 +2660,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		].join("\n");
 
 		var shaderProg = this.createShaderProgram({src: fsSource}, vsSource, "<fill>");
-;
+
 		this.shaderPrograms.push(shaderProg);		// Fill-color shader is always shader 3
 		
 		// Create all other shaders bundled with the project
@@ -2695,7 +2695,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 
 		this.tmpVec3 = vec3.create([0, 0, 0]);
 		
-;
+
 		var pointsizes = gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE);
 		this.minPointSize = pointsizes[0];
 		this.maxPointSize = pointsizes[1];
@@ -2706,7 +2706,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		if (this.maxPointSize > 2048)
 			this.maxPointSize = 2048;
 		
-;
+
 		
 	
 		this.switchProgram(0);
@@ -2821,7 +2821,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			gl.uniform1f(this.locSeconds, 0.0);
 		
 		this.hasCurrentMatMV = false;		// matMV needs updating
-	};
+	}
 	
 	function areMat4sEqual(a, b)
 	{
@@ -2829,7 +2829,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			   a[4]===b[4]&&a[5]===b[5]&&a[6]===b[6]&&a[7]===b[7]&&
 			   a[8]===b[8]&&a[9]===b[9]&&a[10]===b[10]&&a[11]===b[11]&&
 			   a[12]===b[12]&&a[13]===b[13]&&a[14]===b[14]&&a[15]===b[15];
-	};
+	}
 	
 	GLShaderProgram.prototype.updateMatMV = function (mv)
 	{
@@ -3156,7 +3156,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		this.shaderParams = [];		// for user parameters
 		
 		cr.seal(this);
-	};
+	}
 	
 	GLBatchJob.prototype.doSetEarlyZPass = function ()
 	{
@@ -3941,7 +3941,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		if (tex === this.lastTexture0)
 			return;
 		
-;
+
 		
 		var b = this.pushBatch();
 		b.type = BATCH_SETTEXTURE;
@@ -4212,7 +4212,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	GLWrap_.prototype.convexPoly = function(pts)
 	{
 		var pts_count = pts.length / 2;
-;
+
 		
 		var tris = pts_count - 2;	// 3 points = 1 tri, 4 points = 2 tris, 5 points = 3 tris etc.
 		var last_tri = tris - 1;
@@ -4418,7 +4418,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			
 			if (s.locSamplerBack)
 			{
-;
+
 				b.texParam = backTex;
 			}
 			else
@@ -4571,7 +4571,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	
 	GLWrap_.prototype.setTextureFillMode = function ()
 	{
-;
+
 		
 		// restore default program
 		this.switchProgram(0);
@@ -4579,7 +4579,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	
 	GLWrap_.prototype.restoreEarlyZMode = function ()
 	{
-;
+
 		
 		// restore early Z program
 		this.switchProgram(2);
@@ -4661,7 +4661,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		
 		this.endBatch();
 		
-;
+
 		
 		var gl = this.gl;
 		var isPOT = (cr.isPOT(img.width) && cr.isPOT(img.height));
@@ -4896,7 +4896,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		if (tex === this.renderToTex)
 			return;
 			
-;
+
 		
 		// Ignore this assert: if we do set the render-to-texture to the same thing as texture1, then
 		// doRenderToTexture will unbind it to ensure correct rendering.
@@ -4918,7 +4918,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 // c2/preview.js
 // ECMAScript 5 strict mode
 
-;
+
 
 (function()
 {
@@ -5249,7 +5249,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			// normal loading: kick off AJAX request for data.js
 			this.requestProjectData();
 		}
-	};
+	}
 	
 	Runtime.prototype.requestProjectData = function ()
 	{
@@ -5441,8 +5441,8 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			if (this.enableFrontToBack)
 				this.glUnmaskedRenderer += " [front-to-back enabled]";
 			
-;
-;
+
+
 			
 			this.overlay_canvas = document.createElement("canvas");
 			this.canvas.parentNode.appendChild(this.overlay_canvas);
@@ -5532,7 +5532,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		}
 		else
 		{
-;
+
 			
 			attribs = {
 				"alpha": true
@@ -6002,14 +6002,14 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	
 	Runtime.prototype.GetObjectReference = function (i)
 	{
-;
+
 		return this.objectRefTable[i];
 	};
 	
 	// Load the runtime scripts and data
 	Runtime.prototype.loadProject = function (data_response)
 	{
-;
+
 		if (!data_response || !data_response["project"])
 			cr.logerror("Project model unavailable");
 		
@@ -6108,7 +6108,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		{
 			m = pm[2][i];
 			p = this.GetObjectReference(m[0]);
-;
+
 			
 			// Add common ACEs for the plugin
 			cr.add_common_aces(m, p.prototype);
@@ -6137,7 +6137,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			m = pm[3][i];
 			
 			plugin_ctor = this.GetObjectReference(m[1]);
-;
+
 			plugin = null;
 			
 			// find the plugin instance matching the ctor
@@ -6151,12 +6151,12 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			}
 			
 			// Create a new object type from the plugin
-;
-;
+
+
 			
 			var type_inst = new plugin.Type(plugin);
 			
-;
+
 
 			// Merge the model data in to the instance
 			type_inst.name = m[0];
@@ -6544,7 +6544,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		if (window.cr_remotePreviewImageFiles && src_ && src_.substr(0, 5) !== "blob:")		// note ignore if already a blob URL (may have come from getLocalFileUrl())
 		{
 			src_ = window.cr_remotePreviewImageFiles[src_];
-;
+
 		}
 		
 		// Attach error handler before assigning src to ensure errors are caught.
@@ -6845,7 +6845,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			renderViaCanvas.height = h;
 			renderViaCtx = renderViaCanvas.getContext("2d");
 		}
-	};
+	}
 	
 	function mipImage(arr, size)
 	{
@@ -6857,7 +6857,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			return arr[0];
 		//else
 		//	return arr[0];
-	};
+	}
 	
 	Runtime.prototype.draw_c3_splash_loader = function(ctx)
 	{
@@ -7122,7 +7122,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		else
 			this.layouts_by_index[0].startRunning();
 
-;
+
 		
 		// Is not using a loader layout: fire 'On loaded' now anyway
 		if (!this.uses_loader_layout)
@@ -7821,7 +7821,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	
 	Runtime.prototype.getObjectByUID = function (uid_)
 	{
-;
+
 		var uidstr = uid_.toString();
 		
 		if (this.objectsByUid.hasOwnProperty(uidstr))
@@ -7838,13 +7838,13 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			return objectset_cache.pop();
 		else
 			return new cr.ObjectSet();
-	};
+	}
 	
 	function free_objectset(s)
 	{
 		s.clear();
 		objectset_cache.push(s);
-	};
+	}
 
 	Runtime.prototype.DestroyInstance = function (inst)
 	{
@@ -7947,12 +7947,12 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	Runtime.prototype.ClearDeathRowForType = function (obj_set)
 	{
 		var arr = obj_set.valuesRef();			// get array of items from set
-;
+
 		
 		var type = arr[0].type;
 		
-;
-;
+
+
 		
 		var i, len, j, lenj, w, f, layer_instances, inst;
 		
@@ -8130,11 +8130,11 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			return null;
 		
 		var type = this.types_by_index[initial_inst[1]];
-;
-;
+
+
 		
 		var is_world = type.plugin.is_world;
-;
+
 		
 		// Fail if on a loader layout and this type is not loaded yet
 		if (this.isloading && is_world && !type.isOnLoaderLayout)
@@ -8233,7 +8233,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		{
 			// Copy world info from the data model
 			var wm = initial_inst[0];
-;
+
 			
 			inst.x = cr.is_undefined(sx) ? wm[0] : sx;
 			inst.y = cr.is_undefined(sy) ? wm[1] : sy;
@@ -8436,7 +8436,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		// Add to the layer instances
 		if (layer)
 		{
-;
+
 			layer.appendToInstanceList(inst, true);
 			
 			// If this layer is parallaxed, mark type as having parallaxed instances
@@ -9686,7 +9686,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			normal = cr.clamp_angle(clockwise_free_angle + half_diff);
 		}
 		
-;
+
 		
 		// Reflect startangle about normal (r = v - 2 (v . n) n)
 		var vx = Math.cos(startangle);
@@ -9704,7 +9704,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	// Runtime: trigger an event
 	Runtime.prototype.trigger = function (method, inst, value /* for fast triggers */)
 	{
-;
+
 		
 		// Keyboard etc. can fire events on loading screen, with no running layout.
 		if (!this.running_layout)
@@ -9964,7 +9964,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 	
 	Runtime.prototype.popLocalVarStack = function ()
 	{
-;
+
 		
 		this.localvar_stack_index--;
 	};
@@ -9989,7 +9989,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 
 	Runtime.prototype.popEventStack = function ()
 	{
-;
+
 
 		this.event_stack_index--;
 	};
@@ -10017,7 +10017,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 
 	Runtime.prototype.popLoopStack = function ()
 	{
-;
+
 
 		this.loop_stack_index--;
 	};
@@ -10115,13 +10115,13 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		{
 			return false;
 		}
-	};
+	}
 	
 	function makeSaveDb(e)
 	{
 		var db = e.target.result;
 		db.createObjectStore("saves", { keyPath: "slot" });
-	};
+	}
 	
 	function IndexedDB_WriteSlot(slot_, data_, oncomplete_, onerror_)
 	{
@@ -10146,7 +10146,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		{
 			onerror_(err);
 		}
-	};
+	}
 	
 	function IndexedDB_ReadSlot(slot_, oncomplete_, onerror_)
 	{
@@ -10175,7 +10175,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		{
 			onerror_(err);
 		}
-	};
+	}
 	
 	Runtime.prototype.signalContinuousPreview = function ()
 	{
@@ -10190,7 +10190,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			window.location.reload(true);
 		else
 			window.location = window.location + "?continuous";
-	};
+	}
 	
 	
 	Runtime.prototype.handleSaveLoad = function ()
@@ -10399,7 +10399,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 		}
 		
 		return ret;
-	};
+	}
 	
 	Runtime.prototype.saveToJSONString = function()
 	{
@@ -10746,7 +10746,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 						if (type === t)
 							continue;
 							
-;
+
 						inst.siblings.push(t.instances[iid]);
 					}
 				}
@@ -10986,7 +10986,7 @@ quat4.str=function(a){return"["+a[0]+", "+a[1]+", "+a[2]+", "+a[3]+"]"};
 			inst.collisionsEnabled = world.hasOwnProperty("ce") ? world["ce"] : true;
 			inst.my_timescale = world.hasOwnProperty("mts") ? world["mts"] : -1;
 			
-			inst.blend_mode = world.hasOwnProperty("bm") ? world["bm"] : 0;;
+			inst.blend_mode = world.hasOwnProperty("bm") ? world["bm"] : 0;
 			inst.compositeOp = cr.effectToCompositeOp(inst.blend_mode);
 			
 			if (this.gl)
@@ -11366,7 +11366,7 @@ window["cr_setSuspended"] = function(s)
 	function sort_by_zindex(a, b)
 	{
 		return a.zindex - b.zindex;
-	};
+	}
 	
 	// Layer class
 	function Layer(layout, m)
@@ -11442,7 +11442,7 @@ window["cr_setSuspended"] = function(s)
 		{
 			var inst = im[i];
 			var type = this.runtime.types_by_index[inst[1]];
-;
+
 			
 			// If type has no default instance properties, make it this one
 			if (!type.default_instance)
@@ -11484,7 +11484,7 @@ window["cr_setSuspended"] = function(s)
 		this.rcTexBounce = new cr.rect(0, 0, 1, 1);
 		this.rcTexDest = new cr.rect(0, 0, 1, 1);
 		this.rcTexOrigin = new cr.rect(0, 0, 1, 1);
-	};
+	}
 	
 	Layer.prototype.updateActiveEffects = function ()
 	{
@@ -11528,7 +11528,7 @@ window["cr_setSuspended"] = function(s)
 		{
 			initial_inst = this.initial_instances[i];
 			type = this.runtime.types_by_index[initial_inst[1]];
-;
+
 			
 			hasPersistBehavior = this.runtime.typeHasPersistBehavior(type);
 			keep = true;
@@ -11660,7 +11660,7 @@ window["cr_setSuspended"] = function(s)
 	
 	Layer.prototype.appendToInstanceList = function (inst, add_to_grid)
 	{
-;
+
 		
 		// Since we know the instance is going to the top we can assign its Z index
 		// without making all Z indices stale
@@ -11677,7 +11677,7 @@ window["cr_setSuspended"] = function(s)
 	
 	Layer.prototype.prependToInstanceList = function (inst, add_to_grid)
 	{
-;
+
 		
 		this.instances.unshift(inst);
 		this.setZIndicesStaleFrom(0);
@@ -11690,7 +11690,7 @@ window["cr_setSuspended"] = function(s)
 	
 	Layer.prototype.moveInstanceAdjacent = function (inst, other, isafter)
 	{
-;
+
 		
 		// Now both objects are definitely on the same layer: move in the Z order.
 		var myZ = inst.get_zindex();
@@ -11793,7 +11793,7 @@ window["cr_setSuspended"] = function(s)
 	{
 		cr.clearArray(a);
 		arr_cache.push(a);
-	};
+	}
 	
 	function mergeSortedZArrays(a, b, out)
 	{
@@ -11823,7 +11823,7 @@ window["cr_setSuspended"] = function(s)
 		
 		for ( ; j < lenb; ++j, ++k)
 			out[k] = b[j];
-	};
+	}
 	
 	var next_arr = [];
 	
@@ -11868,7 +11868,7 @@ window["cr_setSuspended"] = function(s)
 		
 		cr.shallowAssignArray(arr, next_arr);
 		cr.clearArray(next_arr);
-	};
+	}
 
 	function mergeAllSortedZArrays(arr)
 	{
@@ -11881,13 +11881,13 @@ window["cr_setSuspended"] = function(s)
 		}
 		
 		return arr[0];
-	};
+	}
 	
 	var render_arr = [];
 	
 	Layer.prototype.getRenderCellInstancesToDraw = function ()
 	{
-;
+
 		
 		// Ensure all Z indices up-to-date for sorting.
 		this.updateZIndices();
@@ -11935,12 +11935,12 @@ window["cr_setSuspended"] = function(s)
 			if (!this.runtime.layer_canvas)
 			{
 				this.runtime.layer_canvas = document.createElement("canvas");
-;
+
 				layer_canvas = this.runtime.layer_canvas;
 				layer_canvas.width = this.runtime.draw_width;
 				layer_canvas.height = this.runtime.draw_height;
 				this.runtime.layer_ctx = layer_canvas.getContext("2d");
-;
+
 				ctx_changed = true;
 			}
 
@@ -12408,7 +12408,7 @@ window["cr_setSuspended"] = function(s)
 	
 	Layer.prototype.drawInstanceGL = function (inst, glw)
 	{
-;
+
 		
 		// Skip if invisible or zero sized
 		if (!inst.visible || inst.width === 0 || inst.height === 0)
@@ -12439,7 +12439,7 @@ window["cr_setSuspended"] = function(s)
 	
 	Layer.prototype.drawInstanceGL_earlyZPass = function (inst, glw)
 	{
-;
+
 		
 		// As per normal rendering, skip if invisible or zero sized
 		if (!inst.visible || inst.width === 0 || inst.height === 0)
@@ -12799,7 +12799,7 @@ window["cr_setSuspended"] = function(s)
 // c2/layout.js
 // ECMAScript 5 strict mode
 
-;
+
 
 (function()
 {
@@ -12850,7 +12850,7 @@ window["cr_setSuspended"] = function(s)
 
 			// Lookup type index
 			var type = this.runtime.types_by_index[inst[1]];
-;
+
 
 			// If type has no default instance, make it this one
 			if (!type.default_instance)
@@ -12893,7 +12893,7 @@ window["cr_setSuspended"] = function(s)
 		
 		// For persist behavior: {"type_sid": [inst, inst, inst...] }
 		this.persist_data = {};
-	};
+	}
 	
 	Layout.prototype.saveObjectToPersist = function (inst)
 	{
@@ -12952,7 +12952,7 @@ window["cr_setSuspended"] = function(s)
 	function sort_by_zindex(a, b)
 	{
 		return a.zindex - b.zindex;
-	};
+	}
 	
 	var first_layout = true;
 
@@ -12962,7 +12962,7 @@ window["cr_setSuspended"] = function(s)
 		if (this.sheetname)
 		{
 			this.event_sheet = this.runtime.eventsheets[this.sheetname];
-;
+
 			
 			this.event_sheet.updateDeepIncludes();
 		}
@@ -13118,7 +13118,7 @@ window["cr_setSuspended"] = function(s)
 			}
 			
 			// Globals should not be in list; should have been created in createGlobalNonWorlds
-;
+
 		}		
 
 		this.runtime.changelayout = null;
@@ -13271,7 +13271,7 @@ window["cr_setSuspended"] = function(s)
 
 	Layout.prototype.stopRunning = function ()
 	{
-;
+
 		
 		/*
 		// Print VRAM
@@ -14252,7 +14252,7 @@ window["cr_setSuspended"] = function(s)
 // c2/eveng.js
 // ECMAScript 5 strict mode
 
-;
+
 
 (function()
 {
@@ -14278,12 +14278,12 @@ window["cr_setSuspended"] = function(s)
 			}
 			return true;
 		}
-	};
+	}
 	
 	function solArraySorter(t1, t2)
 	{
 		return t1.index - t2.index;
-	};
+	}
 	
 	function findMatchingSolModifier(arr)
 	{
@@ -14321,7 +14321,7 @@ window["cr_setSuspended"] = function(s)
 		// Otherwise add new unique sol
 		subarr.push(arr);
 		return arr;
-	};
+	}
 	
 	// Event sheet class
 	function EventSheet(runtime, m)
@@ -14347,7 +14347,7 @@ window["cr_setSuspended"] = function(s)
 		var i, len;
 		for (i = 0, len = em.length; i < len; i++)
 			this.init_event(em[i], null, this.events);
-	};
+	}
 
     EventSheet.prototype.toString = function ()
     {
@@ -14400,7 +14400,7 @@ window["cr_setSuspended"] = function(s)
 			break;
         }
 		default:
-;
+
 		}
 	};
 
@@ -14496,7 +14496,7 @@ window["cr_setSuspended"] = function(s)
 		}
 		
 		return false;
-	};
+	}
 	
 	// Add trigger to the sheet map
 	EventSheet.prototype.init_trigger = function (trig, index)
@@ -14603,7 +14603,7 @@ window["cr_setSuspended"] = function(s)
 		this.instances = [];        // subset of picked instances
 		this.else_instances = [];	// subset of unpicked instances
 		this.select_all = true;
-	};
+	}
 
 	Selection.prototype.hasObjects = function ()
 	{
@@ -14726,7 +14726,7 @@ window["cr_setSuspended"] = function(s)
 		//this.cndReferences = [];			// like solModifiers but only based on types referenced in conditions (for else)
 		
 		// Data members + initialisation
-;
+
 		this.conditions = [];
 		this.actions = [];
 		this.subevents = [];
@@ -14810,7 +14810,7 @@ window["cr_setSuspended"] = function(s)
 		{
 			this.is_else_block = (this.conditions[0].type == null && this.conditions[0].func == cr.system_object.prototype.cnds.Else);
 		}
-	};
+	}
 	
 	
 	
@@ -14942,7 +14942,7 @@ window["cr_setSuspended"] = function(s)
 					arr.push(t);
 			}
 		}
-	};
+	}
 
 	EventBlock.prototype.addSolModifier = function (type)
 	{
@@ -15196,7 +15196,7 @@ window["cr_setSuspended"] = function(s)
 		for (evinfo.cndindex = 0, len = this.conditions.length; evinfo.cndindex < len; evinfo.cndindex++)
 		{
 			// Don't run looping conditions - they don't work pre-trigger
-;
+
 
 			if (this.conditions[evinfo.cndindex].run())
 				any_true = true;
@@ -15280,7 +15280,7 @@ window["cr_setSuspended"] = function(s)
 		
 		// Data model & initialisation
 		this.func = this.runtime.GetObjectReference(m[1]);
-;
+
 
 		this.trigger = (m[3] > 0);
 		this.fasttrigger = (m[3] === 2);
@@ -15301,7 +15301,7 @@ window["cr_setSuspended"] = function(s)
 		{
 			// Get object type
 			this.type = this.runtime.types_by_index[m[0]];
-;
+
 
 			if (this.isstatic)
 				this.run = this.run_static;
@@ -15312,10 +15312,10 @@ window["cr_setSuspended"] = function(s)
 			if (m[2])
 			{
 				this.behaviortype = this.type.getBehaviorByName(m[2]);
-;
+
 				
 				this.beh_index = this.type.getBehaviorIndexByName(m[2]);
-;
+
 			}
 			// Ordinary object condition
 			else
@@ -15351,7 +15351,7 @@ window["cr_setSuspended"] = function(s)
 			// For evaluating parameters
 			this.results.length = em.length;
 		}
-	};
+	}
 
 	Condition.prototype.postInit = function ()
 	{
@@ -15460,7 +15460,7 @@ window["cr_setSuspended"] = function(s)
 			for (i = 0, leni = arr.length; i < leni; ++i)
 			{
 				inst = arr[i];
-;
+
 
 				// Evaluate parameters
 				if (params_vary)
@@ -15524,7 +15524,7 @@ window["cr_setSuspended"] = function(s)
 			for (i = 0, leni = arr.length; i < leni; ++i)
 			{
 				inst = arr[i];
-;
+
 
 				// Evaluate parameters
 				if (params_vary)
@@ -15716,7 +15716,7 @@ window["cr_setSuspended"] = function(s)
 		
 		// Data model & initialisation
 		this.func = this.runtime.GetObjectReference(m[1]);
-;
+
 		
 		if (m[0] === -1)	// system
 		{
@@ -15728,17 +15728,17 @@ window["cr_setSuspended"] = function(s)
 		else
 		{
 			this.type = this.runtime.types_by_index[m[0]];
-;
+
 			this.run = this.run_object;
 
 			// Behavior action
 			if (m[2])
 			{
 				this.behaviortype = this.type.getBehaviorByName(m[2]);
-;
+
 				
 				this.beh_index = this.type.getBehaviorIndexByName(m[2]);
-;
+
 			}
 			else
 			{
@@ -15766,7 +15766,7 @@ window["cr_setSuspended"] = function(s)
 			// For evaluating parameters
 			this.results.length = em.length;
 		}
-	};
+	}
 
 	Action.prototype.postInit = function ()
 	{
@@ -15886,12 +15886,12 @@ window["cr_setSuspended"] = function(s)
 			tempValues.push(new cr.expvalue());
 			
 		return tempValues[tempValuesPtr];
-	};
+	}
 	
 	function popTempValue()
 	{
 		tempValuesPtr--;
-	};
+	}
 
 	// Parameter class
 	function Parameter(owner, m)
@@ -15968,7 +15968,7 @@ window["cr_setSuspended"] = function(s)
 			case 6:		// layout
 				// Get the layout by name
 				this.layout = this.runtime.layouts[m[1]];
-;
+
 				this.get = this.get_layout;
 				break;
 			case 9:		// keyb
@@ -15978,7 +15978,7 @@ window["cr_setSuspended"] = function(s)
 			case 4:		// object
 				// Get the object by index
 				this.object = this.runtime.types_by_index[m[1]];
-;
+
 				this.get = this.get_object;
 
 				// To allow SOL modifications on object parameters, add to block's SOL modifiers.
@@ -16033,9 +16033,9 @@ window["cr_setSuspended"] = function(s)
 				}
 				break;
 			default:
-;
+
 		}
-	};
+	}
 
 	Parameter.prototype.postInit = function ()
 	{
@@ -16046,7 +16046,7 @@ window["cr_setSuspended"] = function(s)
 			// All variables have now been init()'d, so we can safely look up and cache
 			// the variable by its name.
 			this.eventvar = this.runtime.getEventVariableByName(this.varname, this.block.parent);
-;
+
 		}
 		else if (this.type === 13)	// variadic, postInit all sub-params
 		{
@@ -16227,7 +16227,7 @@ window["cr_setSuspended"] = function(s)
 			this.localIndex = -1;
 			this.runtime.all_global_vars.push(this);
 		}
-	};
+	}
 
 	EventVariable.prototype.postInit = function ()
 	{
@@ -16236,7 +16236,7 @@ window["cr_setSuspended"] = function(s)
 	
 	EventVariable.prototype.setValue = function (x)
 	{
-;
+
 		
 		var lvs = this.runtime.getCurrentLocalVarStack();
 		
@@ -16306,7 +16306,7 @@ window["cr_setSuspended"] = function(s)
 		
 		this.active = true;
 		
-	};
+	}
 	
 	EventInclude.prototype.toString = function ()
 	{
@@ -16317,8 +16317,8 @@ window["cr_setSuspended"] = function(s)
 	{
 		// Look up the event sheet by name, which isn't available in init() but is in postInit()
         this.include_sheet = this.runtime.eventsheets[this.include_sheet_name];
-;
-;
+
+
 
         // Add to event sheet's list of first-level includes
         this.sheet.includes.add(this);
@@ -16388,7 +16388,7 @@ window["cr_setSuspended"] = function(s)
 		this.temp_parents_arr = [];
 		this.reset(null);
 		cr.seal(this);
-	};
+	}
 	
 	EventStackFrame.prototype.reset = function (cur_event)
 	{
@@ -16431,7 +16431,7 @@ window["cr_setSuspended"] = function(s)
 		this.runtime = owner_.runtime;
 		this.type = m[0];
 		
-;
+
 		
 		this.get = [this.eval_int,
 					this.eval_float,
@@ -16494,7 +16494,7 @@ window["cr_setSuspended"] = function(s)
 			break;
 		case 19:	// system_exp
 			this.func = this.runtime.GetObjectReference(m[1]);
-;
+
 			
 			// The random() and choose() expressions always vary per instance since
 			// they always return a different value
@@ -16521,7 +16521,7 @@ window["cr_setSuspended"] = function(s)
 		case 20:	// object_exp
 			// Locate the object
 			this.object_type = this.runtime.types_by_index[m[1]];
-;
+
 			
 			this.beh_index = -1;
 			this.func = this.runtime.GetObjectReference(m[2]);
@@ -16557,7 +16557,7 @@ window["cr_setSuspended"] = function(s)
 		case 21:		// instvar_exp
 			// Locate the object type by name
 			this.object_type = this.runtime.types_by_index[m[1]];
-;
+
 			this.return_string = m[2];
 
 			// has instance expression
@@ -16572,11 +16572,11 @@ window["cr_setSuspended"] = function(s)
 		case 22:		// behavior_exp
 			// Locate the object
 			this.object_type = this.runtime.types_by_index[m[1]];
-;
+
 			
 			// Locate behavior type and index
 			this.behavior_type = this.object_type.getBehaviorByName(m[2]);
-;
+
 			
 			this.beh_index = this.object_type.getBehaviorIndexByName(m[2]);
 			this.func = this.runtime.GetObjectReference(m[3]);
@@ -16625,7 +16625,7 @@ window["cr_setSuspended"] = function(s)
 		}
 		
 		cr.seal(this);
-	};
+	}
 	
 	ExpNode.prototype.postInit = function ()
 	{
@@ -16633,7 +16633,7 @@ window["cr_setSuspended"] = function(s)
 		{
 			// Look up event variable name
 			this.eventvar = this.owner.runtime.getEventVariableByName(this.varname, this.owner.block.parent);
-;
+
 		}
 		
 		if (this.first)
@@ -16663,12 +16663,12 @@ window["cr_setSuspended"] = function(s)
 			tempValues.push(new cr.expvalue());
 			
 		return tempValues[tempValuesPtr];
-	};
+	}
 	
 	function popTempValue()
 	{
 		--tempValuesPtr;
-	};
+	}
 	
 	function eval_params(parameters, results, temp)
 	{
@@ -16768,7 +16768,7 @@ window["cr_setSuspended"] = function(s)
 		// Invoke method (returned_val is for plugin developer hint only)
 		var returned_val = func.apply(instances[index], results);
 
-;
+
 	};
 	
 	ExpNode.prototype.eval_behavior_exp = function (ret)
@@ -16847,7 +16847,7 @@ window["cr_setSuspended"] = function(s)
 	
 		var returned_val = func.apply(inst.behavior_insts[beh_index + offset], results);
 
-;
+
 	};
 
 	ExpNode.prototype.eval_instvar_exp = function (ret)
@@ -17244,16 +17244,16 @@ window["cr_setSuspended"] = function(s)
 		this.data = data || 0;
 		this.object_class = null;
 
-;
-;
-;
+
+
+
 
 		// Since integers are emulated, ensure value is rounded for int
 		if (this.type == cr.exptype.Integer)
 			this.data = Math.floor(this.data);
 			
 		cr.seal(this);
-	};
+	}
 
 	ExpValue.prototype.is_int = function ()
 	{
@@ -17311,7 +17311,7 @@ window["cr_setSuspended"] = function(s)
 
 	ExpValue.prototype.set_int = function (val)
 	{
-;
+
 
 		this.type = cr.exptype.Integer;
 		this.data = Math.floor(val);
@@ -17319,7 +17319,7 @@ window["cr_setSuspended"] = function(s)
 
 	ExpValue.prototype.set_float = function (val)
 	{
-;
+
 
 		this.type = cr.exptype.Float;
 		this.data = val;
@@ -17327,7 +17327,7 @@ window["cr_setSuspended"] = function(s)
 
 	ExpValue.prototype.set_string = function (val)
 	{
-;
+
 
 		this.type = cr.exptype.String;
 		this.data = val;
@@ -17366,7 +17366,7 @@ window["cr_setSuspended"] = function(s)
 // c2/system.js
 // ECMAScript 5 strict mode
 
-;
+
 
 // System object
 cr.system_object = function (runtime)
@@ -17410,7 +17410,7 @@ cr.system_object.prototype.saveToJSON = function ()
 			if (w.sols.hasOwnProperty(p))
 			{
 				t = this.runtime.types_by_index[parseInt(p, 10)];
-;
+
 				
 				sobj = {
 					"sa": w.sols[p].sa,
@@ -17515,7 +17515,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 {
 	var sysProto = cr.system_object.prototype;
 	
-	function SysCnds() {};
+	function SysCnds() {}
 
 	//////////////////////////////
 	// System conditions
@@ -17833,7 +17833,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 			else
 				return 0;
 		}
-	};
+	}
 	
 	SysCnds.prototype.ForEachOrdered = function (obj, exp, order)
     {
@@ -18362,7 +18362,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		
 		cacheRegex.lastIndex = 0;		// reset
 		return cacheRegex;
-	};
+	}
 	
 	SysCnds.prototype.RegexTest = function (str_, regex_, flags_)
 	{
@@ -18517,7 +18517,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 
 	//////////////////////////////
 	// System actions
-    function SysActs() {};
+    function SysActs() {}
 
     SysActs.prototype.GoToLayout = function (to)
     {
@@ -18527,7 +18527,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		if (this.runtime.changelayout)
 			return;		// already changing to a different layout
 		
-;
+
         this.runtime.changelayout = to;
     };
 	
@@ -18549,7 +18549,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		
 		var to = this.runtime.layouts_by_index[index + (prev ? -1 : 1)];
 		
-;
+
         this.runtime.changelayout = to;
     };
 
@@ -18708,7 +18708,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 	
 	SysActs.prototype.SetVar = function(v, x)
 	{
-;
+
 		
 		// Number
 		if (v.vartype === 0)
@@ -18725,7 +18725,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 	
 	SysActs.prototype.AddVar = function(v, x)
 	{
-;
+
 		
 		// Number
 		if (v.vartype === 0)
@@ -18742,7 +18742,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 	
 	SysActs.prototype.SubVar = function(v, x)
 	{
-;
+
 		
 		// Number
 		if (v.vartype === 0)
@@ -18756,16 +18756,16 @@ cr.system_object.prototype.loadFromJSON = function (o)
 	
 	SysActs.prototype.SetBoolVar = function(v, x)
 	{
-;
-;
+
+
 		
 		v.setValue(x !== 0);
 	};
 	
 	SysActs.prototype.ToggleBoolVar = function(v)
 	{
-;
-;
+
+
 		
 		v.setValue(!v.getValue());
 	};
@@ -18859,14 +18859,14 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		
 		w.deleteme = false;
 		return w;
-	};
+	}
 	
 	function freeWaitObject(w)
 	{
 		cr.wipe(w.sols);
 		cr.clearArray(w.solModifiers);
 		waitobjrecycle.push(w);
-	};
+	}
 	
 	var solstateobjects = [];
 	
@@ -18884,13 +18884,13 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		
 		s.sa = false;
 		return s;
-	};
+	}
 	
 	function freeSolStateObject(s)
 	{
 		cr.clearArray(s.insts);
 		solstateobjects.push(s);
-	};
+	}
 	
 	SysActs.prototype.Wait = function (seconds)
 	{
@@ -19124,7 +19124,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		if (this.runtime.changelayout)
 			return;		// already changing to different layout
 		
-;
+
 		
 		// Find layout name with correct case
 		var l;
@@ -19146,7 +19146,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		if (this.runtime.changelayout)
 			return;		// already changing to a different layout
 		
-;
+
 		
 		if (!this.runtime.running_layout)
 			return;
@@ -19376,12 +19376,12 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		var indexA = a[1];
 		var indexB = b[1];
 		return indexA - indexB;
-	};
+	}
 	
 	function SortInstancesByValue(a, b)
 	{
 		return a[1] - b[1];
-	};
+	}
 	
 	SysActs.prototype.SortZOrderByInstVar = function (obj, iv)
 	{
@@ -19452,7 +19452,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 
 	//////////////////////////////
 	// System expressions
-    function SysExps() {};
+    function SysExps() {}
 
     SysExps.prototype.int = function(ret, x)
     {
@@ -20167,7 +20167,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		lastMatchesStr = str_;
 		lastMatchesRegex = regex_;
 		lastMatchesFlags = flags_;
-	};
+	}
 	
 	SysExps.prototype.regexmatchcount = function (ret, str_, regex_, flags_)
 	{
@@ -20313,7 +20313,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 // c2/commonace.js
 // ECMAScript 5 strict mode
 
-;
+
 
 (function () {
 
@@ -21529,7 +21529,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 			}
 		}
 		
-;
+
 		return null;
 	};
 
@@ -21588,7 +21588,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 		// Simply decrement cur_sol - will start using previous SOL.
 		// The SOL we left behind is left in undefined state, we just don't care about it.
 		// It'll be overwritten next time it's used.
-;
+
 		this.cur_sol--;
 	};
 
@@ -21719,7 +21719,7 @@ cr.system_object.prototype.loadFromJSON = function (o)
 			case 5:     // greater/equal
 				return x >= y;
 			default:
-;
+
 				return false;
 		}
 	};
@@ -21732,8 +21732,8 @@ cr.shaders = {};
 // Sprite
 // ECMAScript 5 strict mode
 
-;
-;
+
+
 
 /////////////////////////////////////
 // Plugin class
@@ -21780,7 +21780,7 @@ cr.plugins_.Sprite = function(runtime)
 		}
 		
 		return this.datauri;
-	};
+	}
 
 	typeProto.onCreate = function()
 	{
@@ -22606,7 +22606,7 @@ cr.plugins_.Sprite = function(runtime)
 
 	//////////////////////////////////////
 	// Conditions
-	function Cnds() {};
+	function Cnds() {}
 
 	// For the collision memory in 'On collision'.
 	var arrCache = [];
@@ -22617,7 +22617,7 @@ cr.plugins_.Sprite = function(runtime)
 			return arrCache.pop();
 		else
 			return [0, 0, 0];
-	};
+	}
 	
 	function freeArr(a)
 	{
@@ -22625,7 +22625,7 @@ cr.plugins_.Sprite = function(runtime)
 		a[1] = 0;
 		a[2] = 0;
 		arrCache.push(a);
-	};
+	}
 	
 	function makeCollKey(a, b)
 	{
@@ -22634,7 +22634,7 @@ cr.plugins_.Sprite = function(runtime)
 			return "" + a + "," + b;
 		else
 			return "" + b + "," + a;
-	};
+	}
 	
 	function collmemory_add(collmemory, a, b, tickcount)
 	{
@@ -22655,7 +22655,7 @@ cr.plugins_.Sprite = function(runtime)
 		arr[1] = b_uid;
 		arr[2] = tickcount;
 		collmemory[key] = arr;
-	};
+	}
 	
 	function collmemory_remove(collmemory, a, b)
 	{
@@ -22666,7 +22666,7 @@ cr.plugins_.Sprite = function(runtime)
 			freeArr(collmemory[key]);
 			delete collmemory[key];
 		}
-	};
+	}
 	
 	function collmemory_removeInstance(collmemory, inst)
 	{
@@ -22686,7 +22686,7 @@ cr.plugins_.Sprite = function(runtime)
 				}
 			}
 		}
-	};
+	}
 	
 	var last_coll_tickcount = -2;
 	
@@ -22704,7 +22704,7 @@ cr.plugins_.Sprite = function(runtime)
 			last_coll_tickcount = -2;
 			return false;
 		}
-	};
+	}
 	
 	var candidates1 = [];
 	
@@ -22934,7 +22934,7 @@ cr.plugins_.Sprite = function(runtime)
 		
 		cr.clearArray(candidates2);
 		return ret;
-	};
+	}
 	
 	typeProto.finish = function (do_pick)
 	{
@@ -23067,7 +23067,7 @@ cr.plugins_.Sprite = function(runtime)
 
 	//////////////////////////////////////
 	// Actions
-	function Acts() {};
+	function Acts() {}
 
 	Acts.prototype.Spawn = function (obj, layer, imgpt)
 	{
@@ -23389,7 +23389,7 @@ cr.plugins_.Sprite = function(runtime)
 	
 	//////////////////////////////////////
 	// Expressions
-	function Exps() {};
+	function Exps() {}
 	
 	Exps.prototype.AnimationFrame = function (ret)
 	{
@@ -23443,8 +23443,8 @@ cr.plugins_.Sprite = function(runtime)
 // Browser
 // ECMAScript 5 strict mode
 
-;
-;
+
+
 
 /////////////////////////////////////
 // Plugin class
@@ -23512,7 +23512,7 @@ cr.plugins_.Browser = function(runtime)
 				browserInstance.onSWMessage(e);
 			});
 		}
-	};
+	}
 
 	/////////////////////////////////////
 	// Instance class
@@ -23655,11 +23655,11 @@ cr.plugins_.Browser = function(runtime)
 				batteryManager = manager;
 			});
 		}
-	};
+	}
 	
 	//////////////////////////////////////
 	// Conditions
-	function Cnds() {};
+	function Cnds() {}
 
 	Cnds.prototype.CookiesEnabled = function()
 	{
@@ -23802,7 +23802,7 @@ cr.plugins_.Browser = function(runtime)
 
 	//////////////////////////////////////
 	// Actions
-	function Acts() {};
+	function Acts() {}
 
 	Acts.prototype.Alert = function (msg)
 	{
@@ -23912,7 +23912,7 @@ cr.plugins_.Browser = function(runtime)
 		
 		// need to call setSize again for display to update correctly given the request failed
 		crruntime["setSize"](window.innerWidth, window.innerHeight);
-	};
+	}
 	
 	Acts.prototype.RequestFullScreen = function (stretchmode)
 	{
@@ -24174,7 +24174,7 @@ cr.plugins_.Browser = function(runtime)
 	
 	//////////////////////////////////////
 	// Expressions
-	function Exps() {};
+	function Exps() {}
 
 	Exps.prototype.URL = function (ret)
 	{
@@ -24425,8 +24425,8 @@ cr.plugins_.Browser = function(runtime)
 // Bullet
 // ECMAScript 5 strict mode
 
-;
-;
+
+
 
 /////////////////////////////////////
 // Behavior class
@@ -24689,7 +24689,7 @@ cr.behaviors.Bullet = function(runtime)
 
 	//////////////////////////////////////
 	// Conditions
-	function Cnds() {};
+	function Cnds() {}
 
 	Cnds.prototype.CompareSpeed = function (cmp, s)
 	{
@@ -24715,7 +24715,7 @@ cr.behaviors.Bullet = function(runtime)
 
 	//////////////////////////////////////
 	// Actions
-	function Acts() {};
+	function Acts() {}
 
 	Acts.prototype.SetSpeed = function (s)
 	{
@@ -24804,7 +24804,7 @@ cr.behaviors.Bullet = function(runtime)
 
 	//////////////////////////////////////
 	// Expressions
-	function Exps() {};
+	function Exps() {}
 
 	Exps.prototype.Speed = function (ret)
 	{

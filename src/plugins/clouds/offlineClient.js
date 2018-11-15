@@ -23,7 +23,7 @@
 				{
 					self._OnBroadcastChannelMessage(e);
 				};
-			};
+			}
 		}
 		
 		_OnBroadcastChannelMessage(e)
@@ -50,7 +50,7 @@
 			
 			this._queuedMessages.length = 0;
 		}
-	};
+	}
 	
 	// Create the offline client ASAP so we receive and start queueing any messages the SW broadcasts.
 	window.OfflineClientInfo = new OfflineClient();

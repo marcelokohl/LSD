@@ -24,6 +24,8 @@
 <script>
 export default {
   mounted: function () {
+    this.$router.query
+    debugger
     this.$store.state.logged = false
   },
   methods: {

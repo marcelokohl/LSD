@@ -13,54 +13,59 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 
 export default {
   data() {
     return {
       game_levels: 4
-    }
+    };
   },
   methods: {
     theGameProgress: function(i) {
-      if (this.game_progress < (this.game_levels*i)) return -1
-      else if (this.game_progress <= (this.game_levels*i)) return 0
-      else return ((this.game_progress-(this.game_levels*i)) * 100) / this.game_levels
-    },
+      if (this.campaignProgress < this.game_levels * i) return -1;
+      else if (this.campaignProgress <= this.game_levels * i) return 0;
+      else
+        return (
+          ((this.campaignProgress - this.game_levels * i) * 100) /
+          this.game_levels
+        );
+    }
   },
   computed: {
-    game_progress() {
-      return this.$store.state.user.game.campaign.process
-    }
+    ...mapGetters(["campaignProgress"])
+    // game_progress() {
+    //   return this.$store.state.user.game.campaign.process
+    // }
   }
-}
+};
 </script>
 
 <style lang="scss">
-  @import "@/scss/breakpoints.scss";
+@import "@/scss/breakpoints.scss";
 
-  .page-main {
-    .image-title {
-      max-width: 22em;
-      margin-bottom: 1.5rem;
-    }
-    .container {
+.page-main {
+  .image-title {
+    max-width: 22em;
+    margin-bottom: 1.5rem;
+  }
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 6em !important;
+    max-width: none !important;
+  }
+  .game-avatar {
+    margin: 0.75rem;
+  }
+
+  @include breakpoint-desktop() {
+    .game-avatars {
       display: flex;
       align-items: center;
-      flex-direction: column;
-      padding-top: 6em!important;
-      max-width: none!important;
+      flex-direction: row;
     }
-    .game-avatar {
-      margin: .75rem;
-    }
-
-    @include breakpoint-desktop() {
-      .game-avatars {
-        display: flex;
-        align-items: center;
-        flex-direction: row;
-      }
-    }
-
   }
+}
 </style>
