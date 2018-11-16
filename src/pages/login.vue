@@ -1,13 +1,15 @@
 <template lang="html">
   <v-page name="login" :container="true">
     <v-logo/>
-    <v-text class="title">Login</v-text>
-    <v-input v-model="form.email" type="text">Email</v-input>
-    <v-input v-model="form.password" type="password">Password</v-input>
+    <v-form>
+      <v-text class="title">Login</v-text>
+      <v-input v-model="form.email" type="text">Email</v-input>
+      <v-input v-model="form.password" type="password" :feedback="feedback.password">Password</v-input>
 
-    <v-button tag="button" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Login</v-button>
-    <v-button class="link" to="/forgot">i forgot my password</v-button>
-    <v-button class="link" to="/newaccount">i dont't have an account</v-button>
+      <v-button tag="button" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Login</v-button>
+      <v-button class="link" to="/forgot">i forgot my password</v-button>
+      <v-button class="link" to="/newaccount">i dont't have an account</v-button>
+    </v-form>
   </v-page>
 </template>
 
@@ -23,19 +25,30 @@ export default {
         email: "",
         password: ""
       },
+      feedback: {
+        password: []
+      }
     };
   },
   methods: {
     ...mapActions(["login"]),
     async submit() {
+
+
+      //
+      this.feedback.password = ['Email ou senha inválidos', 'error']
+      //
+
+
       if (!this.canSubmit) return;
 
       try {
         this.setBusy(true);
         const r = await this.login(this.form);
-        this.$router.push('main');
+        // this.$router.push('main');
       } catch (error) {
         console.error(error);
+        this.feedback.password = ['error', 'error']
       } finally {
         this.setBusy(false);
       }

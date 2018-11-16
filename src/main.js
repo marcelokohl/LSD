@@ -11,6 +11,7 @@ import Logo from './components/logo.vue'
 import Image from './components/image.vue'
 import Icon from './components/icon.vue'
 import Page from './components/page.vue'
+import Form from './components/form/form.vue'
 import Input from './components/form/input.vue'
 import Select from './components/form/select.vue'
 
@@ -30,6 +31,7 @@ Vue.component('v-logo', Logo)
 Vue.component('v-image', Image)
 Vue.component('v-icon', Icon)
 Vue.component('v-page', Page)
+Vue.component('v-form', Form)
 Vue.component('v-input', Input)
 Vue.component('v-select', Select)
 
