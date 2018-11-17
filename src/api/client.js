@@ -1,23 +1,18 @@
-import axios from "axios";
+import { create } from 'apisauce'
+
 import { storage } from "@/helpers";
 
 const baseURL =  process.env.VUE_API_HOST || "https://lsd-api-staging.herokuapp.com/api/v1";
 
-const instance = axios.create({
+const api = create({
   baseURL,
 });
 
-instance.interceptors.request.use(
-  function(config) {
-    const token = storage.getItem("token");
-    if(token) {
-      config.headers.common["Authorization"] = `Token token=${token}`;
-    }
-    return config;
-  },
-  function(error) {
-    return Promise.reject(error);
+api.addRequestTransform(request => {
+  const token = storage.getItem("token");
+  if(token) {
+    request.headers["Authorization"] = `Token token=${token}`;
   }
-);
+})
 
-export default instance;
+export default api;

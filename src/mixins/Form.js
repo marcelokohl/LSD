@@ -6,6 +6,7 @@ const mixin = {
     return {
       form: {},
       busy: false,
+      feedback: {},
       /**
        * Function used to validate if the form can be submitted.
        */
@@ -35,7 +36,18 @@ const mixin = {
      */
     setBusy(busy) {
       this.busy = !!busy;
-    }
+    },
+    // TODO
+    setFeedbackForField(field, feedback = []){
+      this.feedback[field] = feedback;
+    },
+    // TODO
+    fetchFeedbackWithErrors(errors = []){
+      errors.forEach(err => {
+        const [key] = Object.keys(err);
+        this.feedback[key] = [err[key], 'error'];  
+      });
+    },
   }
 };
 

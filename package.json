@@ -13,6 +13,7 @@
   "dependencies": {
     "@babel/core": "^7.0.0-beta.47",
     "animejs": "^2.2.0",
+    "apisauce": "^1.0.0",
     "axios": "^0.18.0",
     "babel-loader": "^8.0.4",
     "dot-prop": "^4.2.0",

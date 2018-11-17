@@ -30,7 +30,7 @@ export default {
       try {
         this.setBusy(true);
         const r = await this.requestNewPassword(this.form);
-        this.$router.push('login');
+        // this.$router.push('login');
       } catch (error) {
         console.error(error);
       } finally {

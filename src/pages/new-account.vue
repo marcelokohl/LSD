@@ -37,7 +37,7 @@ export default {
       try {
         this.setBusy(true);
         const r = await this.register({ user: this.form });
-        this.$router.push('main');
+        // this.$router.push('main');
       } catch (error) {
         console.error(error);
       } finally {

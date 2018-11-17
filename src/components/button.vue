@@ -17,14 +17,15 @@
   >
     <slot></slot>
   </a>
-  <a
+  <button
+    :type="buttonType"
     v-else
     @click.prevent="click"
     class="button"
     :disabled="disabled || busy"
     >
     <slot></slot>
-  </a>
+  </button>
 
 </template>
 
@@ -41,11 +42,15 @@ export default {
       default: "",
       type: String
     },
+    buttonType: {
+      default: "button",
+      type: String
+    },
     back: {
       type: Boolean
     },
     click: {
-      default: () => { alert('Not yet implemented') },
+      default: () => { },
       type: Function, 
     },
     disabled: {

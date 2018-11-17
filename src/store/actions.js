@@ -1,23 +1,24 @@
 import api from "@/api";
 import { storage } from "@/helpers";
 
-const login = ({ commit }, payload) => {
+const login = async ({ commit }, payload) => {
   const { email, password } = payload;
 
-  return api.client
-    .post("/login", {
-      email,
-      password
-    })
-    .then(response => {
-      commit("SET_USER", response.data.data.attributes);
-      commit("SET_LOGGED_IN", true);
-      storage.setItem("token", response.data.data.attributes.token);
-    })
-    .catch(err => {
-      commit("SET_USER", {});
-      commit("SET_LOGGED_IN", false);
-    });
+  const resp = await api.client.post("/login", {
+    email,
+    password
+  });
+
+  if (resp.ok) {
+    commit("SET_USER", resp.data.data.attributes);
+    commit("SET_LOGGED_IN", true);
+    storage.setItem("token", resp.data.data.attributes.token);
+  } else {
+    commit("SET_USER", {});
+    commit("SET_LOGGED_IN", false);
+  }
+
+  return resp;
 };
 
 const show = ({ commit }) => {
@@ -34,14 +35,16 @@ const show = ({ commit }) => {
 };
 
 const update = ({ commit }, payload) => {
-  const { user: { name, email, country_id, image }}  = payload;
+  const {
+    user: { name, email, country_id, image }
+  } = payload;
 
   api.client.put("/users/1", {
     user: {
       name,
       email,
       country_id,
-      image,
+      image
     }
   });
 };
