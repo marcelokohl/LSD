@@ -1,10 +1,10 @@
 <template lang="html">
-  <v-page name="login" :container="true">
+  <v-page name="login" :container="true" :feedback="feedback.detail" :loading="loading">
     <v-logo/>
     <v-form :on-submit="submit">
       <v-text class="title">Login</v-text>
       <v-input v-model="form.email" type="text">Email </v-input>
-      <v-input v-model="form.password" type="password" :feedback="feedback.detail">Password</v-input>
+      <v-input v-model="form.password" type="password">Password</v-input>
 
       <v-button button-type="submit" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Login</v-button>
       <v-button class="link" to="/forgot">i forgot my password</v-button>
@@ -25,13 +25,29 @@ export default {
         password: "21e12e"
       },
       feedback: {
-        detail: [],
-      }
+        detail: []
+      },
+      loading: false
     };
   },
   methods: {
     ...mapActions(["login"]),
     async submit() {
+
+
+
+
+      // this.feedback.detail = ['asasas','qwqwqwqw ']
+
+      var t = this
+      t.loading = true
+      setTimeout(function(){   t.loading = false }, 3000);
+      return
+
+
+
+
+
       if (!this.canSubmit) return;
 
       try {

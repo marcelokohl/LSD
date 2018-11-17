@@ -3,13 +3,13 @@
     <label><slot></slot></label>
     <input v-model="inputVal" ref="input":type="type" :disabled="disabled || busy">
     <!-- feedback: {{feedback}} -->
-    <v-feedback :data="feedback"></v-feedback>
+    <v-feedback type="control" :data="feedback"></v-feedback>
   </v-control>
 </template>
 
 <script>
 import Control from './control.vue'
-import Feedback from './feedback.vue'
+import Feedback from '@/components/feedback.vue'
 
 export default {
   props: {
