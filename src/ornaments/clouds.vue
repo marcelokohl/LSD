@@ -4,6 +4,7 @@
       <v-image class="cloud-type-1" src="clouds/1.png"/>
       <v-image class="cloud-type-3" src="clouds/3.png"/>
       <v-image class="cloud-type-5" src="clouds/5.png"/>
+      <v-image class="cloud-type-6" src="clouds/5.gif"/>
     </div>
     <div class="clouds-inner">
 
@@ -20,7 +21,8 @@ export default {
   },
   data() {
     return {
-      cloud_id: 1
+      cloud_id: 1,
+      cloud_type: 1
     }
   },
   mounted() {
@@ -63,7 +65,7 @@ export default {
       this.cloud_id++
       jquery('#clouds > .cloud')
         .clone()
-        .addClass('cloud-' + this.cloud_id + ' cloud-line-'+Math.round(y / 300))
+        .addClass('cloud-' + this.cloud_id + ' cloud-line-'+Math.round(y / 300) + ' cloud-type-'+Math.round(Math.random()*6))
         .css({'top':y + 'px','left':x + 'px'})
         .appendTo('#clouds .clouds-inner');
       // console.log(Math.round(y / 500));
@@ -138,8 +140,15 @@ export default {
 .page-arcade, .page-ranking {
   .clouds > .clouds-inner {
     .cloud {
-      .image.cloud-type-5 {
-        display: block;
+      &.cloud-type-4 {
+        .image.cloud-type-6 {
+          display: block;
+        }
+      }
+      &:not(.cloud-type-4) {
+        .image.cloud-type-5 {
+          display: block;
+        }
       }
     }
   }
