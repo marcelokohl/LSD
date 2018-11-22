@@ -1,11 +1,22 @@
 <template lang="html">
-  <div class="form-control">
+  <div class="form-control" :class="feedback?'form-control-feedback-' + feedback[1]:''">
     <slot></slot>
+    <v-feedback type="control" :data="feedback"></v-feedback>
   </div>
 </template>
 
 <script>
+import Feedback from '@/components/feedback.vue'
+
 export default {
+  components: {
+    'v-feedback': Feedback
+  },
+  props: {
+    feedback: {
+      type:Array,
+    }
+  }
 }
 </script>
 
@@ -17,14 +28,14 @@ export default {
     margin-bottom: 2rem;
 
     label {
-      color: color(label);
+      color: color(white);
       font-family: font(label);
       text-transform: uppercase;
       font-size: 1.7rem;
       margin-bottom: 1rem;
       -webkit-text-stroke: 1px black;
     }
-    input {
+    input, select {
       background-color: color(white);
       height: 3em;
       border-radius: 3em;
@@ -39,6 +50,22 @@ export default {
       width: 100%;
       box-sizing: border-box;
       text-align: center;
+    }
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("../../assets/images/select-arrow.svg");
+      background-repeat: no-repeat;
+      background-position: center right 37px;
+    }
+
+    &.form-control-feedback-error {
+      label {
+        color: color(error);
+      }
+      input, select {
+        border-color: color(error)
+      }
     }
   }
 </style>

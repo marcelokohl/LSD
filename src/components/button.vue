@@ -4,7 +4,7 @@
     v-if="to"
     :to="to"
     :tag="tag"
-    class="button"
+    :class="theClass"
     :disabled="disabled || busy"
   >
     <slot></slot>
@@ -12,7 +12,7 @@
   <a
     v-else-if="back"
     href="javascript:history.go(-1)"
-    class="button"
+    :class="theClass"
     :disabled="disabled || busy"
   >
     <slot></slot>
@@ -21,7 +21,7 @@
     :type="buttonType"
     v-else
     @click.prevent="click"
-    class="button"
+    :class="theClass"
     :disabled="disabled || busy"
     >
     <slot></slot>
@@ -51,7 +51,7 @@ export default {
     },
     click: {
       default: () => { },
-      type: Function, 
+      type: Function,
     },
     disabled: {
       default: false,
@@ -61,6 +61,13 @@ export default {
       default: false,
       type: Boolean,
     },
+  },
+  computed: {
+    theClass() {
+      var c = 'button'
+      if (this.busy) c += ' busy'
+      return c
+    }
   }
 };
 </script>

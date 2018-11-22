@@ -3,7 +3,7 @@
     <v-logo/>
     <v-form :on-submit="submit">
       <v-text class="title">Login</v-text>
-      <v-input v-model="form.email" type="text">Email </v-input>
+      <v-input v-model="form.email" type="text" :feedback="feedback.email">Email </v-input>
       <v-input v-model="form.password" type="password">Password</v-input>
 
       <v-button button-type="submit" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Login</v-button>
@@ -28,7 +28,8 @@ export default {
         password: "21e12e"
       },
       feedback: {
-        detail: []
+        detail: [],
+        email: []
       },
       loading: false
     };
@@ -36,6 +37,11 @@ export default {
   methods: {
     ...mapActions(["login"]),
     async submit() {
+
+      this.feedback.email = ['Enter a valid email adress','error']
+      return
+
+
       this.resetFeedback();
 
       if (!this.canSubmit) return;

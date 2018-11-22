@@ -1,12 +1,13 @@
 <template lang="html">
-  <div class="form-control form-select">
+  <v-control :feedback="feedback" class="form-select">
     <label><slot></slot></label>
     <select v-model="inputVal" :disabled="disabled || busy">
       <option v-for="(option, $index) in options" :value="option.value" :key="$index">
         {{option.label}}
       </option>
     </select>
-  </div>
+    <!-- feedback: {{feedback}} -->
+  </v-control>
 </template>
 
 <script>
@@ -26,6 +27,9 @@ export default {
     busy: {
       type: Boolean,
       default: false
+    },
+    feedback: {
+      type:Array,
     }
   },
   components: {
@@ -43,35 +47,4 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/colors.scss";
-@import "@/scss/fonts.scss";
-
-.form-select {
-  label {
-    color: color(label);
-    font-family: font(label);
-    text-transform: uppercase;
-    font-size: 2rem;
-  }
-  select {
-    background-color: color(white);
-    height: 3em;
-    border-radius: 3em;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 1.2em;
-    color: color(form-control);
-    font-size: 1.7rem;
-    font-family: font(button);
-    border: 2px solid black;
-    width: 100%;
-    box-sizing: border-box;
-    appearance: none;
-    -webkit-appearance: none;
-    background-image: url("../../assets/images/select-arrow.svg");
-    background-repeat: no-repeat;
-    background-position: center right 37px;
-  }
-}
 </style>

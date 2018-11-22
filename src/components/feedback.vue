@@ -1,7 +1,7 @@
 <template lang="html">
-  <div class="form-feedback" :class="'form-feedback-type-' + type">
-    <div v-if="data && data[0] && data.length == 2" class="form-feedback-inner" :class="data[1]">
-      {{data[0]}}
+  <div class="feedback" :class="'feedback-type-' + type">
+    <div v-if="data && data[0] && data.length == 2" class="feedback-inner" :class="data[1]">
+      <span class="feedback-icon">!</span>{{data[0]}}
 
       <v-button v-if="type=='modal'" class="primary" :click="close">Fechar</v-button>
     </div>
@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     close() {
-      // this.data = []; // não dá pra mudar o valor de uma prop
+      // this.data = []; // não dá pra mudar o valor de uma prop // Eu tava ligado, só não sabia como resolver ainda :)
       this.$root.$emit('close-feedback-modal', true);
     }
   }
@@ -31,18 +31,31 @@ export default {
   @import "@/scss/colors.scss";
   @import "@/scss/fonts.scss";
 
-  .form-feedback {
-
-    &.form-feedback-type-control {
-      color: red;
-      font-family: font(label);
-      text-transform: uppercase;
-      font-size: 1.2rem;
-      margin-bottom: 1rem;
-      -webkit-text-stroke: 1px black;
+  .feedback {
+    .feedback-icon {
+      background: color(error);
+      color: color(white);
+      width: 1.4em;
+      height: 1.4em;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1em;
+      display: none;
     }
-    &.form-feedback-type-modal {
-      .form-feedback-inner {
+    &.feedback-type-control {
+      .error {
+        color: color(error);
+          .feedback-icon {
+            display: inline-flex;
+          }
+      }
+      font-family: font(label);
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+    &.feedback-type-modal {
+      .feedback-inner {
         color: white;
         font-family: font(label);
         text-transform: uppercase;

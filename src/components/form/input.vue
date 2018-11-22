@@ -1,15 +1,12 @@
 <template lang="html">
-  <v-control>
+  <v-control :feedback="feedback">
     <label><slot></slot></label>
     <input v-model="inputVal" ref="input":type="type" :disabled="disabled || busy">
-    <!-- feedback: {{feedback}} -->
-    <v-feedback type="control" :data="feedback"></v-feedback>
   </v-control>
 </template>
 
 <script>
 import Control from './control.vue'
-import Feedback from '@/components/feedback.vue'
 
 export default {
   props: {
@@ -31,8 +28,7 @@ export default {
     }
   },
   components: {
-    'v-control': Control,
-    'v-feedback': Feedback
+    'v-control': Control
   },
   data() {
     return { inputVal: this.value }
