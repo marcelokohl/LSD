@@ -3,6 +3,7 @@
     <v-logo/>
     <v-text class="title">Create an account</v-text>
     <v-input v-model="form.name" type="text">Name</v-input>
+    <v-input v-model="form.nickname" type="text">Nickname</v-input>
     <v-input v-model="form.email" type="text">Email</v-input>
     <v-input v-model="form.password" type="password">Password</v-input>
     <v-input v-model="form.password_confirmation" type="password">Password Confirmation</v-input>
@@ -21,6 +22,7 @@ export default {
     return {
       form: {
         name: "mario",
+        nickname: "mario",
         email: "mario@test.com",
         password: "123456",
         password_confirmation: "123456",

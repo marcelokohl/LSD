@@ -51,12 +51,13 @@ const update = ({ commit }, payload) => {
 
 const register = ({ commit }, payload) => {
   const {
-    user: { name, email, password, password_confirmation, country_id }
+    user: { name, email, password, password_confirmation, nickname, country_id }
   } = payload;
 
   return api.client
     .post("/users/", {
       name,
+      nickname,
       email,
       password,
       password_confirmation,

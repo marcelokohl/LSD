@@ -1,5 +1,5 @@
 <template lang="html">
-  <v-page name="login" :container="true" :feedback="feedback.detail" :loading="loading">
+  <v-page name="login" :container="true" :feedback="[feedback.default_error, 'error']" :loading="isBusy">
     <v-logo/>
     <v-form :on-submit="submit">
       <v-text class="title">Login</v-text>
@@ -18,6 +18,9 @@ import Form from "@/mixins/Form";
 
 export default {
   mixins: [Form],
+  mounted(){
+    this.$root.$on('close-feedback-modal', this.resetFeedback);
+  },
   data() {
     return {
       form: {
@@ -33,20 +36,7 @@ export default {
   methods: {
     ...mapActions(["login"]),
     async submit() {
-
-
-
-
-      // this.feedback.detail = ['asasas','qwqwqwqw ']
-
-      var t = this
-      t.loading = true
-      setTimeout(function(){   t.loading = false }, 3000);
-      return
-
-
-
-
+      this.resetFeedback();
 
       if (!this.canSubmit) return;
 
@@ -55,12 +45,12 @@ export default {
         const { ok, data } = await this.login(this.form);
 
         if (ok) {
-          this.$router.push('main');
+          // this.$router.push('main');
         } else {
-          this.fetchFeedbackWithErrors(data.errors)
+          this.setFeedbackField('default_error', data.default_error)
         }
       } catch (error) {
-        this.setFeedbackForField('detail', ['error', 'error']);
+        console.error(error)
       } finally {
         this.setBusy(false);
       }

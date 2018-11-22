@@ -37,6 +37,12 @@ const mixin = {
     setBusy(busy) {
       this.busy = !!busy;
     },
+    resetFeedback(){
+      this.feedback = {};
+    },
+    setFeedbackField(field, feedback){
+      this.feedback[field] = feedback;
+    },
     // TODO
     setFeedbackForField(field, feedback = []){
       this.feedback[field] = feedback;

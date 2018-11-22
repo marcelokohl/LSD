@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="form-feedback" :class="'form-feedback-type-' + type">
-    <div v-if="data && data.length == 2" class="form-feedback-inner" :class="data[1]">
+    <div v-if="data && data[0] && data.length == 2" class="form-feedback-inner" :class="data[1]">
       {{data[0]}}
 
       <v-button v-if="type=='modal'" class="primary" :click="close">Fechar</v-button>
@@ -20,7 +20,8 @@ export default {
   },
   methods: {
     close() {
-      this.data = []
+      // this.data = []; // não dá pra mudar o valor de uma prop
+      this.$root.$emit('close-feedback-modal', true);
     }
   }
 }
