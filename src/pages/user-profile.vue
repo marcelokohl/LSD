@@ -11,7 +11,7 @@
     </div>
     <div class="profile-grid">
       <div class="user-menu">
-        <v-user-avatar :avatar="avatar" :remote="true"/>
+        <v-user-avatar :avatar="user.image" :remote="true"/>
         <v-text class="nickname">{{user.name}}</v-text>
         <v-text class="country">{{user.country.name}}</v-text>
 
@@ -42,7 +42,7 @@
           <v-game-list-item name="diplo" :progress="$store.state.user_old.games.campaing.diplo.progress"/>
         </template>
 
-        <v-button tag="button" class="primary quit-button" to="/">
+        <v-button tag="button" class="primary quit-button" to="/logout">
           Quit Game
         </v-button>
       </div>

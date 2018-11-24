@@ -7,6 +7,7 @@
       <v-input v-model="form.password" type="password">Password</v-input>
 
       <v-button button-type="submit" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Login</v-button>
+      <v-button tag="button" class="secondary" to="/home">Back</v-button>
       <v-button class="link" to="/forgot">i forgot my password</v-button>
       <v-button class="link" to="/newaccount">i dont't have an account</v-button>
     </v-form>
@@ -24,24 +25,18 @@ export default {
   data() {
     return {
       form: {
-        email: "e12e12",
-        password: "21e12e"
+        email: "",
+        password: ""
       },
       feedback: {
         detail: [],
         email: []
       },
-      loading: false
     };
   },
   methods: {
     ...mapActions(["login"]),
     async submit() {
-
-      this.feedback.email = ['Enter a valid email adress','error']
-      return
-
-
       this.resetFeedback();
 
       if (!this.canSubmit) return;
@@ -51,7 +46,7 @@ export default {
         const { ok, data } = await this.login(this.form);
 
         if (ok) {
-          // this.$router.push('main');
+          this.$router.push('main');
         } else {
           this.setFeedbackField('default_error', data.default_error)
         }

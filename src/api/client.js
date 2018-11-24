@@ -2,7 +2,7 @@ import { create } from 'apisauce'
 
 import { storage } from "@/helpers";
 
-const baseURL =  process.env.VUE_API_HOST || "https://lsd-api-staging.herokuapp.com/api/v1";
+const baseURL =  process.env.VUE_APP_API_HOST || "";
 
 const api = create({
   baseURL,

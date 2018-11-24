@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="user-avatar">
     <v-button class="no-style" to="/profile">
-      <v-image :src="getAvatarURI" :remote="true" />
+      <v-image :src="getAvatarURI" :remote="avatar ? remote : false" />
     </v-button>
   </div>
 </template>
@@ -11,13 +11,18 @@ export default {
   props: {
     avatar: {
       type: String,
-      default: 'default-avatar.png',
+      default: null,
+    },
+    remote: {
+      type: Boolean,
+      default: false,
     }
   },
   computed: {
     getAvatarURI(){
-      if (!this.avatar) return this.avatar;
-      return 'https://lsd-api-staging.herokuapp.com'+this.avatar;
+      if (!this.avatar) return 'default-avatar.png';
+      
+      return this.avatar;
     },
   }
 }

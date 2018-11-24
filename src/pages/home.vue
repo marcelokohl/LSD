@@ -23,81 +23,37 @@
 
 <script>
 export default {
-  // mounted: function() {
-  //   // this.$router.query;
-  //   // debugger;
-  // },
+  mounted: function() {
+    // this.$router.query;
+    // debugger;
+    console.log(process.env)
+  },
   methods: {
     setLang: function(value) {
       this.$setLang(value);
     },
     loginWithSpotify() {
-      this.login(function(accessToken) {
-        getUserData(accessToken).then(function(response) {
-          console.log(response);
-        });
-      });
+      window.location = this.getLoginURL();
     },
+    getLoginURL() {
+      const scopes = [
+        "user-read-recently-played",
+        "playlist-read-private",
+        "user-follow-modify",
+        "playlist-modify-public",
+        "user-read-private",
+        "user-read-email",
+        "ugc-image-upload",
+        "user-library-modify",
+        "user-library-read"
+      ];
 
-    // https://accounts.spotify.com/pt-BR/authorize?client_id=d3cd2cb415074722a3f2e70ec43f136f&redirect_uri=https://lsd-api-staging.herokuapp.com/api/v1/auth/spotify/callback&response_type=code&scope=user-read-recently-played playlist-read-private user-follow-modify playlist-modify-public user-read-private user-read-email ugc-image-upload user-library-modify user-library-read&state=be288d43a40e3d926da62e496e3d975ba3d8ed2c0507b71b
+      const AUTHORIZE_URL = process.env.VUE_APP_SPOTIFY_AUTHORIZE_URL;
+      const CLIENT_ID = process.env.VUE_APP_SPOTIFY_CLIENT_ID;
+      const REDIRECT_URI = process.env.VUE_APP_SPOTIFY_REDIRECT_URI;
+      const STATE = process.env.VUE_APP_SPOTIFY_STATE;
 
-    login(callback) {
-
-      function getLoginURL() {
-        // return "https://accounts.spotify.com/pt-BR/authorize?client_id=d3cd2cb415074722a3f2e70ec43f136f&redirect_uri=https://lsd-api-staging.herokuapp.com/api/v1/auth/spotify/callback&response_type=code&scope=user-read-recently-played playlist-read-private user-follow-modify playlist-modify-public user-read-private user-read-email ugc-image-upload user-library-modify user-library-read&state=be288d43a40e3d926da62e496e3d975ba3d8ed2c0507b71b";
-
-        const scopes = [
-          "user-read-recently-played",
-          "playlist-read-private",
-          "user-follow-modify",
-          "playlist-modify-public",
-          "user-read-private",
-          "user-read-email",
-          "ugc-image-upload",
-          "user-library-modify",
-          "user-library-read"
-        ];
-
-        const AUTHORIZE_URL = "https://accounts.spotify.com/pt-BR/authorize";
-        const CLIENT_ID = "d3cd2cb415074722a3f2e70ec43f136f";
-        const REDIRECT_URI =
-          "https://lsd-api-staging.herokuapp.com/api/v1/auth/spotify/callback";
-        const STATE = "be288d43a40e3d926da62e496e3d975ba3d8ed2c0507b71b";
-
-        return `${AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${scopes}&state=${STATE}`;
-      }
-
-      var url = getLoginURL();
-
-      var width = 450,
-        height = 730,
-        left = screen.width / 2 - width / 2,
-        top = screen.height / 2 - height / 2;
-
-      window.addEventListener(
-        "message",
-        function(event) {
-          console.log("event", event);
-          // var hash = JSON.parse(event.data);
-          // if (hash.type == "access_token") {
-          //   callback(hash.access_token);
-          // }
-        },
-        false
-      );
-
-      var w = window.open(
-        url,
-        "Spotify",
-        "menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=" +
-          width +
-          ", height=" +
-          height +
-          ", top=" +
-          top +
-          ", left=" +
-          left
-      );
+      return `${AUTHORIZE_URL}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=${scopes}&state=${STATE}`;
     }
   }
 };

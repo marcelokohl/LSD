@@ -9,6 +9,7 @@
     <v-input v-model="form.password_confirmation" type="password">Password Confirmation</v-input>
     <v-select v-model="form.country_id" :options="countriesOptions">Country</v-select>
     <v-button tag="button" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Sign up</v-button>
+    <v-button tag="button" class="secondary" to="/login">Back</v-button>
   </v-page>
 </template>
 
@@ -28,7 +29,6 @@ export default {
         password_confirmation: "123456",
         country_id: null
       },
-      busy: false
     };
   },
   methods: {

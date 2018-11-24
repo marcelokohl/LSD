@@ -21,21 +21,53 @@ Vue.use(VueRouter);
 const router = new VueRouter({
   routes: [
     { path: "/", name: "home", component: Home },
-    { path: "/login", name: "login", component: Login },
+    { 
+      path: "/login", 
+      name: "login", 
+      component: Login,
+      beforeEnter: (to, from, next) => {
+        if (store.getters.loggedIn) {
+          next({ path: "main" });
+        } else {
+          next()
+        }
+      }
+    },
+    { 
+      path: "/logout", 
+      name: "logout", 
+      beforeEnter: async (to, from, next) => {
+        await store.dispatch("logout");
+        next({ path: "home" });
+      }
+    },
     { path: "/forgot", name: "forgot", component: Forgot },
     { path: "/newpass", name: "new-pass", component: NewPass },
     { path: "/newaccount", name: "new-account", component: NewAccount },
     {
+      path: "/spotify-auth/:token",
+      name: "spotify-auth",
+      beforeEnter: async (to, from, next) => {
+        const resp = await store.dispatch("loginSpotify", to.params.token);
+        if (resp.ok) {
+          next({ path: "main" });
+        } else {
+          next()
+        }
+      }
+    },
+    {
       path: "/main",
       name: "main",
       component: MainMenu,
+      meta: { requiresAuth: true },
+    },
+    {
+      path: "/map",
+      name: "map",
+      component: Map,
       meta: { requiresAuth: true }
     },
-    { 
-      path: "/map", 
-      name: "map", 
-      component: Map, 
-      meta: { requiresAuth: true } },
     {
       path: "/ranking",
       name: "ranking",
@@ -76,8 +108,8 @@ router.beforeEach((to, from, next) => {
     // if not, redirect to login page.
     if (!store.getters.loggedIn) {
       next({
-        path: "/login",
-        query: { redirect: to.fullPath }
+        path: "home",
+        // query: { redirect: to.fullPath }
       });
     } else {
       next();

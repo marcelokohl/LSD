@@ -21,32 +21,51 @@ const login = async ({ commit }, payload) => {
   return resp;
 };
 
-const show = ({ commit }) => {
-  api.client
-    .get(`/users/1`)
-    .then(response => {
-      commit("SET_USER", response.data.data.attributes);
-      commit("SET_LOGGED_IN", true);
-    })
-    .catch(err => {
-      commit("SET_USER", {});
-      commit("SET_LOGGED_IN", false);
-    });
+const loginSpotify = async ({ commit }, payload) => {
+  storage.setItem("token", payload);
+  
+  const resp = await api.client.get(`/users/1`);
+
+  if (resp.ok) {
+    commit("SET_USER", resp.data.data.attributes);
+    commit("SET_LOGGED_IN", true);
+  } else {
+    commit("SET_USER", {});
+    commit("SET_LOGGED_IN", false);
+  }
+
+  return resp;
 };
 
-const update = ({ commit }, payload) => {
-  const {
-    user: { name, email, country_id, image }
-  } = payload;
+const logout = async ({ commit }) => {
+  storage.removeItem("token");
+  commit("SET_USER", {});
+  commit("SET_LOGGED_IN", false);
 
-  api.client.put("/users/1", {
-    user: {
-      name,
-      email,
-      country_id,
-      image
-    }
-  });
+  return true;
+};
+
+
+const show = async ({ commit }) => {
+  const resp = await api.client.get(`/users/1`);
+
+  if (resp.ok) {
+    commit("SET_USER", resp.data.data.attributes);
+    commit("SET_LOGGED_IN", true);
+  } else {
+    commit("SET_USER", {});
+    commit("SET_LOGGED_IN", false);
+  }
+
+  return resp;
+};
+
+const update = async (_, payload) => {
+  const user = { ...payload };
+
+  const resp = await api.client.put("/users/1", user);
+
+  return resp;
 };
 
 const register = ({ commit }, payload) => {
@@ -107,10 +126,12 @@ const loadCountries = ({ commit }) => {
 
 export default {
   login,
+  loginSpotify,
   register,
   updatePassword,
   requestNewPassword,
   show,
   update,
-  loadCountries
+  loadCountries,
+  logout,
 };

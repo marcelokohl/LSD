@@ -35,12 +35,15 @@ export default {
   components: {
     "v-control": Control
   },
-  data() {
-    return { inputVal: this.value };
+   data() {
+    return { inputVal: this.value }
   },
   watch: {
+    value(val){
+      this.inputVal = val;
+    },
     inputVal(val) {
-      this.$emit("input", val);
+      this.$emit('input', val);
     }
   }
 };

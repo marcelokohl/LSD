@@ -37,6 +37,9 @@ const mixin = {
     setBusy(busy) {
       this.busy = !!busy;
     },
+    setForm(form) {
+      this.form = form || {};
+    },
     resetFeedback(){
       this.feedback = {};
     },
@@ -48,10 +51,11 @@ const mixin = {
       this.feedback[field] = feedback;
     },
     // TODO
-    fetchFeedbackWithErrors(errors = []){
-      errors.forEach(err => {
-        const [key] = Object.keys(err);
-        this.feedback[key] = [err[key], 'error'];  
+    fetchFeedbackWithErrors(errors = {}){
+
+      Object.keys(errors).forEach(key => {
+        const error = errors[key];
+        this.feedback[key] = [error[0], 'error'];  
       });
     },
   }
