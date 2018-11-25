@@ -13,15 +13,19 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapActions } from "vuex";
 
 export default {
+  mounted(){
+    this.getRanking({artist: 'diplo'})
+  },
   data() {
     return {
       game_levels: 4
     };
   },
   methods: {
+    ...mapActions(['getRanking']),
     theGameProgress: function(i) {
       if (this.campaignProgress < this.game_levels * i) return -1;
       else if (this.campaignProgress <= this.game_levels * i) return 0;

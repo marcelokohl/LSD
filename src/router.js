@@ -20,7 +20,19 @@ Vue.use(VueRouter);
 
 const router = new VueRouter({
   routes: [
-    { path: "/", name: "home", component: Home },
+    { 
+      path: "/", 
+      name: "home", 
+      component: Home,
+      beforeEnter: async (to, from, next) => {
+        await store.dispatch("show");
+        if (store.getters.loggedIn) {
+          next({ path: "main" });
+        } else {
+          next()
+        }
+      }
+    },
     { 
       path: "/login", 
       name: "login", 

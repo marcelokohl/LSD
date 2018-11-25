@@ -4,7 +4,7 @@
     <v-text class="title">Create an account</v-text>
     <v-input v-model="form.name" type="text">Name</v-input>
     <v-input v-model="form.nickname" type="text">Nickname</v-input>
-    <v-input v-model="form.email" type="text">Email</v-input>
+    <v-input v-model="form.email" type="text" :feedback="feedback.email">Email</v-input>
     <v-input v-model="form.password" type="password">Password</v-input>
     <v-input v-model="form.password_confirmation" type="password">Password Confirmation</v-input>
     <v-select v-model="form.country_id" :options="countriesOptions">Country</v-select>
@@ -38,10 +38,15 @@ export default {
 
       try {
         this.setBusy(true);
-        const r = await this.register({ user: this.form });
-        // this.$router.push('main');
+        const { ok, data } = await this.register({ user: this.form });
+
+        if (ok) {
+          this.$router.push('main');
+        } else {
+          this.fetchFeedbackWithErrors(data);
+        }
       } catch (error) {
-        console.error(error);
+        console.error(error)
       } finally {
         this.setBusy(false);
       }
