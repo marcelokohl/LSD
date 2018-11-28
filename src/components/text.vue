@@ -11,21 +11,21 @@ export default {
   @import "@/scss/fonts.scss";
 
   .text {
-    font-size: 1em;
+    font-size: font-size(s);
     font-family: font(text);
     margin: 0;
 
     &.title {
       color: #fff;
       margin-bottom: 2rem;
-      font-size: 2.6rem;
+      font-size: font-size(l);
       text-transform: uppercase;
       -webkit-text-stroke: 1px black;
     }
     &.subtitle {
       color: #fff;
       margin-bottom: 2rem;
-      font-size: 1.2rem;
+      font-size: font-size(s);
     }
   }
 </style>

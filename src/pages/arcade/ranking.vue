@@ -63,7 +63,7 @@ export default {
       display: flex;
       justify-content: center;
       .game-avatar {
-        font-size: 0.8em;
+        font-size: font-size(s);
         margin: 0 1.1rem;
         cursor: pointer;
         &:after {
@@ -85,7 +85,7 @@ export default {
     }
     .my-position {
       .subtitle {
-        font-size: 1.5rem;
+        font-size: font-size(m);
         text-transform: uppercase;
         margin-bottom: .4rem;
       }
@@ -94,7 +94,7 @@ export default {
         color: color(yellow);
       }
       .score {
-        font-size: 1.4rem;
+        font-size: font-size(m);
         color: color(white);
         margin-bottom: 2rem;
       }
@@ -105,7 +105,7 @@ export default {
     .ranking-list {
       .title {
         margin: 0;
-        font-size: 1.4em;
+        font-size: font-size(m);
         border-bottom: .23em solid;
       }
       .ranking-item {
@@ -114,7 +114,7 @@ export default {
         justify-content: space-between;
         color: #fff;
         margin: 0.5em 0.5em;
-        font-size: 1.5rem;
+        font-size: font-size(m);
 
         .text {
           &.pos {

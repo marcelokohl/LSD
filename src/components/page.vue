@@ -31,13 +31,13 @@ export default {
 <style lang="scss">
   @import "@/scss/colors.scss";
   @import "@/scss/fonts.scss";
-  
+
   .page {
     & > .loading {
       color: white;
       font-family: font(label);
       text-transform: uppercase;
-      font-size: 2rem;
+      font-size: font-size(l);
 
       position: fixed;
       background: #00000099;

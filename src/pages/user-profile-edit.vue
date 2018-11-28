@@ -35,11 +35,11 @@ export default {
 
     const { name, nickname, image, country, email } = this.user;
 
-    this.setForm({ 
-      name, 
-      nickname, 
-      image, 
-      country_id: `${country.id}`, 
+    this.setForm({
+      name,
+      nickname,
+      image,
+      country_id: `${country.id}`,
       email
     });
   },
@@ -126,7 +126,7 @@ export default {
       justify-content: space-between;
       margin-bottom: 2em;
       .button {
-        font-size: 2.1rem;
+        font-size: font-size(l);
         font-family: font(button);
         color: color(button-primary);
         text-transform: uppercase;
@@ -142,14 +142,14 @@ export default {
     .edit-title {
       font-family: font(title);
       color: #63005e;
-      font-size: 3rem;
+      font-size: font-size(l);
       margin-bottom: 1.5rem;
       text-transform: uppercase;
     }
     .picture-button {
       font-family: font(button);
       color: #41b0ff;
-      font-size: 1.4rem;
+      font-size: font-size(m);
       margin: 1.5rem 0;
       display: block;
       text-transform: uppercase;
@@ -158,7 +158,7 @@ export default {
       color: black;
       font-family: font(label);
       text-transform: uppercase;
-      font-size: 1.6rem;
+      font-size: font-size(m);
       margin-bottom: 0.7rem;
       display: block;
     }

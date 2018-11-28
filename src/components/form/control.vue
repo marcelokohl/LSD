@@ -31,7 +31,7 @@ export default {
       color: color(white);
       font-family: font(label);
       text-transform: uppercase;
-      font-size: 1.7rem;
+      font-size: font-size(m);
       margin-bottom: 1rem;
       -webkit-text-stroke: 1px black;
     }
@@ -44,7 +44,7 @@ export default {
       align-items: center;
       padding: 0 1.2em;
       color: color(form-control);
-      font-size: 1.7rem;
+      font-size: font-size(m);
       font-family: font(button);
       border: 2px solid black;
       width: 100%;

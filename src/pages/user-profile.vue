@@ -72,13 +72,13 @@ export default {
 
       .user-menu {
         .nickname {
-          font-size: 2.3rem;
+          font-size: font-size(l);
           text-transform: uppercase;
           color: #41B0FF;
           margin-top: 1rem;
         }
         .country {
-          font-size: 1.8em;
+          font-size: font-size(m);
           color: #D3188D;
           text-transform: uppercase;
           margin-bottom: 1rem;
@@ -115,7 +115,7 @@ export default {
         justify-content: space-between;
         margin-bottom: 2em;
         .button {
-          font-size: 2.1rem;
+          font-size: font-size(l);
           font-family: font(button);
           color: color(button-primary);
           text-transform: uppercase;

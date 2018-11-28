@@ -5,6 +5,14 @@ $fonts: (
   label: 'Fredoka One',
   text: 'Fredoka One',
 );
+$font-sizes: (
+  s: 1.3rem,
+  m: 1.6rem,
+  l: 2.2rem,
+);
 @function font($key) {
   @return map-get($fonts, $key);
+}
+@function font-size($key) {
+  @return map-get($font-sizes, $key);
 }

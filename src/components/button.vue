@@ -93,7 +93,7 @@ export default {
   }
 
   &.link {
-    font-size: 1.1rem;
+    font-size: font-size(s);
     font-family: font(button);
     color: color(button-primary);
     margin-bottom: 1.1em;
@@ -102,14 +102,14 @@ export default {
 
   &:not(.link):not(.no-style) {
     background-color: color(button);
-    height: 3em;
+    height: 2.6em;
     border-radius: 3rem;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 0 1.2em;
     color: #fff;
-    font-size: 1.7rem;
+    font-size: font-size(m);
     font-family: font(button);
     border: 2px solid black;
 
