@@ -4,7 +4,7 @@
     <v-bg :class="'bg-'+page_to" />
 
     <div class="page-content">
-      <v-user-avatar v-if="loggedIn" :avatar="avatar" />
+      <v-user-avatar v-if="loggedIn" :avatar="avatar" class="logged" />
       <transition
         name="page"
         :duration="600"

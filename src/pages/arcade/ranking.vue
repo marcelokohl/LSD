@@ -1,30 +1,41 @@
 <template lang="html">
   <v-page name="ranking" :container="true">
     <!-- <v-user-avatar /> -->
+
     <div class="avatar-tabs">
       <v-game-avatar @click.native="tab=0" name="labrinth" mode="arcade" :class="tab==0?'active':''"/>
       <v-game-avatar @click.native="tab=1" name="sia" mode="arcade" :class="tab==1?'active':''"/>
       <v-game-avatar @click.native="tab=2" name="diplo" mode="arcade" :class="tab==2?'active':''"/>
     </div>
-    <v-text class="title">Ranking</v-text>
-    <div class="ranking-grid">
-      <div class="my-position">
-        <v-text class="subtitle">My position</v-text>
-        <v-text class="rank">{{$store.state.user_old.games.arcade['sia'].rank}}</v-text>
-        <v-text class="score">{{$store.state.user_old.games.arcade['sia'].score}}pts</v-text>
+
+    <template v-if="$store.state.ranking[tabs[tab].name].length">
+      <v-text class="title">Your best score</v-text>
+      <v-text class="user-score">{{$store.state.user_old.games.arcade['sia'].score}}pts</v-text>
+      <div class="ranking-grid">
+        <v-text class="title">Ranking</v-text>
+        <div class="ranking-list">
+          <div :title="item.name + ': ' + item.score + 'pts'" class="ranking-item" :class="item.user?'ranking-item-user':''" v-for="item in $store.state.ranking[tabs[tab].name]" :key="item.pos">
+            <v-user-avatar />
+            <v-text class="name" >{{item.name}}</v-text>
+            <v-text class="score">{{item.score}}</v-text>
+          </div>
+        </div>
         <v-button tag="button" class="primary" :to="{name:'arcade'}">
           Back to Arcade
         </v-button>
       </div>
-      <div class="ranking-list">
-        <v-text class="title">Top 20</v-text>
-        <div :title="item.pos + '-' + item.name + '-' + item.score" class="ranking-item" v-for="item in $store.state.ranking[tabs[tab].name]" :key="item.pos">
-          <v-text class="pos">{{item.pos}}</v-text>
-          <v-text class="name" >{{item.name}}</v-text>
-          <v-text class="score">{{item.score}}</v-text>
-        </div>
-      </div>
-    </div>
+    </template>
+    <template v-else>
+      <v-text class="title primary">You haven't record any points yet</v-text>
+      <v-text class="title">Make points and earn prizes</v-text>
+      <v-button tag="button" :to="{name:'game'}">
+        Play
+      </v-button>
+      <v-button tag="button" class="primary" :to="{name:'arcade'}">
+        Back to Arcade
+      </v-button>
+    </template>
+
   </v-page>
 </template>
 
@@ -45,10 +56,13 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "@/scss/fonts.scss";
   @import "@/scss/colors.scss";
   @import "@/scss/breakpoints.scss";
 
   .page-ranking {
+    align-items: initial;
+    
     .container {
       display: flex;
       align-items: center;
@@ -83,21 +97,9 @@ export default {
         }
       }
     }
-    .my-position {
-      .subtitle {
-        font-size: font-size(m);
-        text-transform: uppercase;
-        margin-bottom: .4rem;
-      }
-      .rank {
-        font-size: 5rem;
-        color: color(yellow);
-      }
-      .score {
-        font-size: font-size(m);
-        color: color(white);
-        margin-bottom: 2rem;
-      }
+    .user-score {
+      font-size: 5rem;
+      color: color(yellow);
     }
     .ranking-grid {
       width: 100%;
@@ -114,21 +116,26 @@ export default {
         justify-content: space-between;
         color: #fff;
         margin: 0.5em 0.5em;
-        font-size: font-size(m);
 
-        .text {
-          &.pos {
-            width: 13%;
-            text-align: left;
-          }
+        &.ranking-item-user {
+          color: color(yellow);
+        }
+
+        & > .text {
+          font-size: font-size(l);
+          display: flex;
+          align-items: center;
+
           &.name {
-            width: 47%;
+            width: 60%;
             text-align: left;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+            padding-left: font-size(l);
           }
           &.score {
+            justify-content: flex-end;
             width: 40%;
             text-align: right;
           }
@@ -136,18 +143,18 @@ export default {
       }
     }
 
-    @include breakpoint-desktop() {
-      .ranking-grid {
-        // display: flex;
-        width: 100%;
-        max-width: 50rem;
-        &>* {
-          width: 50%;
-          padding: 0 2em;
-          float: left;
-          box-sizing: border-box;
-        }
-      }
-    }
+    // @include breakpoint-desktop() {
+    //   .ranking-grid {
+    //     // display: flex;
+    //     width: 100%;
+    //     max-width: 50rem;
+    //     &>* {
+    //       width: 50%;
+    //       padding: 0 2em;
+    //       float: left;
+    //       box-sizing: border-box;
+    //     }
+    //   }
+    // }
   }
 </style>

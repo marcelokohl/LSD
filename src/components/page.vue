@@ -3,10 +3,10 @@
     <div class="container">
       <slot></slot>
     </div>
-    <v-feedback :data="feedback" type="modal"></v-feedback>
+    <!-- <v-feedback :data="feedback" type="modal"></v-feedback>
     <div v-if="loading" class="loading">
       Carregando...
-    </div>
+    </div> -->
   </main>
 </template>
 

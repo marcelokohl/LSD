@@ -1,8 +1,11 @@
 <template lang="html">
   <div class="user-avatar">
-    <v-button class="no-style" to="/profile">
+    <v-button v-if="to" class="no-style user-avatar-inner">
       <v-image :src="getAvatarURI" :remote="avatar ? remote : false" />
     </v-button>
+    <div v-else class="user-avatar-inner">
+      <v-image :src="getAvatarURI" :remote="avatar ? remote : false" />
+    </div>
   </div>
 </template>
 
@@ -16,12 +19,15 @@ export default {
     remote: {
       type: Boolean,
       default: false,
+    },
+    to: {
+      type: String
     }
   },
   computed: {
     getAvatarURI(){
       if (!this.avatar) return 'default-avatar.png';
-      
+
       return this.avatar;
     },
   }
@@ -37,12 +43,15 @@ export default {
     @include breakpoint-desktop() {
       font-size: 90px;
     }
-    position: fixed;
-    top: 1rem;
-    right: 1rem;
-    z-index: 2;
-    
-    .button {
+
+    &.logged {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      z-index: 2;
+    }
+
+    .user-avatar-inner {
       width: 1em;
       height: 1em;
       border: 1px solid black;

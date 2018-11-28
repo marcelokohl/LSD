@@ -18,7 +18,7 @@ export default {
     name: String,
     progress: {type: Number, default: -1},
     mode: {type: String, default: "campaing"},
-    to: ''
+    to: {}
   },
   computed: {
     the_progress: function() {
