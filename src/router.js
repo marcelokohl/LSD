@@ -13,7 +13,6 @@ import UserProfile from "@/pages/user-profile.vue";
 import UserProfileEdit from "@/pages/user-profile-edit.vue";
 import Arcade from "@/pages/arcade/arcade.vue";
 import Ranking from "@/pages/arcade/ranking.vue";
-import Game from "@/pages/game.vue";
 
 import store from "@/store/main";
 
@@ -97,12 +96,6 @@ const router = new VueRouter({
       path: "/arcade",
       name: "arcade",
       component: Arcade,
-      meta: { requiresAuth: true }
-    },
-    {
-      path: "/game",
-      name: "game",
-      component: Game,
       meta: { requiresAuth: true }
     },
     { path: "*", redirect: { name: "home" } }
