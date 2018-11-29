@@ -85,7 +85,7 @@ export default {
   }
 
   & > * {
-    pointer-events: none;
+    // pointer-events: none;
   }
 
   &:not(.no-style) {

@@ -224,7 +224,7 @@ export default {
     background: transparent;
     border: 0;
     outline: none;
-    
+
     &.locked {
       .map-block, .map-addons {
         filter: brightness(.3);
@@ -297,7 +297,7 @@ export default {
   }
 
   .map-item-12 {
-    top: 140%;
+    top: 185%;
     .map-block {
       width: 100%;
       margin: 0 43% 0;
@@ -312,7 +312,8 @@ export default {
       bottom: 82%;
     }
     .map-label {
-      bottom: 28%;
+      left: 7%;
+      bottom: 33%;
     }
     .player {
       left: 83%;
@@ -320,13 +321,13 @@ export default {
     }
   }
   .map-item-11 {
-    top: 186%;
+    top: 262%;
     .map-block {
       padding-left: 31%;
     }
     .map-label {
-      padding-right: 27%;
-      bottom: 23%;
+      left: -21%;
+      bottom: 29%;
     }
     .player {
       left: 10%;
@@ -335,13 +336,13 @@ export default {
     }
   }
   .map-item-10 {
-    top: 220%;
+    top: 312%;
     .map-block {
       padding-left: 58%;
     }
     .map-label {
-      padding-left: 31%;
-      bottom: 29%;
+      left: 37%;
+      bottom: 34%;
     }
     .player {
       left: 80%;
@@ -349,13 +350,13 @@ export default {
     }
   }
   .map-item-9 {
-    top: 256%;
+    top: 382%;
     .map-block {
       padding-left: 33%;
     }
     .map-label {
-      padding-right: 21%;
-      bottom: 25%;
+      left: -16%;
+      bottom: 28%;
     }
     .player {
       left: 10%;
@@ -364,14 +365,14 @@ export default {
     }
   }
   .map-item-8 {
-    top: 385%;
+    top: 617%;
     z-index: 4;
     .map-block {
       padding-left: 58%;
     }
     .map-label {
-      padding-left: 39%;
-      bottom: 5%;
+      left: 47%;
+      bottom: 8%;
     }
     .map-key {
       bottom: 223%;
@@ -395,15 +396,15 @@ export default {
     }
   }
   .map-item-7 {
-    top: 409%;
+    top: 659%;
     z-index: 3;
     .map-block {
       padding-left: 18%;
       z-index: 1;
     }
     .map-label {
-      padding-right: 41%;
-      bottom: 5%;
+      left: -32%;
+      bottom: 8%;
     }
     .rainbow {
       bottom: 48%;
@@ -416,14 +417,14 @@ export default {
     }
   }
   .map-item-6 {
-    top: 431%;
+    top: 696%;
     z-index: 2;
     .map-block {
       padding-left: 58%;
       z-index: 1;
     }
     .map-label {
-      padding-left: 39%;
+      left: 48%;
       bottom: 5%;
     }
     .rainbow {
@@ -439,14 +440,14 @@ export default {
     }
   }
   .map-item-5 {
-    top: 454%;
+    top: 736%;
     .map-block {
       padding-left: 17%;
       z-index: 1;
     }
     .map-label {
-      padding-right: 41%;
-      bottom: 5%;
+      left: -34%;
+      bottom: 8%;
     }
     .rainbow {
       bottom: 48%;
@@ -460,13 +461,15 @@ export default {
   }
 
   .map-item-4 {
-    top: 525%;
+    top: 867%;
     .map-block {
       .image {
         margin: auto;
       }
     }
     .map-label {
+      left: 0;
+      bottom: 51%;
     }
     .sia {
       bottom: 132%;
@@ -493,7 +496,7 @@ export default {
   }
 
   .map-item-3 {
-    top: 605%;
+    top: 1006%;
     .map-block {
       z-index: 1;
       .image {
@@ -501,6 +504,8 @@ export default {
       }
     }
     .map-label {
+      left: 0;
+      bottom: 85%;
     }
     .player {
       left: 42%;
@@ -517,7 +522,7 @@ export default {
     }
   }
   .map-item-2 {
-    top: 658%;
+    top: 1106%;
     z-index: 0;
     .map-block {
       z-index: 1;
@@ -526,6 +531,8 @@ export default {
       }
     }
     .map-label {
+      left: 0;
+      bottom: 85%;
     }
     .player {
       left: 42%;
@@ -541,13 +548,15 @@ export default {
     }
   }
   .map-item-1 {
-    top: 701%;
+    top: 1186%;
     .map-block {
       .image {
         margin: auto;
       }
     }
     .map-label {
+      left: 0;
+      bottom: 51%;
     }
     .player {
       left: 42%;
@@ -563,7 +572,7 @@ export default {
     }
   }
   .map-item-0 {
-    top: 772%;
+    top: 1306%;
     left: 6%;
     .map-block {
       z-index: 2;

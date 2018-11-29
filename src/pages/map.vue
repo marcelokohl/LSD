@@ -2,31 +2,43 @@
   <v-page name="map" class="level-1">
     <!-- <v-image class="__REF__" src="__REF_MAP_SCREEN.png"/> -->
     <input type="number" v-model="current_level" style="position: fixed;top: 0px;left: 0px;font-size: 20px;width: 3em;">
+    <v-image class="image-title" :src="'titles/arcade.png'"/>
     <div class="content">
-      <v-image class="image-title" :src="'titles/arcade-'+$getLang()+'.png'"/>
 
       <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='100' :class="current_level == 13?'':'locked'"/>
       <!-- $store.state.user_old.games.campaing.level -->
       <v-map-level v-for="l in [12,11,10,9,8,7,6,5,4,3,2,1,0]" :key="l" :level="l" :locked="l > current_level" :current="current_level"/>
-      <div class="map-footer">
-        <v-button class="primary" back>Back</v-button>
-      </div>
+    </div>
+    <div class="map-footer">
+      <v-button class="primary" back>Back</v-button>
     </div>
   </v-page>
 </template>
 
 <script>
+import jquery from 'jquery'
 import MapLevel from '@/modules/map-level.vue'
 
 export default {
   data() {
     return {
-      current_level: 8
+      current_level: 2
     }
+  },
+  mounted() {
+    // alert();
+    this.scrollToLevel()
   },
   components: {
     'v-map-level': MapLevel
   },
+  methods: {
+    scrollToLevel() {
+      jquery('.page-content').animate({
+        scrollTop: jquery('.map-item-'+this.current_level).offset().top - (jquery(window).height()/2)
+      }, 2000);
+    }
+  }
 }
 </script>
 
@@ -78,6 +90,7 @@ export default {
     .content {
       z-index: 2;
       position: relative;
+      width: 700px;
     }
 
   }
