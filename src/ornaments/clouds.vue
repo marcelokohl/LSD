@@ -1,10 +1,11 @@
 <template lang="html">
   <div id="clouds" class="clouds">
     <div class="cloud">
-      <v-image class="cloud-type-1" src="clouds/1.png"/>
-      <v-image class="cloud-type-3" src="clouds/3.png"/>
-      <v-image class="cloud-type-5" src="clouds/5.png"/>
-      <v-image class="cloud-type-6" src="clouds/5.gif"/>
+      <v-image class="cloud-type-white" src="clouds/1.png"/>
+      <v-image class="cloud-type-red" src="clouds/3.png"/>
+      <v-image class="cloud-type-blue" src="clouds/5.png"/>
+      <v-image class="cloud-type-blue-gif" src="clouds/5.gif"/>
+      <v-image class="cloud-type-planet-1" src="clouds/planet-1.png"/>
     </div>
     <div class="clouds-inner">
 
@@ -29,8 +30,8 @@ export default {
     var i;
     var clouds = this
     var w = jquery('#app').width()
-    var h = 4000
-    var max = 24
+    var h = 3000
+    var max = 18
 
     window.addEventListener('focus', function startTimer() {
       jquery('.clouds-inner .cloud').remove();
@@ -68,7 +69,9 @@ export default {
         .addClass('cloud-' + this.cloud_id + ' cloud-line-'+Math.round(y / 300) + ' cloud-type-'+Math.round(Math.random()*6))
         .css({'top':y + 'px','left':x + 'px'})
         .appendTo('#clouds .clouds-inner');
-      // console.log(Math.round(y / 500));
+
+      // console.log('clone.att: 'clone.attr('data-speed'));
+
       anime({
         targets: '.cloud-' + this.cloud_id,
         translateX: jquery('#clouds').width()*2,
@@ -117,7 +120,7 @@ export default {
 {
   .clouds > .clouds-inner {
     .cloud {
-      .image.cloud-type-1 {
+      .image.cloud-type-white {
         display: block;
       }
     }
@@ -126,13 +129,45 @@ export default {
 .page-main {
   .clouds > .clouds-inner {
     .cloud-line-0, .cloud-line-1 {
-      .image.cloud-type-1 {
+      .image.cloud-type-white {
         display: block;
       }
     }
     .cloud-line-2 {
-      .image.cloud-type-3 {
+      .image.cloud-type-red {
         display: block;
+      }
+    }
+  }
+}
+.page-map {
+  .clouds > .clouds-inner {
+    .cloud-line-10,
+    .cloud-line-9,
+    .cloud-line-8,
+    .cloud-line-7
+    {
+      .image.cloud-type-white {
+        display: block;
+      }
+    }
+    .cloud-line-6,
+    .cloud-line-5,
+    .cloud-line-4,
+    .cloud-line-3
+    {
+      .image.cloud-type-red {
+        display: block;
+      }
+    }
+    .cloud-line-2,
+    .cloud-line-1,
+    .cloud-line-0
+    {
+      &.cloud-type-1, &.cloud-type-2 {
+        .image.cloud-type-planet-1 {
+          display: block;
+        }
       }
     }
   }
@@ -141,12 +176,12 @@ export default {
   .clouds > .clouds-inner {
     .cloud {
       &.cloud-type-4 {
-        .image.cloud-type-6 {
+        .image.cloud-type-blue-gif {
           display: block;
         }
       }
       &:not(.cloud-type-4) {
-        .image.cloud-type-5 {
+        .image.cloud-type-blue {
           display: block;
         }
       }

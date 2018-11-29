@@ -10,7 +10,9 @@
       </div>
       <div class="map-addons">
         <v-image class="boss" src="map/boss-diplo.png"/>
+        <v-image class="player" src="map/diplo.png"/>
       </div>
+      <v-image class="map-key" src="map/key.png"/>
       <!-- <v-image class="map-key" src="map/key.png"/> -->
     </template>
 
@@ -20,7 +22,8 @@
         <v-image src="map/green-planet.png"/>
       </div>
       <div class="map-addons">
-        <v-image src="map/planet-trail-3.png"/>
+        <!-- <v-image src="map/planet-trail-3.png"/> -->
+        <v-image class="player" src="map/diplo.png"/>
       </div>
     </template>
 
@@ -30,7 +33,8 @@
         <v-image src="map/orange-planet.png"/>
       </div>
       <div class="map-addons">
-        <v-image src="map/planet-trail-2.png"/>
+        <!-- <v-image src="map/planet-trail-2.png"/> -->
+        <v-image class="player" src="map/diplo.png"/>
       </div>
     </template>
 
@@ -40,7 +44,8 @@
         <v-image src="map/green-planet.png"/>
       </div>
       <div class="map-addons">
-        <v-image src="map/planet-trail-1.png"/>
+        <!-- <v-image src="map/planet-trail-1.png"/> -->
+        <v-image class="player" src="map/diplo.png"/>
       </div>
     </template>
 
@@ -52,7 +57,10 @@
       <div class="map-addons">
         <v-image class="diplo" src="map/diplo.png"/>
         <v-image class="boss" src="map/boss-sia.png"/>
+        <v-image class="player" src="map/sia.png"/>
       </div>
+      <v-image class="locker" src="map/locker.png"/>
+      <v-image class="map-key" src="map/key.png"/>
       <!-- <v-image class="map-key" src="map/key.png"/> -->
     </template>
 
@@ -63,6 +71,7 @@
       </div>
       <div class="map-addons">
         <v-image class="rainbow" src="map/raibow-way.png"/>
+        <v-image class="player" src="map/sia.png"/>
       </div>
     </template>
 
@@ -73,6 +82,7 @@
       </div>
       <div class="map-addons">
         <v-image class="rainbow" src="map/raibow-way.png"/>
+        <v-image class="player" src="map/sia.png"/>
       </div>
     </template>
 
@@ -83,6 +93,7 @@
       </div>
       <div class="map-addons">
         <v-image class="rainbow" src="map/raibow-way.png"/>
+        <v-image class="player" src="map/sia.png"/>
       </div>
     </template>
 
@@ -93,9 +104,10 @@
       </div>
       <div class="map-addons">
         <v-image class="sia" src="map/sia.png"/>
-        <v-image class="locker" src="map/locker.png"/>
         <v-image class="boss" src="map/boss-labrinth.png"/>
+        <v-image class="player" src="map/labrinth.png"/>
       </div>
+      <v-image class="locker" src="map/locker.png"/>
       <v-image class="map-key" src="map/key.png"/>
     </template>
 
@@ -106,7 +118,7 @@
       </div>
       <div class="map-addons">
         <div class="stairs"><v-image src="map/stairs.png"/></div>
-        <!-- <v-image class="player" src="map/labrinth.png"/> -->
+        <v-image class="player" src="map/labrinth.png"/>
       </div>
     </template>
 
@@ -117,7 +129,7 @@
       </div>
       <div class="map-addons">
         <div class="stairs"><v-image src="map/stairs.png"/></div>
-        <!-- <v-image class="player" src="map/labrinth.png"/> -->
+        <v-image class="player" src="map/labrinth.png"/>
       </div>
     </template>
 
@@ -128,7 +140,7 @@
       </div>
       <div class="map-addons">
         <div class="stairs"><v-image src="map/stairs.png"/></div>
-        <!-- <v-image class="player" src="map/labrinth.png"/> -->
+        <v-image class="player" src="map/labrinth.png"/>
       </div>
     </template>
 
@@ -139,7 +151,6 @@
       </div>
       <div class="map-addons">
         <div class="stairs"><v-image src="map/stairs.png"/></div>
-        <v-image class="player" src="map/labrinth.png"/>
       </div>
     </template>
 
@@ -150,6 +161,10 @@
 export default {
   props: {
     level: {
+      type: Number,
+      default: 1
+    },
+    current: {
       type: Number,
       default: 1
     },
@@ -164,6 +179,12 @@ export default {
         if(this.locked) {
           c +=  ' locked'
         }
+        if(this.current == this.level) {
+          c +=  ' current'
+        }
+        // if(this.current > this.level) {
+        //   c +=  ' opened'
+        // }
         return c
       },
       set: function () {}
@@ -185,15 +206,32 @@ export default {
     display: block;
     position: absolute;
     width: 100%;
+    transform: scale(.7);
+    &.locked {
+      .map-block, .map-addons {
+        filter: brightness(.3);
+      }
+    }
+    &.current {
+      .player {
+        display: block;
+      }
+      .diplo, .sia, .labrinth {
+        filter: brightness(.3);
+      }
+      .map-key {
+        display: none;
+      }
+    }
 
-    // &.locked {
-    //   &>*:not(.map-key) {
-    //     filter: brightness(.3);
-    //   }
-    // }
+    &:not(.locked):not(.current) {
+      .diplo, .sia, .labrinth, .locker, .map-key {
+        display: none;
+      }
+    }
 
     .map-label {
-      display: none;
+      // display: none;
       font-family: font(text);
       position: absolute;
       bottom: 20%;
@@ -232,8 +270,11 @@ export default {
       position: relative;
 
     }
-    .map-key {
+    .map-key, .locker {
       position: absolute;
+    }
+    .player {
+      display: none;
     }
   }
 
@@ -245,8 +286,8 @@ export default {
       z-index: 2;
     }
     .map-key {
-      bottom: 65%;
-      left: 42%;
+      bottom: 191%;
+      left: 75%;
     }
     .boss {
       left: 31%;
@@ -254,6 +295,10 @@ export default {
     }
     .map-label {
       bottom: 28%;
+    }
+    .player {
+      left: 83%;
+      bottom: -122%;
     }
   }
   .map-item-11 {
@@ -265,8 +310,10 @@ export default {
       padding-right: 27%;
       bottom: 23%;
     }
-    .map-addons {
-      display: none;
+    .player {
+      left: 10%;
+      bottom: -283%;
+      transform: scaleX(-1);
     }
   }
   .map-item-10 {
@@ -278,8 +325,9 @@ export default {
       padding-left: 31%;
       bottom: 29%;
     }
-    .map-addons {
-      display: none;
+    .player {
+      left: 80%;
+      bottom: -203%;
     }
   }
   .map-item-9 {
@@ -291,12 +339,14 @@ export default {
       padding-right: 21%;
       bottom: 25%;
     }
-    .map-addons {
-      display: none;
+    .player {
+      left: 10%;
+      bottom: -283%;
+      transform: scaleX(-1);
     }
   }
   .map-item-8 {
-    top: 375%;
+    top: 385%;
     z-index: 4;
     .map-block {
       padding-left: 58%;
@@ -306,20 +356,28 @@ export default {
       bottom: 5%;
     }
     .map-key {
-      bottom: 65%;
-      left: 42%;
+      bottom: 223%;
+      left: 82%;
+    }
+    .locker {
+      bottom: 585%;
+      left: 51%;
     }
     .boss {
-      right: 5%;
-      bottom: 88%;
+      right: -12%;
+      bottom: 86%;
     }
     .diplo {
-      bottom: 302%;
-      left: 39%;
+      bottom: 432%;
+      left: 48%;
+    }
+    .player {
+      left: 28%;
+      bottom: 96%;
     }
   }
   .map-item-7 {
-    top: 403%;
+    top: 409%;
     z-index: 3;
     .map-block {
       padding-left: 18%;
@@ -334,6 +392,10 @@ export default {
       left: 32%;
       z-index: -1;
     }
+    .player {
+      left: -4%;
+      bottom: -27%;
+    }
   }
   .map-item-6 {
     top: 431%;
@@ -347,9 +409,14 @@ export default {
       bottom: 5%;
     }
     .rainbow {
-      bottom: 48%;
+      bottom: 35%;
       left: 32%;
       z-index: -1;
+      transform: scaleX(-1);
+    }
+    .player {
+      left: 90%;
+      bottom: -10%;
       transform: scaleX(-1);
     }
   }
@@ -368,7 +435,12 @@ export default {
       left: 32%;
       z-index: -1;
     }
+    .player {
+      left: -3%;
+      bottom: -10%;
+    }
   }
+
   .map-item-4 {
     top: 525%;
     .map-block {
@@ -379,22 +451,29 @@ export default {
     .map-label {
     }
     .sia {
-      bottom: 111%;
+      bottom: 132%;
       left: 41%;
     }
     .locker {
-      bottom: 126%;
-      left: 45%;
+      bottom: 157%;
+      left: 47%;
     }
     .boss {
       bottom: 49%;
       left: 29%;
+      transform: scaleX(-1);
     }
     .map-key {
       bottom: 65%;
       left: 42%;
     }
+    .player {
+      left: 23%;
+      bottom: 49%;
+      z-index: 1;
+    }
   }
+
   .map-item-3 {
     top: 605%;
     .map-block {
@@ -406,21 +485,24 @@ export default {
     .map-label {
     }
     .player {
-      left: 30%;
-      bottom: 20%;
+      left: 42%;
+      bottom: 86%;
+      z-index: 1;
+      transform: scaleX(-1);
     }
     .stairs {
       overflow: hidden;
-      height: 225%;
-      bottom: 74%;
-      right: 35%;
+      height: 192%;
+      bottom: 84%;
+      left: 21%;
       z-index: -1;
     }
   }
   .map-item-2 {
     top: 658%;
-    z-index: -1;
+    z-index: 0;
     .map-block {
+      z-index: 1;
       .image {
         margin: auto;
       }
@@ -428,14 +510,15 @@ export default {
     .map-label {
     }
     .player {
-      left: 30%;
-      bottom: 20%;
+      left: 42%;
+      bottom: 86%;
+      z-index: 1;
     }
     .stairs {
       overflow: hidden;
       height: 225%;
       bottom: 78%;
-      left: 34%;
+      left: 66%;
       z-index: -1;
     }
   }
@@ -449,14 +532,15 @@ export default {
     .map-label {
     }
     .player {
-      left: 30%;
-      bottom: 20%;
+      left: 42%;
+      bottom: 54%;
+      transform: scaleX(-1);
     }
     .stairs {
       overflow: hidden;
-      height: 140%;
-      bottom: 48%;
-      left: 58%;
+      height: 149%;
+      bottom: 50%;
+      left: 21%;
       z-index: -1;
     }
   }
@@ -473,9 +557,9 @@ export default {
     }
     .stairs {
       overflow: hidden;
-      height: 200%;
-      bottom: 40%;
-      left: 28%;
+      height: 231%;
+      bottom: 0%;
+      left: 58%;
       z-index: 1;
     }
   }

@@ -1,12 +1,13 @@
 <template lang="html">
   <v-page name="map" class="level-1">
-    <v-image class="__REF__" src="__REF_MAP_SCREEN.png"/>
+    <!-- <v-image class="__REF__" src="__REF_MAP_SCREEN.png"/> -->
+    <input type="number" v-model="current_level" style="position: fixed;top: 0px;left: 0px;font-size: 20px;width: 3em;">
     <div class="content">
       <v-image class="image-title" :src="'titles/arcade-'+$getLang()+'.png'"/>
 
-      <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='100' class="-locked"/>
+      <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='100' :class="current_level == 13?'':'locked'"/>
       <!-- $store.state.user_old.games.campaing.level -->
-      <v-map-level v-for="l in [12,11,10,9,8,7,6,5,4,3,2,1,0]" :key="l" :level="l" :locked="l > 1"/>
+      <v-map-level v-for="l in [12,11,10,9,8,7,6,5,4,3,2,1,0]" :key="l" :level="l" :locked="l > current_level" :current="current_level"/>
       <div class="map-footer">
         <v-button class="primary" back>Back</v-button>
       </div>
@@ -18,6 +19,11 @@
 import MapLevel from '@/modules/map-level.vue'
 
 export default {
+  data() {
+    return {
+      current_level: 8
+    }
+  },
   components: {
     'v-map-level': MapLevel
   },
@@ -39,7 +45,9 @@ export default {
   }
 
 
-  .page-map {
+  #app .page.page-map {
+    align-items: flex-start;
+
     &.page > .container {
       padding: 0;
       max-width: 1020px;
@@ -60,6 +68,7 @@ export default {
     #avatar-arcade {
       width: 100%;
       margin-bottom: 10%;
+      transform: scale(.7);
     }
     .image-title {
       padding: 12% 0 4%;
