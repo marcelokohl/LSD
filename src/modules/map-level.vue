@@ -1,5 +1,5 @@
 <template>
-  <div class="map-item" :class="theClass">
+  <v-button class="no-style map-item" :class="theClass" :to="theGameTo">
 
     <div v-if="level != 0" class="map-label">{{theLevelLabel}}</div>
 
@@ -154,7 +154,7 @@
       </div>
     </template>
 
-  </div>
+  </v-button>
 </template>
 
 <script>
@@ -194,6 +194,20 @@ export default {
         return 'Level ' + this.level
       },
       set: function () {}
+    },
+    theGameTo: {
+      get: function () {
+
+        if(this.locked) return ''
+
+        var g
+        var l
+        if(this.level <= 4) {g = 'labrinth'; l = this.level}
+        else if(this.level <= 8) {g = 'sia'; l = this.level - 4}
+        else if(this.level <= 12) {g = 'diplo'; l = this.level - 8}
+        return {name:'game', params: { game: g, level: l }}
+      },
+      set: function () {}
     }
   },
 }
@@ -207,6 +221,10 @@ export default {
     position: absolute;
     width: 100%;
     transform: scale(.7);
+    background: transparent;
+    border: 0;
+    outline: none;
+    
     &.locked {
       .map-block, .map-addons {
         filter: brightness(.3);
