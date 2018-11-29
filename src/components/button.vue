@@ -84,6 +84,10 @@ export default {
     opacity: 0.5;
   }
 
+  & > * {
+    pointer-events: none;
+  }
+
   &:not(.no-style) {
     cursor: pointer;
     text-transform: uppercase;
