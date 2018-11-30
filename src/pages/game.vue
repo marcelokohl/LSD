@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     gameUrl() {
-      return 'https://lsd-game.herokuapp.com/game/?l='+this.level+'&g='+this.game
+      return '/external/game/?l='+this.level+'&g='+this.game
     }
   },
   mounted() {
