@@ -4,9 +4,9 @@
     <v-image class="image-title" :src="'titles/arcade-'+$getLang()+'.png'"/>
     <v-text class="title">Select your player</v-text>
     <div class="game-avatars">
-      <v-game-avatar name="labrinth"  mode="arcade"/>
-      <v-game-avatar name="sia"  mode="arcade"/>
-      <v-game-avatar name="diplo"  mode="arcade"/>
+      <v-game-avatar name="labrinth"  mode="arcade" :to="{name:'game', params: { game: 'labrinth', level: 'arcade'}}"/>
+      <v-game-avatar name="sia"  mode="arcade" :to="{name:'game', params: { game: 'sia', level: 'arcade'}}"/>
+      <v-game-avatar name="diplo"  mode="arcade" :to="{name:'game', params: { game: 'diplo', level: 'arcade'}}"/>
     </div>
     <div class="arcade-buttons">
       <v-button tag="button" class="" :to="{name:'ranking'}">

@@ -13,6 +13,8 @@ import UserProfile from "@/pages/user-profile.vue";
 import UserProfileEdit from "@/pages/user-profile-edit.vue";
 import Arcade from "@/pages/arcade/arcade.vue";
 import Ranking from "@/pages/arcade/ranking.vue";
+import Made from "@/pages/arcade/made.vue";
+import Game from "@/pages/game.vue";
 
 import store from "@/store/main";
 
@@ -45,9 +47,9 @@ const router = new VueRouter({
         }
       }
     },
-    { 
-      path: "/logout", 
-      name: "logout", 
+    {
+      path: "/logout",
+      name: "logout",
       beforeEnter: async (to, from, next) => {
         await store.dispatch("logout");
         next({ path: "home" });
@@ -110,25 +112,38 @@ const router = new VueRouter({
       component: Arcade,
       meta: { requiresAuth: true }
     },
+    {
+      path: "/made",
+      name: "made",
+      component: Made,
+      meta: { requiresAuth: true }
+    },
+    {
+      path: "/game",
+      name: "game",
+      component: Game,
+      props: true,
+      meta: { requiresAuth: true }
+    },
     { path: "*", redirect: { name: "home" } }
   ]
 });
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    // this route requires auth, check if logged in
-    // if not, redirect to login page.
-    if (!store.getters.loggedIn) {
-      next({
-        path: "home",
-        // query: { redirect: to.fullPath }
-      });
-    } else {
-      next();
-    }
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     // this route requires auth, check if logged in
+//     // if not, redirect to login page.
+//     if (!store.getters.loggedIn) {
+//       next({
+//         path: "home",
+//         // query: { redirect: to.fullPath }
+//       });
+//     } else {
+//       next();
+//     }
+//   } else {
+//     next();
+//   }
+// });
 
 export default router;

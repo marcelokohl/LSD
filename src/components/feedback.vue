@@ -51,7 +51,7 @@ export default {
           }
       }
       font-family: font(label);
-      font-size: 1.1rem;
+      font-size: font-size(s);
       margin-bottom: 1rem;
     }
     &.feedback-type-modal {
@@ -59,7 +59,7 @@ export default {
         color: white;
         font-family: font(label);
         text-transform: uppercase;
-        font-size: 2rem;
+        font-size: font-size(l);
 
         position: fixed;
         background: #00000099;

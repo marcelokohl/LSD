@@ -3,10 +3,10 @@
     <div class="container">
       <slot></slot>
     </div>
-    <v-feedback :data="feedback" type="modal"></v-feedback>
+    <!-- <v-feedback :data="feedback" type="modal"></v-feedback>
     <div v-if="loading" class="loading">
       Carregando...
-    </div>
+    </div> -->
   </main>
 </template>
 
@@ -31,13 +31,13 @@ export default {
 <style lang="scss">
   @import "@/scss/colors.scss";
   @import "@/scss/fonts.scss";
-  
+
   .page {
     & > .loading {
       color: white;
       font-family: font(label);
       text-transform: uppercase;
-      font-size: 2rem;
+      font-size: font-size(l);
 
       position: fixed;
       background: #00000099;

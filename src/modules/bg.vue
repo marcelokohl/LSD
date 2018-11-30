@@ -50,8 +50,11 @@
       transform: scale(1);
     }
   }
-  &.bg-arcade, &.bg-ranking {
+  &.bg-arcade, &.bg-ranking, &.bg-made {
     background-color: #390043;
+  }
+  &.bg-game {
+    background-color: #000;
   }
   &.bg-map {
     .bg-inner-map {

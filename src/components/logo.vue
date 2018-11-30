@@ -14,7 +14,7 @@ export default {
   .logo {
     text-align: center;
     .image {
-      width: 240px;
+      max-width: 400px;
       display: inline;
     }
 

@@ -18,7 +18,7 @@ export default {
     name: String,
     progress: {type: Number, default: -1},
     mode: {type: String, default: "campaing"},
-    to: ''
+    to: {}
   },
   computed: {
     the_progress: function() {
@@ -70,6 +70,9 @@ export default {
   $color_sia: #D3188D;
   $color_diplo: #EAE800;
 
+  .game-avatars {
+    display: flex;
+  }
   .game-avatar {
     width: 30rem;
     height: 20rem;
@@ -122,14 +125,15 @@ export default {
       }
 
       .button {
-        width: 8.7em;
-        height: 8.7em;
+        width: 88%;
+        height: 88%;
         overflow: hidden;
         border-radius: 50%;
         display: inline-block;
         border: 1px solid black;
         z-index: 2;
         opacity: 1;
+        padding: 0;
       }
     }
     .button {
