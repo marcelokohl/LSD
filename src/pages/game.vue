@@ -1,6 +1,5 @@
 <template lang="html">
     <v-page name="game" :container="false">
-      <!-- {{game}} -->
       <iframe id="game" :src="gameUrl" width="" height=""></iframe>
     </v-page>
 </template>
@@ -8,21 +7,26 @@
 <script>
 export default {
   props: {
-    game: {
-      type: String,
-      default: 'sia'
-    },
     level: {
-      type: String,
-      default: '1'
+      type: Number,
+      default: 1
     }
   },
   computed: {
     gameUrl() {
-      return '/external/game/?l='+this.level+'&g='+this.game
+      return 'http://localhost/Work/LSD/game/game/?l='+this.level
+    }
+  },
+  methods: {
+    gameMessage(event) {
+      if(event.name == 'startGame') {
+        console.log(event);
+        this.$store.commit("SET_LEVEL", 6);
+      }
     }
   },
   mounted() {
+    window.addEventListener("message", this.gameMessage, false);
     setTimeout(function() {document.getElementById('game').contentWindow.focus();}, 1000);
   }
 }

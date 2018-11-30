@@ -1,13 +1,14 @@
 <template lang="html">
   <v-page name="map" class="level-1">
     <!-- <v-image class="__REF__" src="__REF_MAP_SCREEN.png"/> -->
-    <input type="number" v-model="current_level" style="position: fixed;top: 0px;left: 0px;font-size: 20px;width: 3em;">
+    <input type="number" v-model="theCurrentLevel" style="position: fixed;top: 0px;left: 0px;font-size: 20px;width: 3em;">
     <v-image class="image-title" :src="'titles/arcade.png'"/>
+    {{theCurrentLevel}}
     <div class="content">
 
-      <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='100' :class="current_level == 13?'':'locked'"/>
+      <v-game-avatar name="arcade" :to="{name:'arcade'}" :progress='100' :class="theCurrentLevel == 13?'':'locked'"/>
       <!-- $store.state.user_old.games.campaing.level -->
-      <v-map-level v-for="l in [12,11,10,9,8,7,6,5,4,3,2,1,0]" :key="l" :level="l" :locked="l > current_level" :current="current_level"/>
+      <v-map-level v-for="l in [12,11,10,9,8,7,6,5,4,3,2,1,0]" :key="l" :level="l" :locked="l > theCurrentLevel" :current="theCurrentLevel"/>
     </div>
     <div class="map-footer">
       <v-button class="primary" back>Back</v-button>
@@ -20,13 +21,12 @@ import jquery from 'jquery'
 import MapLevel from '@/modules/map-level.vue'
 
 export default {
-  data() {
-    return {
-      current_level: 2
+  computed: {
+    theCurrentLevel() {
+      return this.$store.state.user.game.campaign.process
     }
   },
   mounted() {
-    // alert();
     this.scrollToLevel()
   },
   components: {
@@ -35,7 +35,7 @@ export default {
   methods: {
     scrollToLevel() {
       jquery('.page-content').animate({
-        scrollTop: jquery('.map-item-'+this.current_level).offset().top - (jquery(window).height()/2)
+        scrollTop: jquery('.map-item-'+this.theCurrentLevel).offset().top - (jquery(window).height()/2)
       }, 2000);
     }
   }

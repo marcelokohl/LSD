@@ -197,15 +197,8 @@ export default {
     },
     theGameTo: {
       get: function () {
-
         if(this.locked) return ''
-
-        var g
-        var l
-        if(this.level <= 4) {g = 'labrinth'; l = this.level}
-        else if(this.level <= 8) {g = 'sia'; l = this.level - 4}
-        else if(this.level <= 12) {g = 'diplo'; l = this.level - 8}
-        return {name:'game', params: { game: g, level: l }}
+        return {name:'game', params: { level: this.level }}
       },
       set: function () {}
     }
