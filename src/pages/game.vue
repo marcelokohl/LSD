@@ -19,10 +19,19 @@ export default {
   },
   computed: {
     gameUrl() {
-      return 'https://lsd-game.herokuapp.com/game/?l='+this.level+'&g='+this.game
+      return 'http://localhost/Work/LSD/game/game/?l='+this.level+'&g='+this.game
     }
   },
   mounted() {
+    window.addEventListener("message", receiveMessage, false);
+    function receiveMessage(event)
+    {
+      alert()
+      // if (event.origin !== "http://example.org:8080")
+        // return;
+
+      // ...
+    }
     setTimeout(function() {document.getElementById('game').contentWindow.focus();}, 1000);
   }
 }
