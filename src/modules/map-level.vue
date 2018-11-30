@@ -481,7 +481,7 @@ export default {
     }
     .boss {
       bottom: 49%;
-      left: 29%;
+      left: 45%;
       transform: scaleX(-1);
     }
     .map-key {

@@ -43,6 +43,8 @@ export default {
 </script>
 
 <style lang="scss">
+  @import "@/scss/breakpoints.scss";
+
   .__REF__ {
     position: absolute;
     opacity: 0;
@@ -81,16 +83,26 @@ export default {
       width: 100%;
       margin-bottom: 10%;
       transform: scale(.7);
+      height: 18em;
+      margin: 0;
+      font-size: 16px;
     }
     .image-title {
-      padding: 12% 0 4%;
-      margin: 0 auto;
-      max-width: 490px;
+      margin: 4rem auto 0;
+      max-width: 400px;
+      width: calc(100% - 40px);
+      padding: 20px;
     }
     .content {
       z-index: 2;
-      position: relative;
+      position: absolute;
       width: 700px;
+      left: 50%;
+      margin-left: -350px;
+
+      @include breakpoint-smart() {
+        transform: scale(.7);
+      }
     }
 
   }
