@@ -5,7 +5,7 @@
     <v-input v-model="form.name" type="text">Name</v-input>
     <v-input v-model="form.nickname" type="text">Nickname</v-input>
     <v-input v-model="form.email" type="text" :feedback="feedback.email">Email</v-input>
-    <v-input v-model="form.password" type="password">Password</v-input>
+    <v-input v-model="form.password" type="password" :feedback="feedback.password">Password</v-input>
     <v-input v-model="form.password_confirmation" type="password">Password Confirmation</v-input>
     <v-select v-model="form.country_id" :options="countriesOptions">Country</v-select>
     <v-button tag="button" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Sign up</v-button>

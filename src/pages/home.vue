@@ -26,7 +26,7 @@ export default {
   mounted: function() {
     // this.$router.query;
     // debugger;
-    console.log(process.env)
+    // console.log(process.env)
   },
   methods: {
     setLang: function(value) {

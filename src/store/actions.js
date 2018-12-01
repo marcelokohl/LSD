@@ -59,6 +59,20 @@ const show = async ({ commit }) => {
   return resp;
 };
 
+const me = async ({ commit }) => {
+  const resp = await api.client.get(`/users/me`);
+
+  if (resp.ok) {
+    commit("SET_USER", resp.data.data.attributes);
+    commit("SET_LOGGED_IN", true);
+  } else {
+    commit("SET_USER", {});
+    commit("SET_LOGGED_IN", false);
+  }
+
+  return resp;
+};
+
 const update = async (_, payload) => {
   const user = { ...payload };
 
@@ -68,18 +82,9 @@ const update = async (_, payload) => {
 };
 
 const register = async ({ commit }, payload) => {
-  const {
-    user: { name, email, password, password_confirmation, nickname, country_id }
-  } = payload;
+  const { user } = payload;
 
-  const resp = await api.client.post("/users/", {
-    name,
-    nickname,
-    email,
-    password,
-    password_confirmation,
-    country_id
-  });
+  const resp = await api.client.post("/users/", { user });
 
   if (resp.ok) {
     commit("SET_USER", resp.data.data.attributes);
@@ -149,5 +154,6 @@ export default {
   update,
   loadCountries,
   logout,
-  getRanking
+  getRanking,
+  me,
 };
