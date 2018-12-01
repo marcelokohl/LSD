@@ -2,6 +2,7 @@ export default {
   logged: false,
   countries: [],
   total_levels: 12,
+  current_game: "labrinth",
 
   user: {
     name: "Kohl",
@@ -18,9 +19,14 @@ export default {
       campaign: {
         process: 5
       }
-    }
+    },
+    arcade: {
+      sia: 1001,
+      labrinth: 0,
+      diplo: 0
+    },
   },
-  
+
   user_old: {
     lang: "en",
     nickname: "Marcelo Kohl",

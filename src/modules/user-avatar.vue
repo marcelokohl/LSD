@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="user-avatar">
-    <v-button v-if="to" class="no-style user-avatar-inner">
+    <v-button v-if="to" :to="to" class="no-style user-avatar-inner">
       <v-image :src="getAvatarURI" :remote="avatar ? remote : false" />
     </v-button>
     <div v-else class="user-avatar-inner">
@@ -21,7 +21,7 @@ export default {
       default: false,
     },
     to: {
-      type: String
+      type: Object
     }
   },
   computed: {

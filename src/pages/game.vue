@@ -14,14 +14,16 @@ export default {
   },
   computed: {
     gameUrl() {
-      return 'http://localhost/Work/LSD/game/game/?l='+this.level
+      return 'https://lsd-game.herokuapp.com/game/?l='+this.level
     }
   },
   methods: {
     gameMessage(event) {
-      if(event.name == 'startGame') {
-        console.log(event);
-        this.$store.commit("SET_LEVEL", 6);
+      if(event.name == 'endCampaingLevel') { // QUANDO PASSAR O LEVEL
+        this.$store.commit("SET_LEVEL", this.$store.state.user.game.campaign.process + 1); //SALVA O LEVEL PASSADO
+      }
+      else if(event.name == 'endArcadeLevel') { // QUANDO PASSAR NO MODO ARCADE
+        this.$store.commit("SET_SCORE", event.score); // SALVA O SCORE PARA O GAME ATUAL (DIPLO, SIA OU LABRINTH)
       }
     }
   },
