@@ -1,5 +1,6 @@
 <template lang="html">
     <v-page name="game" :container="false">
+      {{game}}
       <iframe id="game" :src="gameUrl" width="" height=""></iframe>
     </v-page>
 </template>
@@ -10,6 +11,9 @@ export default {
     level: {
       type: Number,
       default: 1
+    },
+    game: {
+      type: String
     }
   },
   computed: {
@@ -28,6 +32,7 @@ export default {
     }
   },
   mounted() {
+    this.$store.commit("SET_GAME_NAME", this.game); // SETA O NOME DO GAME ATUAL
     window.addEventListener("message", this.gameMessage, false);
     setTimeout(function() {document.getElementById('game').contentWindow.focus();}, 1000);
   }
