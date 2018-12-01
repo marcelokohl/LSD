@@ -16,8 +16,8 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
-  mounted(){
-    this.getRanking({artist: 'diplo'})
+  async mounted(){
+    await this.me();
   },
   data() {
     return {
@@ -25,7 +25,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions(['getRanking']),
+    ...mapActions(['getRanking', 'me']),
     theGameProgress: function(i) {
       if (this.campaignProgress < this.game_levels * i) return -1;
       else if (this.campaignProgress <= this.game_levels * i) return 0;

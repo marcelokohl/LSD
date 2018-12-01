@@ -18,7 +18,7 @@ export default {
     },
     remote: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     to: {
       type: String
