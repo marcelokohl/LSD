@@ -89,7 +89,7 @@ const me = async ({ commit }) => {
 const update = async (_, payload) => {
   const user = { ...payload };
 
-  const resp = await api.client.put("/users/1", user);
+  const resp = await api.client.put("/users/1", { user });
 
   return resp;
 };

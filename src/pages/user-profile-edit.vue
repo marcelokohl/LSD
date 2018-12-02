@@ -83,12 +83,9 @@ export default {
           // this.feedback = {
           //   ...this.feedback,
           // }
-
-          this.fetchFeedbackWithErrors(data);
-          console.log('this.feedback', this.feedback)
+          await this.me();
         } else {
-          // this.setFeedbackField('default_error', data.default_error)
-          this.setFeedbackField('default_error', data.default_error)
+          this.fetchFeedbackWithErrors(data);
         }
       } catch (error) {
         console.error(error)
