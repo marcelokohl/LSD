@@ -3,9 +3,9 @@
     <v-logo/>
     <v-text class="title">Change your password</v-text>
     
-    <v-input v-model="form.old_password" type="password">Old Password</v-input>
-    <v-input v-model="form.password" type="password">Password</v-input>
-    <v-input v-model="form.password_confirmation" type="password">Password Confirmation</v-input>
+    <v-input v-model="form.old_password" type="password" :feedback="feedback.old_password">Old Password</v-input>
+    <v-input v-model="form.password" type="password" :feedback="feedback.password">Password</v-input>
+    <v-input v-model="form.password_confirmation" type="password" :feedback="feedback.confirmation_password">Password Confirmation</v-input>
     
     <v-button tag="button" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Create</v-button>
   </v-page>
@@ -23,20 +23,32 @@ export default {
         old_password: "",
         password: "",
         password_confirmation: ""
-      }
+      },
+      feedback: {
+        old_password: [],
+        password: [],
+        password_confirmation: []
+      },
     };
   },
   methods: {
     ...mapActions(["updatePassword"]),
     async submit() {
+      this.resetFeedback();
+
       if (!this.canSubmit) return;
 
       try {
         this.setBusy(true);
-        const r = await this.updatePassword({ user: this.form });
-        // this.$router.push('main');
+        const { ok, data } = await this.updatePassword({ user: this.form });
+
+        if (ok) {
+          this.$router.push('main');
+        } else {
+          this.fetchFeedbackWithErrors(data);
+        }
       } catch (error) {
-        console.error(error);
+        console.error(error)
       } finally {
         this.setBusy(false);
       }

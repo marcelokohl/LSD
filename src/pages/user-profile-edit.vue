@@ -5,7 +5,10 @@
         &lt;
       </v-button>
     </div>
-    <v-user-avatar :avatar="form.image" :remote="true"/>
+    <v-user-avatar :avatar="avatarPreview" :remote="true" v-if="avatarPreview"/>
+    <v-user-avatar :avatar="form.image" :remote="true" v-else />
+
+    <input type="file" @change="onSelect"/>
     <v-button tag="a" class="no-style picture-button">
       Change profile picture
     </v-button>
@@ -30,8 +33,9 @@ import Form from "@/mixins/Form";
 
 export default {
   mixins: [Form],
-  mounted() {
-
+  async mounted() {
+    
+    await this.me();
     const { nickname, image, country, email } = this.user;
 
     this.setForm({
@@ -44,16 +48,16 @@ export default {
   data() {
     return {
       form: {
-        name: "",
         nickname: "",
         email: "",
         country_id: null,
         image: null,
-      }
+      },
+      avatarPreview: null,
     };
   },
   methods: {
-    ...mapActions(["update"]),
+    ...mapActions(["update", 'me']),
     async submit() {
       this.resetFeedback();
 
@@ -61,6 +65,11 @@ export default {
 
       try {
         this.setBusy(true);
+
+        if(this.avatarPreview) {
+          this.form.image = this.avatarPreview;
+        }
+
         const { ok, data } = await this.update(this.form);
 
         if (ok) {
@@ -86,11 +95,23 @@ export default {
       } finally {
         this.setBusy(false);
       }
+    },
+    getBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+      });
+    },
+    async onSelect(evt){
+      var file = evt.target.files[0];
+      this.avatarPreview = await this.getBase64(file);
+      console.log(this.avatarPreview)
     }
   },
   computed: {
-    ...mapGetters(["countries"]),
-    ...mapGetters(['avatar', 'user', 'game']),
+    ...mapGetters(['avatar', 'user', 'game', 'countries']),
     countriesOptions() {
       if (!this.countries) return [];
 
