@@ -1,6 +1,6 @@
 <template lang="html">
   <v-page name="user-profile" :container="true" >
-    <div class="top" v-if="user && user.nickname">
+    <div class="top" v-if="loggedIn">
       <v-button tag="a" class="no-style" :back="true">
         X
       </v-button>
@@ -10,7 +10,7 @@
 
     </div>
     <div class="profile-grid">
-      <div class="user-menu" v-if="user && user.nickname">
+      <div class="user-menu" v-if="loggedIn">
         <v-user-avatar :avatar="user.image" :remote="true"/>
         <v-text class="nickname">{{user.nickname}}</v-text>
         <v-text class="country">{{user.country.name}}</v-text>
@@ -62,7 +62,7 @@ export default {
     await this.me();
   },
   computed:{
-    ...mapGetters(['avatar', 'user', 'game', 'campaignProgress']),
+    ...mapGetters(['avatar', 'user', 'game', 'campaignProgress', 'loggedIn']),
     isGameArcade () {
       return this.campaignProgress >= 13
     },
