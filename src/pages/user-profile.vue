@@ -24,7 +24,7 @@
         <v-button tag="button" class="primary close-button" to="/main">
           Close
         </v-button>
-        <v-button tag="button" class="primary quit-button" to="/">
+         <v-button tag="button" class="primary quit-button" to="/logout">
           Quit Game
         </v-button>
       </div>
