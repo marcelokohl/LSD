@@ -9,7 +9,7 @@
       <v-button button-type="submit" class="primary" :click="submit" :busy="isBusy" :disabled="!canSubmit">Login</v-button>
       <v-button tag="button" class="secondary" to="/home">Back</v-button>
       <v-button class="link" to="/forgot">i forgot my password</v-button>
-      <v-button class="link" to="/newaccount">i dont't have an account</v-button>
+      <v-button class="link" to="/newaccount">i don't have an account</v-button>
     </v-form>
   </v-page>
 </template>

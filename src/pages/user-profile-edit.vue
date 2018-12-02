@@ -104,7 +104,7 @@ export default {
     async onSelect(evt){
       var file = evt.target.files[0];
       this.avatarPreview = await this.getBase64(file);
-      console.log(this.avatarPreview)
+      this.form.image = this.avatarPreview;
     }
   },
   computed: {
