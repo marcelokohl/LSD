@@ -1,6 +1,6 @@
 <template lang="html">
-  <v-page name="user-profile" :container="true">
-    <div class="top">
+  <v-page name="user-profile" :container="true" >
+    <div class="top" v-if="user && user.nickname">
       <v-button tag="a" class="no-style" :back="true">
         X
       </v-button>
@@ -10,9 +10,9 @@
 
     </div>
     <div class="profile-grid">
-      <div class="user-menu">
+      <div class="user-menu" v-if="user && user.nickname">
         <v-user-avatar :avatar="user.image" :remote="true"/>
-        <v-text class="nickname">{{user.name}}</v-text>
+        <v-text class="nickname">{{user.nickname}}</v-text>
         <v-text class="country">{{user.country.name}}</v-text>
 
         <v-button tag="button" to="/main">
@@ -28,19 +28,21 @@
           Quit Game
         </v-button>
       </div>
-      <div class="user-score">
-        <template v-if="game.campaign.process == 12">
+      <div class="user-score" v-if="game && game.arcade">
+        <template v-if="isGameArcade">
           <v-text class="title">My Score</v-text>
-          <v-game-list-item name="labrinth" :score="$store.state.user_old.games.arcade.sia.score"/>
-          <v-game-list-item name="sia" :score="$store.state.user_old.games.arcade.sia.score"/>
-          <v-game-list-item name="diplo" :score="$store.state.user_old.games.arcade.sia.score"/>
+          <v-game-list-item name="labrinth" :is-arcade="isGameArcade" :score="game.arcade.labrinth"/>
+          <v-game-list-item name="sia" :is-arcade="isGameArcade" :score="game.arcade.sia"/>
+          <v-game-list-item name="diplo" :is-arcade="isGameArcade" :score="game.arcade.diplo"/>
         </template>
+        
         <template v-else>
           <v-text class="title">My Progress</v-text>
-          <v-game-list-item name="labrinth" :progress="$store.state.user_old.games.campaing.labrinth.progress"/>
-          <v-game-list-item name="sia" :progress="$store.state.user_old.games.campaing.sia.progress"/>
-          <v-game-list-item name="diplo" :progress="$store.state.user_old.games.campaing.diplo.progress"/>
+          <v-game-list-item name="labrinth" :is-arcade="isGameArcade" :progress="campaignProgress"/>
+          <v-game-list-item name="sia" :is-arcade="isGameArcade" :progress="campaignProgress"/>
+          <v-game-list-item name="diplo" :is-arcade="isGameArcade" :progress="campaignProgress"/>
         </template>
+       
 
         <v-button tag="button" class="primary quit-button" to="/logout">
           Quit Game
@@ -52,12 +54,25 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from "vuex";
+import { mapActions, mapGetters } from "vuex";
+import dp from 'dot-prop';
 
 export default {
+  async mounted(){
+    await this.me();
+  },
   computed:{
-    ...mapGetters(['avatar', 'user', 'game'])
-  }
+    ...mapGetters(['avatar', 'user', 'game', 'campaignProgress']),
+    isGameArcade () {
+      return this.campaignProgress >= 13
+    },
+    isGameCampaign () {
+      return this.campaignProgress <= 12
+    },
+  },
+  methods: {
+    ...mapActions(['me']),
+  },
 }
 </script>
 
