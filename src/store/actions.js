@@ -1,5 +1,6 @@
 import api from "@/api";
 import { storage } from "@/helpers";
+import dp from 'dot-prop';
 
 const login = async ({ commit }, payload) => {
   const { email, password } = payload;
@@ -10,7 +11,10 @@ const login = async ({ commit }, payload) => {
   });
 
   if (resp.ok) {
-    commit("SET_USER", resp.data.data.attributes);
+    commit("SET_USER", {
+      ...resp.data.data.attributes,
+      id: resp.data.data.id,
+    });
     commit("SET_LOGGED_IN", true);
     storage.setItem("token", resp.data.data.attributes.token);
   } else {
@@ -27,7 +31,10 @@ const loginSpotify = async ({ commit }, payload) => {
   const resp = await api.client.get(`/users/1`);
 
   if (resp.ok) {
-    commit("SET_USER", resp.data.data.attributes);
+    commit("SET_USER", {
+      ...resp.data.data.attributes,
+      id: resp.data.data.id,
+    });
     commit("SET_LOGGED_IN", true);
   } else {
     commit("SET_USER", {});
@@ -49,7 +56,10 @@ const show = async ({ commit }) => {
   const resp = await api.client.get(`/users/1`);
 
   if (resp.ok) {
-    commit("SET_USER", resp.data.data.attributes);
+    commit("SET_USER", {
+      ...resp.data.data.attributes,
+      id: resp.data.data.id,
+    });
     commit("SET_LOGGED_IN", true);
   } else {
     commit("SET_USER", {});
@@ -63,7 +73,10 @@ const me = async ({ commit }) => {
   const resp = await api.client.get(`/users/me`);
 
   if (resp.ok) {
-    commit("SET_USER", resp.data.data.attributes);
+    commit("SET_USER", {
+      ...resp.data.data.attributes,
+      id: resp.data.data.id,
+    });
     commit("SET_LOGGED_IN", true);
   } else {
     commit("SET_USER", {});
@@ -129,14 +142,26 @@ const loadCountries = async ({ commit }) => {
   return resp;
 };
 
-
 const getRanking = async ({ commit }, payload) => {
-  const { world = 'world', artist } = payload;
+  const { world = "world", artist } = payload;
   const resp = await api.client.get(`/game/ranking/${world}/${artist}`);
   if (resp.ok) {
-    commit("SET_RANKING", resp.data.data);
+    const data = resp.data.data.reduce((acc, cur) => {
+      const row = {
+        user_id: dp.get(cur, 'relationships.user.data.id', null),
+        user_nickname: dp.get(cur, 'relationships.user.data.nickname', null),
+        image: dp.get(cur, 'relationships.user.data.image', null),
+        score: dp.get(cur, `attributes.artists.${artist}`, 0),
+      }
+
+      return [
+        ...acc,
+        row,
+      ];
+    }, []);
+    commit("SET_ARTIST_RANKING", { artist, data });
   } else {
-    commit("SET_RANKING", null);
+    commit("SET_ARTIST_RANKING", { artist, data: [] });
   }
 
   return resp;
@@ -155,5 +180,5 @@ export default {
   loadCountries,
   logout,
   getRanking,
-  me,
+  me
 };

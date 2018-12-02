@@ -16,5 +16,8 @@ export default {
   },
   SET_COUNTRIES(state, payload) {
     state.countries = payload || [];
+  },
+  SET_ARTIST_RANKING(state, { artist, data }) {
+    state.rankings[artist] = data || [];
   }
 }

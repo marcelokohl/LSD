@@ -8,15 +8,15 @@
       <v-game-avatar @click.native="tab=2" name="diplo" mode="arcade" :class="tab==2?'active':''"/>
     </div>
 
-    <template v-if="$store.state.ranking[tabs[tab].name].length">
+    <template v-if="getRankingByTab.length">
       <v-text class="title">Your best score</v-text>
-      <v-text class="user-score">{{$store.state.user_old.games.arcade['sia'].score}}pts</v-text>
+      <v-text class="user-score">{{getMyBestScore}}pts</v-text>
       <div class="ranking-grid">
         <v-text class="title">Ranking</v-text>
         <div class="ranking-list">
-          <div :title="item.name + ': ' + item.score + 'pts'" class="ranking-item" :class="item.user?'ranking-item-user':''" v-for="item in $store.state.ranking[tabs[tab].name]" :key="item.pos">
+          <div :title="item.user_nickname + ': ' + item.score + 'pts'" class="ranking-item" :class="isCurrentUser(item.user_id) ?'ranking-item-user':''" v-for="(item, $index) in getRankingByTab" :key="$index">
             <v-user-avatar />
-            <v-text class="name" >{{item.name}}</v-text>
+            <v-text class="name" >{{item.user_nickname}}</v-text>
             <v-text class="score">{{item.score}}</v-text>
           </div>
         </div>
@@ -41,7 +41,16 @@
 
 <script>
 
+import { mapGetters, mapActions } from 'vuex';
+import dp from 'dot-prop';
+
 export default {
+  async created() {
+    await this.me();
+    await this.getRanking({ artist: 'labrinth'});
+    await this.getRanking({ artist: 'sia'});
+    await this.getRanking({ artist: 'diplo'});
+  },
   data() {
     return {
       tab: 0,
@@ -51,7 +60,24 @@ export default {
         {name:'diplo', label:'Diplo'},
       ]
     }
-  }
+  },
+  computed: {
+    ...mapGetters(['avatar', 'user', 'game', 'campaignProgress', 'ranking']),
+    getRankingByTab(){
+      const { tab, tabs, ranking } = this;
+      return ranking[tabs[tab].name];
+    },
+    getMyBestScore(){
+      const { tab, tabs, game} = this;
+      return dp.get(game, `arcade.${tabs[tab].name}`, 0);
+    },
+  },
+  methods: {
+    ...mapActions(['getRanking', 'me']),
+    isCurrentUser(id){
+      return this.user.id == id;
+    }
+  },
 }
 </script>
 

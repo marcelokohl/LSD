@@ -13,11 +13,16 @@ const countries = state => state.countries || [];
 const campaignProgress = state => 
   dp.get(state, "user.game.campaign.process", 0);
 
+const ranking = state => state.rankings || { labrinth: [], sia: [], diplo: [] }
+
+
+
 export default {
   countries,
   campaignProgress,
   user,
   game,
   avatar,
-  loggedIn
+  loggedIn,
+  ranking,
 };
