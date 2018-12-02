@@ -1,7 +1,7 @@
 <template lang="html">
   <v-page name="login" :container="true" :feedback="[feedback.default_error, 'error']" :loading="isBusy">
     <v-logo/>
-    <v-form :on-submit="submit">
+    <v-form :on-submit="submit" autocomplete="off">
       <v-text class="title">Login</v-text>
       <v-input v-model="form.email" type="text" :feedback="feedback.email">Email </v-input>
       <v-input v-model="form.password" type="password">Password</v-input>

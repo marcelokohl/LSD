@@ -1,7 +1,7 @@
 <template lang="html">
   <v-control :feedback="feedback">
     <label><slot></slot></label>
-    <input v-model="inputVal" ref="input":type="type" :disabled="disabled || busy">
+    <input v-model="inputVal" ref="input":type="type" :disabled="disabled || busy"  autocomplete="off">
   </v-control>
 </template>
 

@@ -1,7 +1,7 @@
 <template lang="html">
   <v-control :feedback="feedback" class="form-select">
     <label><slot></slot></label>
-    <select v-model="inputVal" :disabled="disabled || busy">
+    <select v-model="inputVal" :disabled="disabled || busy" autocomplete="off">
       <option v-for="(option, $index) in options" :value="option.value" :key="$index">
         {{option.label}}
       </option>
