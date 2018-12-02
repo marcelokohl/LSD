@@ -22,11 +22,11 @@ export default {
   data() {
     return {
       form: {
-        name: "mario",
-        nickname: "mario",
-        email: "mario@test.com",
-        password: "123456",
-        password_confirmation: "123456",
+        name: "",
+        nickname: "",
+        email: "",
+        password: "",
+        password_confirmation: "",
         country_id: null
       },
     };
