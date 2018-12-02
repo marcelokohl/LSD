@@ -1,6 +1,6 @@
 import api from "@/api";
 import { storage } from "@/helpers";
-import dp from 'dot-prop';
+import dp from "dot-prop";
 
 const login = async ({ commit }, payload) => {
   const { email, password } = payload;
@@ -13,7 +13,7 @@ const login = async ({ commit }, payload) => {
   if (resp.ok) {
     commit("SET_USER", {
       ...resp.data.data.attributes,
-      id: resp.data.data.id,
+      id: resp.data.data.id
     });
     commit("SET_LOGGED_IN", true);
     storage.setItem("token", resp.data.data.attributes.token);
@@ -33,7 +33,7 @@ const loginSpotify = async ({ commit }, payload) => {
   if (resp.ok) {
     commit("SET_USER", {
       ...resp.data.data.attributes,
-      id: resp.data.data.id,
+      id: resp.data.data.id
     });
     commit("SET_LOGGED_IN", true);
   } else {
@@ -58,7 +58,7 @@ const show = async ({ commit }) => {
   if (resp.ok) {
     commit("SET_USER", {
       ...resp.data.data.attributes,
-      id: resp.data.data.id,
+      id: resp.data.data.id
     });
     commit("SET_LOGGED_IN", true);
   } else {
@@ -75,7 +75,7 @@ const me = async ({ commit }) => {
   if (resp.ok) {
     commit("SET_USER", {
       ...resp.data.data.attributes,
-      id: resp.data.data.id,
+      id: resp.data.data.id
     });
     commit("SET_LOGGED_IN", true);
   } else {
@@ -91,6 +91,32 @@ const update = async (_, payload) => {
 
   const resp = await api.client.put("/users/1", { user });
 
+  return resp;
+};
+
+const progressCampaign = async ({ dispatch }) => {
+  const resp = await api.client.put("/game/process_campaign");
+
+  if (resp.ok) {
+    await dispatch("me");
+  }
+  return resp;
+};
+
+const progressArcade = async ({ dispatch }, payload) => {
+  const { score = 0, artist } = payload;
+
+  const data = {
+    arcade: {
+      [artist]: score
+    }
+  };
+
+  const resp = await api.client.post("/game/process_arcade", data);
+
+  if (resp.ok) {
+    await dispatch("me");
+  }
   return resp;
 };
 
@@ -148,16 +174,13 @@ const getRanking = async ({ commit }, payload) => {
   if (resp.ok) {
     const data = resp.data.data.reduce((acc, cur) => {
       const row = {
-        user_id: dp.get(cur, 'relationships.user.data.id', null),
-        user_nickname: dp.get(cur, 'relationships.user.data.nickname', null),
-        image: dp.get(cur, 'relationships.user.data.image', null),
-        score: dp.get(cur, `attributes.artists.${artist}`, 0),
-      }
+        user_id: dp.get(cur, "relationships.user.data.id", null),
+        user_nickname: dp.get(cur, "relationships.user.data.nickname", null),
+        image: dp.get(cur, "relationships.user.data.image", null),
+        score: dp.get(cur, `attributes.artists.${artist}`, 0)
+      };
 
-      return [
-        ...acc,
-        row,
-      ];
+      return [...acc, row];
     }, []);
     commit("SET_ARTIST_RANKING", { artist, data });
   } else {
@@ -166,8 +189,6 @@ const getRanking = async ({ commit }, payload) => {
 
   return resp;
 };
-
-///game/ranking/1/sia
 
 export default {
   login,
@@ -180,5 +201,7 @@ export default {
   loadCountries,
   logout,
   getRanking,
-  me
+  me,
+  progressCampaign,
+  progressArcade,
 };

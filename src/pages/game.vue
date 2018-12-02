@@ -6,6 +6,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
 export default {
   props: {
     level: {
@@ -17,19 +18,21 @@ export default {
     }
   },
   computed: {
+    ...mapGetters(["campaignProgress"]),
     gameUrl() {
       return 'https://lsd-game.herokuapp.com/game/?l='+this.level+'&g='+this.game
     }
   },
   methods: {
-    gameMessage(event) {
+    ...mapActions(['progressCampaign']),
+    async gameMessage(event) {
       // alert(event.data.name)
       if(event.data.name == 'endCampaingLevel') { // QUANDO PASSAR O LEVEL
-  			console.log('endCampaingLevel 2');
-        this.$store.commit("SET_LEVEL", this.$store.state.user.game.campaign.process + 1); //SALVA O LEVEL PASSADO
-      }
-      else if(event.data.name == 'endArcadeLevel') { // QUANDO PASSAR NO MODO ARCADE
-  			console.log('endArcadeLevel 2');
+        await this.progressCampaign();
+  			// console.log('endCampaingLevel 2');
+        // this.$store.commit("SET_LEVEL", this.$store.state.user.game.campaign.process + 1); //SALVA O LEVEL PASSADO
+      } else if(event.data.name == 'endArcadeLevel') { // QUANDO PASSAR NO MODO ARCADE
+        console.log('endArcadeLevel 2');
         this.$store.commit("SET_SCORE", event.score); // SALVA O SCORE PARA O GAME ATUAL (DIPLO, SIA OU LABRINTH)
       }
     }
