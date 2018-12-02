@@ -9,8 +9,7 @@
     <v-button tag="a" class="no-style picture-button">
       Change profile picture
     </v-button>
-
-    <v-input v-model="form.name" type="text">Name</v-input>
+    
     <v-input v-model="form.nickname" type="text":feedback="feedback.nickname">Nickname</v-input>
     <v-input v-model="form.email" type="text" :feedback="feedback.email">Email</v-input>
     <v-select v-model="form.country_id" :options="countriesOptions">Country</v-select>
@@ -33,10 +32,9 @@ export default {
   mixins: [Form],
   mounted() {
 
-    const { name, nickname, image, country, email } = this.user;
+    const { nickname, image, country, email } = this.user;
 
     this.setForm({
-      name,
       nickname,
       image,
       country_id: `${country.id}`,

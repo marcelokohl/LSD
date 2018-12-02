@@ -10,8 +10,8 @@ const game = state => dp.get(state, "user.game", {});
 
 const countries = state => state.countries || [];
 
-const campaignProgress = state => 13
-  // dp.get(state, "user.game.campaign.process", 0);
+const campaignProgress = state => 
+  dp.get(state, "user.game.campaign.process", 0);
 
 export default {
   countries,
